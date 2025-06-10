@@ -2,6 +2,11 @@
 # config
 /
 /*
+!LICENSE
+!dotfiles_assets
+!dotfiles_assets/*
+!README.md
+
 !ack/
 !alacritty
 !aliasrc
