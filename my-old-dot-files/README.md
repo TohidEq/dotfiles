@@ -2,12 +2,12 @@
 
 ## Preview
 
-![SS 1](https://raw.githubusercontent.com/TohidEq/otfiles/master/my-old-dotfiles/assets/ss-5.14.2025.png)
+![SS 1](./assets/ss-5.14.2025.png)
 
 rofi launcher
-![SS-roofi](https://raw.githubusercontent.com/TohidEq/otfiles/master/my-old-dotfiles/assets/ss-rofi-5.14.2025.png)
+![SS-roofi](./assets/ss-rofi-5.14.2025.png)
 
-![SS 2](https://raw.githubusercontent.com/TohidEq/dotfiles/master/my-old-dotfiles/assets/ss-5-15-2025.png)
+![SS 2](./assets/ss-5-15-2025.png)
 
 ### Usage
 
