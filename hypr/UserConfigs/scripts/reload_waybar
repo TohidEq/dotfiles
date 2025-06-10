@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if pgrep -x "waybar" > /dev/null; then
+  pkill -x waybar
+  notify-send "Waybar has been KILLED!!!" "Watch Your Back!"
+  sleep 0.5
+fi
+
+hyprctl reload
+notify-send "Hyprland Reloaded" "^_^"
+
+notify-send "Waybar Started" "^_^"
+waybar &
