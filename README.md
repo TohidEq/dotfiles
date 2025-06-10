@@ -2,7 +2,10 @@
 
 > A collection of my personal dotfiles for a highly customized and efficient development environment.
 
+
 This repository contains configuration files for various tools and applications. The main focus is on creating a seamless and productive user experience with a focus on aesthetics and usability
+
+- [My old dotfiles are here](./my-old-dot-files/README.md)(i3 manjaro x11 rofi i3block) 
 
 ## 📌 Table of Contents
 

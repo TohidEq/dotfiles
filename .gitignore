@@ -6,6 +6,8 @@
 !dotfiles_assets
 !dotfiles_assets/*
 !README.md
+!my-old-dot-files
+!my-old-dot-files/*
 
 !ack/
 !alacritty
