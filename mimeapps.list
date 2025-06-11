@@ -6,6 +6,8 @@ x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
 x-scheme-handler/oblivion=oblivion-desktop.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
+image/png=swappy.desktop
+image/x-xfig=gimp.desktop
 
 [Added Associations]
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
@@ -13,3 +15,5 @@ x-scheme-handler/http=xfce4-web-browser.desktop;
 x-scheme-handler/https=xfce4-web-browser.desktop;
 video/mp4=vlc.desktop;
 application/x-fishscript=void.desktop;
+image/png=swappy.desktop;
+image/x-xfig=gimp.desktop;
