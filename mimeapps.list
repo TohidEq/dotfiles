@@ -11,6 +11,7 @@ image/x-xfig=gimp.desktop
 image/svg+xml=brave-browser.desktop
 video/x-matroska=vlc.desktop
 x-scheme-handler/discord-1038970224050962582=nuclear.desktop
+text/plain=void.desktop
 
 [Added Associations]
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
@@ -23,3 +24,4 @@ image/x-xfig=gimp.desktop;
 image/svg+xml=dev.zed.Zed.desktop;brave-browser.desktop;
 audio/mpeg=com.github.neithern.g4music.desktop;nuclear.desktop;vlc.desktop;feishin.desktop;
 video/x-matroska=vlc.desktop;
+text/plain=void.desktop;
