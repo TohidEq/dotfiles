@@ -8,6 +8,8 @@ x-scheme-handler/oblivion=oblivion-desktop.desktop
 x-scheme-handler/tonsite=org.telegram.desktop.desktop
 image/png=swappy.desktop
 image/x-xfig=gimp.desktop
+image/svg+xml=brave-browser.desktop
+video/x-matroska=vlc.desktop
 
 [Added Associations]
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
@@ -17,3 +19,6 @@ video/mp4=vlc.desktop;
 application/x-fishscript=void.desktop;
 image/png=swappy.desktop;
 image/x-xfig=gimp.desktop;
+image/svg+xml=dev.zed.Zed.desktop;brave-browser.desktop;
+audio/mpeg=vlc.desktop;feishin.desktop;
+video/x-matroska=vlc.desktop;
