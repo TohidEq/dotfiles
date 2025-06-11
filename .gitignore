@@ -58,6 +58,8 @@ fish/fish_variables
 !inputrc
 !kitty
 !Kvantum/
+!mako
+!mako/*
 !mimeapps.list
 !moc/
 .moc/softmixer
