@@ -117,10 +117,10 @@
     },
     
     "temperature": {
-        "thermal-zone": 1,
+        "thermal-zone": 3,
         "format": "<b>{temperatureC}°C </b>",
-        "critical-threshold": 48,
-        "format-critical": "<b>{temperatureF}°F </b>"
+        "critical-threshold": 80,
+        "format-critical": "<b>!{temperatureC}°C </b>"
     },
 
     "network": {
