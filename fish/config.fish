@@ -2,24 +2,15 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-
-
-
-
 alias vim="nvim"
 alias ttmux="tmuxinator"
 alias ls="lsd"
 #alias cat="bat"
 alias gitl="clear && echo -e '---- GIT STATUS ----\n' && git status && echo -e '\n----  GIT  LOG  ----\n' && git log --oneline -10 --graph --decorate"
 
-
-
-
-
+alias ffch="clear && fastfetch --config hypr2.jsonc"
 
 #alias ttlauncher="java -jar ~/myworld/Applications/games/tlauncher/TLauncher-2.885.jar"
-
-
 
 #set -gx PATH /home/tohid-eq/.local/bin $PATH
 #set -gx PATH /home/tohid-eq/.local/share/nvm/v22.9.0/bin $PATH
