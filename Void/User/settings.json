@@ -1,0 +1,149 @@
+{
+    "extensions.autoCheckUpdates": false,
+    "workbench.sideBar.location": "right",
+    "workbench.activityBar.location": "hidden",
+    "activitusbar.priority": -9999,
+    "activitusbar.alignment":"Right",
+    "activitusbar.views": [
+
+        {
+            "name": "extensions",
+            "codicon": "extensions-view-icon"
+            },
+        {
+            "name": "debug",
+            "codicon": "run-view-icon"
+            },
+        {
+            "name": "scm",
+            "codicon": "source-control-view-icon"
+            },
+        {
+            "name": "search",
+            "codicon": "search-view-icon"
+            },
+        {
+        "name": "explorer",
+        "codicon": "explorer-view-icon"
+        },
+    ],
+    "workbench.colorTheme": "One Dark Pro Mix",
+    "workbench.navigationControl.enabled": false,
+    "editor.fontSize": 14,
+    "editor.fontLigatures": true,
+    "editor.mouseWheelZoom": true,
+    "workbench.iconTheme": "symbols",
+    "npm.keybindingsChangedWarningShown": true,
+    "window.titleBarStyle": "custom",
+    "terminal.integrated.defaultProfile.windows": null,
+    "terminal.integrated.defaultProfile.linux": null,
+    "terminal.integrated.defaultProfile.osx": null,
+    "explorer.autoReveal": false,   
+
+    "update.showReleaseNotes": false,
+    "update.mode": "none",
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "autoHide.hideOnOpen": true,
+
+
+
+    "glassit.alpha": 240,
+    "symbols.hidesExplorerArrows": false,
+    "editor.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF','Droid Sans Mono', 'monospace', 'monocraft',monospace",
+    "editor.codeLensFontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "editor.experimentalInlineEdit.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "editor.inlayHints.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "debug.console.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "scm.inputFontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "terminal.integrated.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "editor.inlineSuggest.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "notebook.output.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "chat.editor.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+    "chat.editor.fontWeight": "'JetBrainsMono NF'",
+    "markdown.preview.fontFamily": "'MesloLGM Nerd Font',-apple-system,'JetBrainsMono NF', BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnType": true,
+    "workbench.startupEditor": "none",
+    "editor.tabSize": 2,
+    "window.menuBarVisibility": "visible",
+  
+    "window.customTitleBarVisibility": "auto",
+    "workbench.layoutControl.enabled": false,
+    "window.commandCenter": false,
+    "editor.minimap.maxColumn": 45,
+    "editor.minimap.autohide": true,
+  
+    "terminal.integrated.tabs.enabled": true,
+    "files.autoSave": "afterDelay",
+    "editor.lineHeight": 1.5,
+    "editor.letterSpacing": 1.0,
+    "editor.wordWrap": "on",
+  
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.linkedEditing": true,
+    "files.trimTrailingWhitespace": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "workbench.editor.empty.hint": "hidden",
+    "extensions.experimental.affinity": {
+      "asvetliakov.vscode-neovim": 1
+    },
+  
+    "css.validate": false,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "windicss.includeLanguages": {
+      "a": "html",
+      "b": "js",
+      "c": "css",
+      "d": "scss",
+      "e": "jsx",
+      "f": "tsx",
+      "ghi0": {
+        "type": "scss",
+        "patterns": ["@applys+S+$", "..."]
+      },
+      "ghi1": {
+        "type": "css",
+        "patterns": ["@applys+S+$", "..."]
+      },
+      "ghi2": {
+        "type": "js",
+        "patterns": ["@applys+S+$", "..."]
+      },
+      "ghi3": {
+        "type": "jsx",
+        "patterns": ["@applys+S+$", "..."]
+      },
+      "ghi4": {
+        "type": "tsx",
+        "patterns": ["@applys+S+$", "..."]
+      }
+    },
+    "workbench.productIconTheme": "fluent-icons",
+,
+    "activitusbar.combineWorkspaceSettings": true,
+    "workbench.colorCustomizations": {
+      "activityBar.inactiveForeground": "#ffb34f",
+      "statusBar.background": "#23272e"
+    },
+    "telemetry.enableExperimentalFeatures": false,
+    "telemetry.telemetryLevel": "off",
+    "telemetry.feedback.enabled": false,
+    "tabnine.experimentalAutoImports": true,
+    "github.copilot.enable": {
+      "*": false
+    },
+    "github.copilot.editor.enableAutoCompletions": false,
+    "github.copilot.editor.enableCodeActions": false,
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.renameSuggestions.triggerAutomatically": false,
+    "chat.agent.enabled": false,
+    "google-translate.firstLanguage": "fa",
+    "google-translate.secondLanguage": "en",
+    "security.workspace.trust.enabled": false,
+    "editor.formatOnSave": true,
+    "vscode-blur-linux.opacity": 90,
+    "chat.commandCenter.enabled": false,
+    "svg.preview.mode": "svg"
+}

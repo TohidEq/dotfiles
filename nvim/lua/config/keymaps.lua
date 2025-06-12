@@ -66,6 +66,13 @@ keymap.set("n", "<leader>r", function()
   require("craftzdog.hsl").replaceHexWithHSL()
 end)
 
-keymap.set("n", "<leader>i", function()
-  require("craftzdog.lsp").toggleInlayHints()
-end)
+--  [[ keymap.set("n", "<leader>e",
+--           function()
+--             require('neo-tree.command').execute({
+--                 toggle = true,
+--                 source = 'filesystem',
+--                 position = 'right',
+--             })
+--           end,
+--           opts)
+--  ]]

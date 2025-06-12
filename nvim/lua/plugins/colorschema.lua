@@ -1,26 +1,19 @@
 return {
   {
-    "olimorris/onedarkpro.nvim",
-    priority = 1000, -- Ensure it loads first
+    "navarasu/onedark.nvim",
+    priority = 1000,
     config = function()
-      require("onedarkpro").setup({
-        colorscheme = "onedark_dark",
-        options = {
-          transparency = true,
-          term_colors = true,
-        },
-        styles = {
-          --     strings = "italic",
-          --     comments = "italic",
-          --     keywords = "italic",
-        },
+      require("onedark").setup({
+        style = "warmer",
+        transparent = true,
       })
     end,
   },
+
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark_dark",
+      colorscheme = "onedark",
     },
   },
 }

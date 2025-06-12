@@ -1,13 +1,20 @@
 #!/bin/bash
 
+if pgrep -x "mako" > /dev/null; then
+  pkill -x mako
+  notify-send --icon="/home/arc/.config/custom_images/kill.png" "Mako has been KILLED!!!"
+  sleep 0.1
+fi
 if pgrep -x "waybar" > /dev/null; then
   pkill -x waybar
-  notify-send "Waybar has been KILLED!!!" "Watch Your Back!"
+  notify-send --icon="/home/arc/.config/custom_images/kill.png" "Waybar has been KILLED!!!"
   sleep 0.5
 fi
 
-hyprctl reload
-notify-send "Hyprland Reloaded" "^_^"
 
-notify-send "Waybar Started" "^_^"
+hyprctl reload
+notify-send  --icon="/home/arc/.config/custom_images/good_job.png" "Mako Reloaded"
+notify-send  --icon="/home/arc/.config/custom_images/good_job.png" "Hyprland Reloaded"
+
+notify-send  --icon="/home/arc/.config/custom_images/good_job.png" "Waybar Started"
 waybar &

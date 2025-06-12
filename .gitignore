@@ -16,6 +16,8 @@
 !backup
 !betterlockscreenrc
 !bookmarkrc
+!cava
+!cava/*
 !cleanup
 !clipit/
 !colorls/
@@ -80,15 +82,27 @@ fish/fish_variables
 !persepolis_download_manager/persepolis.conf
 !picom/
 !polybar/
+!qt5ct
+!qt5ct/*
+!qt6ct
+!qt6ct/*
 !ranger/
 !rofi/
+!swaylock
+!swaylock/*
 !sxhkd
 !termite/
+!Thunar
+!Thunar/*
 !tmux/
 .tmux/plugins
 !user-dirs.dirs
 !user-dirs.locale
 !vlc/vlcrc
+
+
+Void/
+
 !wget/
 !X11/
 !zathura/
@@ -99,8 +113,8 @@ fish/fish_variables
 
 
 
-
-
+!custom_images
+!custom_images/*
 
 
 

@@ -1,0 +1,46 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+k k",
+    "command": "toggleVim"
+  },
+  {
+    "key": "ctrl+k ctrl+shift+n",
+    "command": "notifications.showList"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.closePanel",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "-workbench.action.chat.open",
+    "when": "!chatSetupHidden"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "-workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "workbench.view.extension.blackboxai-dev-ActivityBar",
+    "when": "viewContainer.workbench.view.extension.blackboxai-dev-ActivityBar.enabled"
+  },
+  {
+    "key": "ctrl+k ctrl+k",
+    "command": "-editor.action.selectFromAnchorToCursor",
+    "when": "editorTextFocus && selectionAnchorSet"
+  }
+]
