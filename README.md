@@ -22,8 +22,6 @@ This repository contains configuration files for various tools and applications.
 
 # 🖼️ Screenshots
 
-Add your own screenshots here to showcase your setup!
-
 ![Desktop](./dotfiles_assets/ss/1.png)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -35,6 +33,7 @@ Add your own screenshots here to showcase your setup!
     <img src="./dotfiles_assets/ss/4-all.png" alt="All Terminal Apps" style="width: 48%;">
     <img src="./dotfiles_assets/ss/5-rofi.png" alt="Roofi Launcher" style="width: 48%;">
 </div>
+
 # 🧩 Components
 
 Here's a breakdown of the key components in this dotfiles setup:
