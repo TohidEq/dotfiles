@@ -6,9 +6,9 @@ This repository contains configuration files for various tools and applications.
 
 - [My old dotfiles are here](./my-old-dot-files/README.md)(i3 manjaro x11 rofi i3block)
 
-## 📌 Table of Contents
+# 📌 Table of Contents
 
-- [🖼️ Screenshots](#screenshots)
+- [🖼️ Screenshots](##screenshots)
 - [🧩 Components](#components)
 - [💎 Hyprland](#hyprland)
 - [📊 Waybar](#waybar)
@@ -20,25 +20,22 @@ This repository contains configuration files for various tools and applications.
 - [⌨️ Keybindings](#keybindings)
 - [🙏 Credits](#credits)
 
-## 🖼️ Screenshots
+# 🖼️ Screenshots
 
 Add your own screenshots here to showcase your setup!
 
-- **Desktop:**
+![Desktop](./dotfiles_assets/ss/1.png)
 
-  ![Desktop](./dotfiles_assets/ss/desk.png)
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <img src="./dotfiles_assets/ss/2.png" alt="Kitty and Thunar and Windscribe and Spotify" style="width: 48%;">
+    <img src="./dotfiles_assets/ss/3-nvim-void.png" alt="Void and NeoVim" style="width: 48%;">
+</div>
 
-- **Application View:**
-
-  > WIP
-
-  > `![Application View]()`
-
-- **Customized Terminal:**
-
-  ![Customized Terminal](./dotfiles_assets/ss/term.png)
-
-## 🧩 Components
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+    <img src="./dotfiles_assets/ss/4-all.png" alt="All Terminal Apps" style="width: 48%;">
+    <img src="./dotfiles_assets/ss/5-rofi.png" alt="Roofi Launcher" style="width: 48%;">
+</div>
+# 🧩 Components
 
 Here's a breakdown of the key components in this dotfiles setup:
 
@@ -48,7 +45,7 @@ Here's a breakdown of the key components in this dotfiles setup:
 - **Fish Shell:** A smart and user-friendly command-line shell.
 - **Nvim:** Highly extensible Vim-based text editor
 
-## 💎 Hyprland
+# 💎 Hyprland
 
 Hyprland is the heart of this setup, providing a smooth and visually appealing desktop environment. Configuration is split into several files under `@hypr/UserConfigs/` for better organization.
 Some noteworthy configuration files are:
@@ -84,7 +81,7 @@ bind = $mainMod, 7, workspace, 7
 bind = $mainMod, 8, workspace, 8
 ```
 
-## 📊 Waybar
+# 📊 Waybar
 
 Waybar provides essential information and controls in a clean and customizable manner.
 
@@ -92,7 +89,7 @@ Waybar provides essential information and controls in a clean and customizable m
 - `@waybar/style.css`: Styling for Waybar, including colors, fonts, and spacing.
 - `@waybar/scripts/waybar-wttr.py`: script used to display weather information
 
-## 🐱 Kitty
+# 🐱 Kitty
 
 Kitty is configured for optimal performance and aesthetics.
 
@@ -100,7 +97,7 @@ Kitty is configured for optimal performance and aesthetics.
 - `@kitty/theme.conf`: Kitty theme configuration.
 - `@kitty/kitty-themes/themes/`: Directory containing a variety of themes. You can explore different themes from [kitty-themes](https://github.com/dexpota/kitty-themes)
 
-## 🐠 Fish
+# 🐠 Fish
 
 Fish shell enhances the command-line experience with features like autosuggestions, syntax highlighting, and more.
 
@@ -108,7 +105,7 @@ Fish shell enhances the command-line experience with features like autosuggestio
 - `@fish/functions/`: Directory containing custom Fish functions.
 - `@fish/fish_plugins`: Contains list of used plugins. Using [Tide](https://github.com/IlanCosman/tide) prompt
 
-## 💤 Nvim
+# 💤 Nvim
 
 Neovim is configured with [LazyVim](https://github.com/LazyVim/LazyVim).
 
@@ -116,11 +113,11 @@ Neovim is configured with [LazyVim](https://github.com/LazyVim/LazyVim).
 - `@nvim/lua/config/`: Directory containing configuration files for LazyVim, keymaps, autocommands, and options.
 - `@nvim/lua/plugins/`: Custom plugins for Nvim.
 
-## ⬇️ Prerequisites
+# ⬇️ Prerequisites
 
 Before installing the dotfiles, ensure that you have the following packages and programs installed on your system. Installation commands are provided for common distributions:
 
-### 📦 Install Required Packages
+## 📦 Install Required Packages
 
 <details>
 <summary><strong>🧪 Arch Linux / Manjaro</strong></summary>
@@ -157,7 +154,7 @@ sudo dnf install hyprland waybar kitty fish neovim wofi pamixer brightnessctl sl
 
 </details>
 
-## 💾 Installation
+# 💾 Installation
 
 **Important: Before proceeding, back up your existing configuration files!** This ensures you can easily revert to your previous settings if needed.
 
@@ -252,7 +249,7 @@ sudo dnf install hyprland waybar kitty fish neovim wofi pamixer brightnessctl sl
     - **Fish:** Start a new Fish shell session, or source the config file (`source ~/.config/fish/config.fish`).
     - **Nvim:** Open nvim and run `:source ~/.config/nvim/init.lua`
 
-## ⌨️ Keybindings
+# ⌨️ Keybindings
 
 Here are some of the key Hyprland keybindings for navigation and window management. To see and edit all the keybinds check `@hypr/UserConfigs/Keybinds.conf`:
 
@@ -349,7 +346,7 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 
 </details>
 
-## 🙏 Credits
+# 🙏 Credits
 
 - [Hyprland](https://hyprland.org/)
 - [Waybar](https://github.com/Alexays/Waybar)
