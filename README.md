@@ -34,6 +34,7 @@ This repository contains configuration files for various tools and applications.
     <img src="./dotfiles_assets/ss/5-rofi.png" alt="Roofi Launcher" style="width: 48%;">
 </div>
 
+
 # 🧩 Components
 
 Here's a breakdown of the key components in this dotfiles setup:

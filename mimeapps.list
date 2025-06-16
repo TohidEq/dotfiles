@@ -26,3 +26,4 @@ audio/mpeg=com.github.neithern.g4music.desktop;nuclear.desktop;vlc.desktop;feish
 video/x-matroska=vlc.desktop;
 text/plain=void.desktop;
 text/x-csrc=void.desktop;
+image/jpeg=swappy.desktop;
