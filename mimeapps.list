@@ -27,3 +27,4 @@ video/x-matroska=vlc.desktop;
 text/plain=void.desktop;
 text/x-csrc=void.desktop;
 image/jpeg=swappy.desktop;
+application/x-subrip=org.xfce.mousepad.desktop;
