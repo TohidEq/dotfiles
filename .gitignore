@@ -110,6 +110,8 @@ Void/
 .zsh/completions
 .zsh/.zsh_history
 !waybar/
+!wlogout/
+!wlogout/*
 
 
 

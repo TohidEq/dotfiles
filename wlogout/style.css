@@ -1,0 +1,56 @@
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(12, 12, 12, 0.9);
+}
+
+button {
+  border-color: black;
+	text-decoration-color: #FFFFFF;
+  color: #FFFFFF;
+	background-color: #1E1E1E;
+	border-style: solid;
+	border-width: 0px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 30%;
+  font-size:0px;
+
+  border-radius: 9999999px;
+  margin:20px 105px;
+}
+
+button:focus, button:active {
+	background-size: 37%;
+	background-color: #555;
+	outline-style: none;
+
+}
+
+#lock {
+    background-image: image(url("/home/arc/.config/wlogout/icons/lock_white.png"), url("/home/arc/.config/wlogout/icons/lock_white.png.png"));
+    
+}
+
+#logout {
+    background-image: image(url("/home/arc/.config/wlogout/icons/logout_white.png"), url("/home/arc/.config/wlogout/icons/logout_white.png"));
+}
+
+#suspend {
+    background-image: image(url("/home/arc/.config/wlogout/icons/suspend_white.png"), url("/home/arc/.config/wlogout/icons/suspend_white.png"));
+}
+
+#hibernate {
+    background-image: image(url("/home/arc/.config/wlogout/icons/hibernate_white.png"), url("/home/arc/.config/wlogout/icons/hibernate_white.png"));
+}
+
+#shutdown {
+    background-image: image(url("/home/arc/.config/wlogout/icons/shutdown_white.png"), url("/home/arc/.config/wlogout/icons/shutdown_white.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/arc/.config/wlogout/icons/reboot_white.png"), url("/home/arc/.config/wlogout/icons/reboot_white.png"));
+}
