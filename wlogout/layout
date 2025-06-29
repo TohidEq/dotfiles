@@ -4,12 +4,7 @@
     "text" : "Lock",
     "keybind" : "l"
 }
-{
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Hibernate",
-    "keybind" : "h"
-}
+
 {
     "label" : "logout",
     "action" : "loginctl terminate-user $USER",
@@ -23,14 +18,20 @@
     "keybind" : "s"
 }
 {
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
+{
     "label" : "suspend",
     "action" : "systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
 }
 {
-    "label" : "reboot",
-    "action" : "systemctl reboot",
-    "text" : "Reboot",
-    "keybind" : "r"
+    "label" : "hibernate",
+    "action" : "notify-send -u normal --icon='/home/arc/.config/custom_images/good_job.png' 'Good Job Anyway' 'This one does nothing'",
+    "text" : "Hibernate",
+    "keybind" : "h"
 }

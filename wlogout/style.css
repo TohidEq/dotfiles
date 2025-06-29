@@ -43,10 +43,6 @@ button:focus, button:active {
     background-image: image(url("/home/arc/.config/wlogout/icons/suspend_white.png"), url("/home/arc/.config/wlogout/icons/suspend_white.png"));
 }
 
-#hibernate {
-    background-image: image(url("/home/arc/.config/wlogout/icons/hibernate_white.png"), url("/home/arc/.config/wlogout/icons/hibernate_white.png"));
-}
-
 #shutdown {
     background-image: image(url("/home/arc/.config/wlogout/icons/shutdown_white.png"), url("/home/arc/.config/wlogout/icons/shutdown_white.png"));
 }
@@ -54,3 +50,9 @@ button:focus, button:active {
 #reboot {
     background-image: image(url("/home/arc/.config/wlogout/icons/reboot_white.png"), url("/home/arc/.config/wlogout/icons/reboot_white.png"));
 }
+
+#hibernate {
+    background-image: image(url("/home/arc/.config/wlogout/icons/hibernate_white.png"), url("/home/arc/.config/wlogout/icons/hibernate_white.png"));
+}
+
+

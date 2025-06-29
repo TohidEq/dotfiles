@@ -1,6 +1,7 @@
 
 # config
 /
+*.tmp.*
 /*
 !LICENSE
 !dotfiles_assets
@@ -113,6 +114,7 @@ Void/
 !wlogout/
 !wlogout/*
 
+*.tmp.*
 
 
 !custom_images
@@ -131,3 +133,5 @@ Void/
 **/Trash/
 **/node_modules/
 **/__pycache__/
+
+*.tmp.*
