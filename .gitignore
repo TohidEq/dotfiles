@@ -40,6 +40,8 @@
 .emacs/*
 !emacs/init.el
 !env
+!firefoxConf
+!firefoxConf/*
 !fish/
 fish/fish_variables
 !flameshot/
