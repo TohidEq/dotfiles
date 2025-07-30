@@ -91,6 +91,8 @@ fish/fish_variables
 !qt6ct/*
 !ranger/
 !rofi/
+!superfile
+!superfile/*
 !swaylock
 !swaylock/*
 !sxhkd
