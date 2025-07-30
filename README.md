@@ -12,6 +12,7 @@ This repository contains configuration files for various tools and applications.
 - [🧩 Components](#components)
 - [💎 Hyprland](#hyprland)
 - [📊 Waybar](#waybar)
+- [🦊 Firefox](#firefox)
 - [🐱 Kitty](#kitty)
 - [🐠 Fish](#fish)
 - [💤 Nvim](#nvim)
@@ -96,7 +97,54 @@ Waybar provides essential information and controls in a clean and customizable m
 - `@waybar/style.css`: Styling for Waybar, including colors, fonts, and spacing.
 - `@waybar/scripts/waybar-wttr.py`: script used to display weather information
 
+<a name="firefox"/>
+
+# 🦊 Firefox
+
+To achieve the optimal Firefox setup as seen in this dotfiles repository, follow these steps:
+
+### 📦 Required Extensions / Tools
+
+Install the following manually:
+
+- [**TextFox**](https://github.com/adriankarlen/textfox) – a powerful toolkit for text extraction and manipulation.
+- [**Sidebery**](https://github.com/mbnuqw/sidebery) – a sidebar tab manager and session organizer.
+
+---
+
+### 🛠 Applying the Firefox Configuration
+
+1. **Open Firefox and go to:**
+   `about:profiles`
+
+2. **Find the path of your active profile** (it's your **Root Directory**).
+
+3. **Back up** the entire contents of that directory before proceeding(**Root Directory**).
+
+4. From this dotfiles repository, locate the folder:
+
+```
+
+firefoxConf/
+├── chrome/
+└── user.js
+
+```
+
+5. Copy the entire `chrome/` folder **into your Firefox Root Directory**.
+
+6. Also copy `user.js` to the same directory.
+
+7. If prompted to replace files, **accept and overwrite** them.
+
+> 🧠 **Note:** Restart Firefox after applying the configuration to see the changes.
+
+---
+
+This setup provides a customized Firefox experience tailored for better usability, tab management, and visual enhancements.
+
 <a name="kitty"/>
+
 # 🐱 Kitty
 
 Kitty is configured for optimal performance and aesthetics.
