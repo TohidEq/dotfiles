@@ -28,13 +28,13 @@ This repository contains configuration files for various tools and applications.
 ![Desktop](./dotfiles_assets/ss/1.png)
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <img src="./dotfiles_assets/ss/2-1.png" alt="Kitty and Thunar and Spotify" style="width: 50%;">
-    <img src="./dotfiles_assets/ss/3-ffox-void.png" alt="Void and Firefox" style="width: 50%;">
+    <img src="./dotfiles_assets/ss/2-1.png" alt="Kitty and Thunar and Spotify" style="width: 49%;">
+    <img src="./dotfiles_assets/ss/3-ffox-void.png" alt="Void and Firefox" style="width: 49%;">
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <img src="./dotfiles_assets/ss/4-all-1.png" alt="All Terminal Apps" style="width: 50%;">
-    <img src="./dotfiles_assets/ss/5-rofi.png" alt="Roofi Launcher" style="width: 50%;">
+    <img src="./dotfiles_assets/ss/4-all-1.png" alt="All Terminal Apps" style="width: 49%;">
+    <img src="./dotfiles_assets/ss/5-rofi.png" alt="Roofi Launcher" style="width: 49%;">
 </div>
 
 <a name="components"/>
