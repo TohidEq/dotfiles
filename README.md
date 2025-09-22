@@ -341,12 +341,14 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 |      `SUPER` + `F1`–`F4`      | f1-Obsidian, f2-FFox |          f3-Thunar, f4-Void          |      Apps       |
 |         `SUPER` + `D`         |       Rofi X11       |       `SUPER` + `SHIFT` + `D`        |  Rofi Wayland   |
 |    `SUPER` + `SHIFT` + `C`    |     Color Picker     |       `SUPER` + `SHIFT` + `X`        |  Kill w/Mouse   |
+|   `SUPER` + `SHIFT` + `ESC`   |         BTop         |       `SUPER` + `ALT` + `ESC`        |      NVTop      |
+|     `SUPER` + `ALT` + `M`     |     Musci Player     |        `SUPER` + `ALT` + `N`         | Next Wallpaper  |
 |              ⚙️               |     System Ctrl      |       Screenshots, Lock, Power       |       ⚙️        |
 |         `SUPER` + `9`         |     Lock Screen      |            `SUPER` + `0`             |   Power Menu    |
 |    `SUPER` + `SHIFT` + `0`    |     Exit Session     |            `SUPER` + `S`             |   Screenshot    |
-|         `SUPER` + `M`         |    Toggle Waybar     |       `SUPER` + `SHIFT` + `R`        |  Reload Waybar  |
 |   `SUPER` + `ALT` + `1/2/3`   |    Temp -/Norm/+     |      `SUPER` + `ALT` + `Q/W/E`       | Gamma -/Norm/+  |
-|   `SUPER` + `ALT` + `8/9/0`   | Monitor Dup/Off/Ext  |            `SUPER` + `N`             |  Emoji Picker   |
+|   `SUPER` + `ALT` + `8/9/0`   | Monitor Dup/Off/Ext  |       `SUPER` + `SHIFT` + `R`        |  Reload Waybar  |
+|         `SUPER` + `M`         |    Toggle Waybar     |            `SUPER` + `N`             |  Emoji Picker   |
 
 </details>
 
@@ -381,6 +383,10 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 |                 | `SUPER` + `W`                           | Launch archwiki-offline                          |
 |                 | `SUPER` + `SHIFT` + `C`                 | Color picker and copy to clipboard               |
 |                 | `SUPER` + `SHIFT` + `X`                 | Click to kill window                             |
+|                 | `SUPER` + `SHIFT` + `ESC`               | Resource Monitoring (BTop)                       |
+|                 | `SUPER` + `ALT` + `ESC`                 | GPU Monitoring (NVTop)                           |
+|                 | `SUPER` + `ALT` + `M`                   | Musci Player (Kew)                               |
+|                 | `SUPER` + `ALT` + `N`                   | Next Random Wallpaper                            |
 | ⚙️ System Ctrl  | `SUPER` + `S`                           | Screenshot with grim + swappy                    |
 |                 | `SUPER` + `9`                           | Lock screen (swaylock)                           |
 |                 | `SUPER` + `0`                           | Open wlogout                                     |

@@ -22,3 +22,5 @@ alias ffch="clear && fastfetch --config hypr2.jsonc"
 #set -gx PATH /usr/local/maven/bin/ $PATH
 #set -gx PATH /home/tohid-eq/.local/share/gem/ruby/3.3.0/bin $PATH
 #set -gx PATH /root/.local/share/gem/ruby/3.3.0/bin $PATH
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

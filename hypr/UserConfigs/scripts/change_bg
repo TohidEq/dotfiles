@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+while true; do
+  waypaper --folder ~/Pictures/wow-blackwhite --random
+  sleep 300
+done

@@ -21,6 +21,7 @@ application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
 application/octet-stream=org.xfce.mousepad.desktop
+image/jpeg=swappy.desktop
 
 [Added Associations]
 x-scheme-handler/tonsite=org.telegram.desktop.desktop;
@@ -28,14 +29,14 @@ x-scheme-handler/http=firefox.desktop;xfce4-web-browser.desktop;
 x-scheme-handler/https=firefox.desktop;xfce4-web-browser.desktop;
 video/mp4=smplayer.desktop;vlc.desktop;
 application/x-fishscript=void.desktop;
-image/png=gimp.desktop;firefox.desktop;swappy.desktop;
+image/png=firefox.desktop;gimp.desktop;swappy.desktop;
 image/x-xfig=gimp.desktop;
 image/svg+xml=dev.zed.Zed.desktop;firefox.desktop;
 audio/mpeg=vlc.desktop;nuclear.desktop;com.github.neithern.g4music.desktop;feishin.desktop;
 video/x-matroska=mpv.desktop;smplayer.desktop;vlc.desktop;
 text/plain=void.desktop;
 text/x-csrc=void.desktop;
-image/jpeg=vlc.desktop;swappy.desktop;
+image/jpeg=swappy.desktop;vlc.desktop;
 application/x-subrip=org.xfce.mousepad.desktop;
 application/pdf=libreoffice-draw.desktop;firefox.desktop;
 text/html=firefox.desktop;
