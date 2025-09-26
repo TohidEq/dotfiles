@@ -73,6 +73,7 @@ fish/fish_variables
 .moc/last_directory
 .moc/equalizer
 !morc_menu/
+!myscripts/
 !neofetch/
 !nitrogen/
 .nitrogen/nitrogen.cfg

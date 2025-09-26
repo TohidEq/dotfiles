@@ -323,32 +323,34 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
     <b>Short View Of Hotkeys</b>
   </summary>
 
-|          Keybinding           |     Description      |              Keybinding              |   Description   |
-| :---------------------------: | :------------------: | :----------------------------------: | :-------------: |
-|              🪟               |     Window Mgmt      |       Manage focus and layout        |       🪟        |
-|         `SUPER` + `V`         |    Toggle Pseudo     |       `SUPER` + `SHIFT` + `Q`        |   Kill Active   |
-|  `SUPER` + `SHIFT` + `SPACE`  |       Floating       |            `SUPER` + `Q`             |  Toggle Split   |
-|         `SUPER` + `F`         |      Fullscreen      |    `SUPER` + `H/L/K/J` or Arrows     |      Focus      |
-| `SUPER` + `SHIFT` + `H/L/K/J` |         Move         |      `SUPER` + Mouse Left/Right      |  Move / Resize  |
-|         `SUPER` + `R`         |     Resize Mode      |     Arrows / HJKL in resize mode     |   Resize Dir    |
-|       `ESC` / `Return`        |     Exit Resize      |                                      |                 |
-|              🖥️               |      Workspaces      |      Manage desktops & monitors      |       🖥️        |
-|       `SUPER` + `1`-`8`       |      Switch WS       |     `SUPER` + `SHIFT` + `1`-`8`      |   Move to WS    |
-|  `SUPER` + `CTRL` + `1`-`8`   |       Mon2 WS        | `SUPER` + `CTRL` + `SHIFT` + `1`-`8` | Move to Mon2 WS |
-|        `SUPER` + `Tab`        |       Prev WS        |     `SUPER` + `CTRL` + `J` / `L`     |   WS Navigate   |
-|              🚀               |     Applications     |      Favorite apps & launchers       |       🚀        |
-|      `SUPER` + `Return`       |    Kitty Terminal    |     `SUPER` + `SHIFT` + `Return`     |   Retro-Term    |
-|      `SUPER` + `F1`–`F4`      | f1-Obsidian, f2-FFox |          f3-Thunar, f4-Void          |      Apps       |
-|         `SUPER` + `D`         |       Rofi X11       |       `SUPER` + `SHIFT` + `D`        |  Rofi Wayland   |
-|    `SUPER` + `SHIFT` + `C`    |     Color Picker     |       `SUPER` + `SHIFT` + `X`        |  Kill w/Mouse   |
-|   `SUPER` + `SHIFT` + `ESC`   |         BTop         |       `SUPER` + `ALT` + `ESC`        |      NVTop      |
-|     `SUPER` + `ALT` + `M`     |     Musci Player     |        `SUPER` + `ALT` + `N`         | Next Wallpaper  |
-|              ⚙️               |     System Ctrl      |       Screenshots, Lock, Power       |       ⚙️        |
-|         `SUPER` + `9`         |     Lock Screen      |            `SUPER` + `0`             |   Power Menu    |
-|    `SUPER` + `SHIFT` + `0`    |     Exit Session     |            `SUPER` + `S`             |   Screenshot    |
-|   `SUPER` + `ALT` + `1/2/3`   |    Temp -/Norm/+     |      `SUPER` + `ALT` + `Q/W/E`       | Gamma -/Norm/+  |
-|   `SUPER` + `ALT` + `8/9/0`   | Monitor Dup/Off/Ext  |       `SUPER` + `SHIFT` + `R`        |  Reload Waybar  |
-|         `SUPER` + `M`         |    Toggle Waybar     |            `SUPER` + `N`             |  Emoji Picker   |
+|          Keybinding           |                             Description                              |              Keybinding              |   Description    |
+| :---------------------------: | :------------------------------------------------------------------: | :----------------------------------: | :--------------: |
+|              🪟               |                             Window Mgmt                              |       Manage focus and layout        |        🪟        |
+|         `SUPER` + `V`         |                            Toggle Pseudo                             |       `SUPER` + `SHIFT` + `Q`        |   Kill Active    |
+|  `SUPER` + `SHIFT` + `SPACE`  |                               Floating                               |            `SUPER` + `Q`             |   Toggle Split   |
+|         `SUPER` + `F`         |                              Fullscreen                              |    `SUPER` + `H/L/K/J` or Arrows     |      Focus       |
+| `SUPER` + `SHIFT` + `H/L/K/J` |                                 Move                                 |      `SUPER` + Mouse Left/Right      |  Move / Resize   |
+|         `SUPER` + `R`         |                             Resize Mode                              |     Arrows / HJKL in resize mode     |    Resize Dir    |
+|       `ESC` / `Return`        |                             Exit Resize                              |                                      |                  |
+|              🖥️               |                              Workspaces                              |      Manage desktops & monitors      |        🖥️        |
+|       `SUPER` + `1`-`8`       |                              Switch WS                               |     `SUPER` + `SHIFT` + `1`-`8`      |    Move to WS    |
+|  `SUPER` + `CTRL` + `1`-`8`   |                               Mon2 WS                                | `SUPER` + `CTRL` + `SHIFT` + `1`-`8` | Move to Mon2 WS  |
+|        `SUPER` + `Tab`        |                               Prev WS                                |     `SUPER` + `CTRL` + `J` / `L`     |   WS Navigate    |
+|              🚀               |                             Applications                             |      Favorite apps & launchers       |        🚀        |
+|      `SUPER` + `Return`       |                            Kitty Terminal                            |     `SUPER` + `SHIFT` + `Return`     |    Retro-Term    |
+|      `SUPER` + `F1`–`F4`      |                         f1-Obsidian, f2-FFox                         |          f3-Thunar, f4-Void          |       Apps       |
+|         `SUPER` + `D`         |                               Rofi X11                               |       `SUPER` + `SHIFT` + `D`        |   Rofi Wayland   |
+|    `SUPER` + `SHIFT` + `C`    |                             Color Picker                             |       `SUPER` + `SHIFT` + `X`        |   Kill w/Mouse   |
+|   `SUPER` + `SHIFT` + `ESC`   |                                 BTop                                 |       `SUPER` + `ALT` + `ESC`        |      NVTop       |
+|     `SUPER` + `ALT` + `M`     |                             Music Player                             |        `SUPER` + `ALT` + `N`         |  Next Wallpaper  |
+|         `SUPER` + `T`         | Run [TouchServer](https://github.com/SKRInternationals/TouchServer/) |       `SUPER` + `SHIFT` + `T`        | Kill TouchServer |
+|     `SUPER` + `ALT` + `V`     |                              Run WayVNC                              |       `SUPER` + `SHIFT` + `V`        |   Kill WayVNC    |
+|              ⚙️               |                             System Ctrl                              |       Screenshots, Lock, Power       |        ⚙️        |
+|         `SUPER` + `9`         |                             Lock Screen                              |            `SUPER` + `0`             |    Power Menu    |
+|    `SUPER` + `SHIFT` + `0`    |                             Exit Session                             |            `SUPER` + `S`             |    Screenshot    |
+|   `SUPER` + `ALT` + `1/2/3`   |                            Temp -/Norm/+                             |      `SUPER` + `ALT` + `Q/W/E`       |  Gamma -/Norm/+  |
+|   `SUPER` + `ALT` + `8/9/0`   |                         Monitor Dup/Off/Ext                          |       `SUPER` + `SHIFT` + `R`        |  Reload Waybar   |
+|         `SUPER` + `M`         |                            Toggle Waybar                             |            `SUPER` + `N`             |   Emoji Picker   |
 
 </details>
 
@@ -357,46 +359,50 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
     <b>Long View Of Hotkeys</b>
   </summary>
 
-| Category        | Keybinding                              | Description                                      |
-| --------------- | --------------------------------------- | ------------------------------------------------ |
-| 🪟 Window Mgmt  | `SUPER` + `V`                           | Toggle pseudo-tiling                             |
-|                 | `SUPER` + `SHIFT` + `Q`                 | Kill active window                               |
-|                 | `SUPER` + `SHIFT` + `SPACE`             | Toggle floating window                           |
-|                 | `SUPER` + `Q`                           | Toggle split layout                              |
-|                 | `SUPER` + `F`                           | Fullscreen active window                         |
-|                 | `SUPER` + `H/L/K/J` or Arrow Keys       | Move focus                                       |
-|                 | `SUPER` + `SHIFT` + `H/L/K/J`           | Move window in direction                         |
-|                 | `SUPER` + Mouse Left / Right            | Move / Resize window                             |
-| ↔️ Resize Mode  | `SUPER` + `R`                           | Enter resize mode                                |
-|                 | Arrow keys / HJKL                       | Resize window in resize mode                     |
-|                 | `ESC` or `Return`                       | Exit resize mode                                 |
-| 🖥️ Workspaces   | `SUPER` + `1` to `8`                    | Switch to workspace                              |
-|                 | `SUPER` + `SHIFT` + `1` to `8`          | Move window to workspace                         |
-|                 | `SUPER` + `CTRL` + `1` to `8`           | Switch to monitor 2 workspace                    |
-|                 | `SUPER` + `CTRL` + `SHIFT` + `1` to `8` | Move window to monitor 2 workspace               |
-|                 | `SUPER` + `Tab`                         | Go to previous workspace                         |
-|                 | `SUPER` + `CTRL` + `J` / `L`            | Previous / Next workspace                        |
-| 🚀 Applications | `SUPER` + `Return`                      | Launch Kitty terminal                            |
-|                 | `SUPER` + `SHIFT` + `Return`            | Launch cool-retro-term                           |
-|                 | `SUPER` + `F1` to `F4`                  | Obsidian, Firefox, Thunar, Void                  |
-|                 | `SUPER` + `D` / `SHIFT` + `D`           | Launch Rofi (X11 / Wayland)                      |
-|                 | `SUPER` + `W`                           | Launch archwiki-offline                          |
-|                 | `SUPER` + `SHIFT` + `C`                 | Color picker and copy to clipboard               |
-|                 | `SUPER` + `SHIFT` + `X`                 | Click to kill window                             |
-|                 | `SUPER` + `SHIFT` + `ESC`               | Resource Monitoring (BTop)                       |
-|                 | `SUPER` + `ALT` + `ESC`                 | GPU Monitoring (NVTop)                           |
-|                 | `SUPER` + `ALT` + `M`                   | Musci Player (Kew)                               |
-|                 | `SUPER` + `ALT` + `N`                   | Next Random Wallpaper                            |
-| ⚙️ System Ctrl  | `SUPER` + `S`                           | Screenshot with grim + swappy                    |
-|                 | `SUPER` + `9`                           | Lock screen (swaylock)                           |
-|                 | `SUPER` + `0`                           | Open wlogout                                     |
-|                 | `SUPER` + `SHIFT` + `0`                 | Exit Hyprland session                            |
-|                 | `SUPER` + `SHIFT` + `R`                 | Reload Waybar config                             |
-|                 | `SUPER` + `M`                           | Toggle Waybar                                    |
-|                 | `SUPER` + `N`                           | Open Emoji Picker                                |
-| 🌡️ Hyprsunset   | `SUPER` + `ALT` + `1/2/3`               | Change screen temperature (-300 / normal / +300) |
-|                 | `SUPER` + `ALT` + `Q/W/E`               | Change gamma (-5 / normal / +5)                  |
-| 🖥️ Monitors     | `SUPER` + `ALT` + `8/9/0`               | Duplicate / Disable / Extend HDMI monitor        |
+| Category        | Keybinding                              | Description                                                           |
+| --------------- | --------------------------------------- | --------------------------------------------------------------------- |
+| 🪟 Window Mgmt  | `SUPER` + `V`                           | Toggle pseudo-tiling                                                  |
+|                 | `SUPER` + `SHIFT` + `Q`                 | Kill active window                                                    |
+|                 | `SUPER` + `SHIFT` + `SPACE`             | Toggle floating window                                                |
+|                 | `SUPER` + `Q`                           | Toggle split layout                                                   |
+|                 | `SUPER` + `F`                           | Fullscreen active window                                              |
+|                 | `SUPER` + `H/L/K/J` or Arrow Keys       | Move focus                                                            |
+|                 | `SUPER` + `SHIFT` + `H/L/K/J`           | Move window in direction                                              |
+|                 | `SUPER` + Mouse Left / Right            | Move / Resize window                                                  |
+| ↔️ Resize Mode  | `SUPER` + `R`                           | Enter resize mode                                                     |
+|                 | Arrow keys / HJKL                       | Resize window in resize mode                                          |
+|                 | `ESC` or `Return`                       | Exit resize mode                                                      |
+| 🖥️ Workspaces   | `SUPER` + `1` to `8`                    | Switch to workspace                                                   |
+|                 | `SUPER` + `SHIFT` + `1` to `8`          | Move window to workspace                                              |
+|                 | `SUPER` + `CTRL` + `1` to `8`           | Switch to monitor 2 workspace                                         |
+|                 | `SUPER` + `CTRL` + `SHIFT` + `1` to `8` | Move window to monitor 2 workspace                                    |
+|                 | `SUPER` + `Tab`                         | Go to previous workspace                                              |
+|                 | `SUPER` + `CTRL` + `J` / `L`            | Previous / Next workspace                                             |
+| 🚀 Applications | `SUPER` + `Return`                      | Launch Kitty terminal                                                 |
+|                 | `SUPER` + `SHIFT` + `Return`            | Launch cool-retro-term                                                |
+|                 | `SUPER` + `F1` to `F4`                  | Obsidian, Firefox, Thunar, Void                                       |
+|                 | `SUPER` + `D` / `SHIFT` + `D`           | Launch Rofi (X11 / Wayland)                                           |
+|                 | `SUPER` + `W`                           | Launch archwiki-offline                                               |
+|                 | `SUPER` + `SHIFT` + `C`                 | Color picker and copy to clipboard                                    |
+|                 | `SUPER` + `SHIFT` + `X`                 | Click to kill window                                                  |
+|                 | `SUPER` + `SHIFT` + `ESC`               | Resource Monitoring (BTop)                                            |
+|                 | `SUPER` + `ALT` + `ESC`                 | GPU Monitoring (NVTop)                                                |
+|                 | `SUPER` + `ALT` + `M`                   | Music Player (Kew)                                                    |
+|                 | `SUPER` + `ALT` + `N`                   | Next Random Wallpaper                                                 |
+|                 | `SUPER` + `T`                           | Run [TouchServer](https://github.com/SKRInternationals/TouchServer/)  |
+|                 | `SUPER` + `SHIFT` + `T`                 | Kill [TouchServer](https://github.com/SKRInternationals/TouchServer/) |
+|                 | `SUPER` + `ALT` + `V`                   | Run WayVNC                                                            |
+|                 | `SUPER` + `SHIFT` + `V`                 | Kill WayVNC                                                           |
+| ⚙️ System Ctrl  | `SUPER` + `S`                           | Screenshot with grim + swappy                                         |
+|                 | `SUPER` + `9`                           | Lock screen (swaylock)                                                |
+|                 | `SUPER` + `0`                           | Open wlogout                                                          |
+|                 | `SUPER` + `SHIFT` + `0`                 | Exit Hyprland session                                                 |
+|                 | `SUPER` + `SHIFT` + `R`                 | Reload Waybar config                                                  |
+|                 | `SUPER` + `M`                           | Toggle Waybar                                                         |
+|                 | `SUPER` + `N`                           | Open Emoji Picker                                                     |
+| 🌡️ Hyprsunset   | `SUPER` + `ALT` + `1/2/3`               | Change screen temperature (-300 / normal / +300)                      |
+|                 | `SUPER` + `ALT` + `Q/W/E`               | Change gamma (-5 / normal / +5)                                       |
+| 🖥️ Monitors     | `SUPER` + `ALT` + `8/9/0`               | Duplicate / Disable / Extend HDMI monitor                             |
 
 </details>
 
