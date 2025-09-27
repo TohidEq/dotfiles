@@ -23,9 +23,13 @@ alias ffch="clear && fastfetch --config hypr2.jsonc"
 #set -gx PATH /home/tohid-eq/.local/share/gem/ruby/3.3.0/bin $PATH
 #set -gx PATH /root/.local/share/gem/ruby/3.3.0/bin $PATH
 
-set -x QT_QPA_PLATFORMTHEME qt5ct
+#set -x QT_QPA_PLATFORMTHEME qt5ct
+#set -x QT_QPA_PLATFORMTHEME qt6ct
+set -x QT_QPA_PLATFORMTHEME kvantum
 set -x GTK_THEME Nordic-darker-standard-buttons-v40
 set -x XDG_CURRENT_DESKTOP hyprland
 #set -x XDG_DESKTOP_PORTAL kde
+
+set -x QT_QUICK_CONTROLS_STYLE kvantum
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
