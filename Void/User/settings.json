@@ -63,7 +63,6 @@
   "editor.formatOnType": true,
   "workbench.startupEditor": "none",
   "editor.tabSize": 2,
-  "window.menuBarVisibility": "compact",
 
   "window.customTitleBarVisibility": "auto",
   "workbench.layoutControl.enabled": false,
@@ -142,5 +141,6 @@
   "svg.preview.mode": "svg",
   "window.commandCenter": false,
   "chat.commandCenter.enabled": false,
-  "git.openRepositoryInParentFolders": "never"
+  "git.openRepositoryInParentFolders": "never",
+  "window.menuBarVisibility": "compact"
 }
