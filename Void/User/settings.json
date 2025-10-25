@@ -142,5 +142,7 @@
   "window.commandCenter": false,
   "chat.commandCenter.enabled": false,
   "git.openRepositoryInParentFolders": "never",
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "html-css-class-completion.enableEmmetSupport": true,
+  "tailwindCSS.emmetCompletions": true
 }

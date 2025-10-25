@@ -1,0 +1,123 @@
+/*    __            __  ____            */
+/*   / /____  _  __/ /_/ __/___  _  __  */
+/*  / __/ _ \| |/_/ __/ /_/ __ \| |/_/  */
+/* / /_/  __/>  </ /_/ __/ /_/ />  <    */
+/* \__/\___/_/|_|\__/_/  \____/_/|_|    */
+
+/* configurations - DO NOT CHANGE ORDER */
+@import url("defaults.css");
+@import url("config.css");
+
+@import url("content/sidebery.css");
+@import url("content/about.css");
+@import url("content/newtab.css");
+
+:root {
+  --bg: rgba(0, 0, 0, 0.5) !important;
+  --in-content-page-backgroud: rgba(0, 0, 0, 0.5) !important;
+  --in-content-box-backgroud: rgba(0, 0, 0, 0.5) !important;
+  --tabpanel-background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.tabbrowser-tab {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/*window transparency*/
+#main-window {
+  background: var(--tf-bg) !important;
+}
+
+/*current tab*/
+tab.tabbrowser-tab[selected="true"] stack.tab-stack vbox.tab-background {
+  background: #ffffff22 !important;
+}
+
+/*hover tab*/
+tab.tabbrowser-tab:hover stack.tab-stack vbox.tab-background {
+  background: #ffffff22 !important;
+}
+
+/*tab selection*/
+tab.tabbrowser-tab[pending="true"] {
+  color: #ffffffcc !important;
+}
+
+/*hibernated*/
+tab.tabbrowser-tab stack.tab-stack vbox.tab-background {
+  background: var(--tf-bg) !important;
+}
+
+/*bookmarks*/
+toolbar {
+  background: var(--tf-bg) !important;
+}
+
+/*idk*/
+#nav-bar {
+  background: var(--tf-bg) !important;
+}
+
+/*idk but keep*/
+#navigator-toolbox {
+  background: var(--tf-bg) !important;
+  border: none !important;
+}
+
+/*urlbar*/
+#urlbar-background {
+  background: #00000044 !important;
+}
+
+/*suggestions dropdown*/
+#urlbar:is([open]) hbox#urlbar-background {
+  background: var(--tf-bg) !important;
+}
+
+/*little contextual buttons at left of urlbar*/
+#urlbar box#identity-box box {
+  background: var(--tf-bg) !important;
+}
+#urlbar box#identity-box box:hover {
+  background: #ffffff22 !important;
+}
+#urlbar box#identity-box box:active {
+  background: #ffffff44 !important;
+}
+
+/*new tab (not working)*/
+
+#main-window
+  hbox#browser
+  vbox#appcontent
+  tabbox#tabbrowser-tabbox
+  tabpanels#tabbrowser-tabpanels
+  hbox.newTabBrowserPanel
+  vbox.browserContainer
+  stack.browserStack
+  browser {
+  background: #ff00ff00 !important;
+  opacity: 0.4;
+}
+
+#main-window
+  hbox#browser
+  vbox#appcontent
+  tabbox#tabbrowser-tabbox
+  tabpanels#tabbrowser-tabpanels
+  hbox.browserSidebarContainer {
+  background: #ff00ff !important;
+  opacity: 1;
+}
+
+#TabsToolbar,
+#nav-bar,
+#PersonalToolbar {
+  background-color: transparent !important;
+}
+
+/* solid کردن محتوای صفحه */
+.browserStack,
+.browserContainer {
+  backdrop-filter: blur(8px); /* اختیاری برای افکت بلور */
+}

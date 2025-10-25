@@ -1,0 +1,26 @@
+﻿/* path: chrome/config.css */
+:root {
+  --tf-rounding: 8px;
+}
+:root {
+  /*--tf-font-family: "SF Mono", Consolas, monospace; /* Font family of config */
+  --tf-font-family: "JetBrainsMono Nerd Font", Consolas, monospace; /* Font family of config */
+  --tf-font-size: 14px; /* Font size of config */
+  --tf-accent: #e5b247;
+  --tf-bg: rgba(0, 0, 0, 0.6);
+  --tf-border: #757575;
+  --tf-border-transition: 0.2s ease; /* Smooth color transitions for borders */
+  --tf-border-width: 2px; /* Width of borders */
+  --tf-margin: 0.8rem; /* Margin used between elements in sidebery */
+
+  --tf-text-transform: none; /* Text transform to use */
+  --tf-display-horizontal-tabs: none; /* If horizontal tabs should be shown, none = hidden, block = shown */
+  --tf-display-window-controls: none; /* If the window controls should be shown (won't work with sidebery and hidden horizontal tabs), none = hidden, flex = shown */
+  --tf-display-nav-buttons: flex; /* If the navigation buttons (back, forward) should be shown, none = hidden, flex = shown */
+  --tf-display-urlbar-icons: flex; /* If the icons inside the url bar should be shown, none = hidden, flex = shown */
+  --tf-display-sidebar-tools: flex; /* If the "Customize sidebar" button on the sidebar should be shown, none = hidden, flex = shown */
+  --tf-display-titles: none; /* If titles (tabs, navbar, main etc.) should be shown, none = hidden, flex = shown */
+  --tf-newtab-logo: "\A\A\A\A\A\A\A\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⣿⣿⣷⣦⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣿⡿⠟⠉⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⣿⣆⠀⠀⠀⠀\A⠀⠀⠀⣰⣿⣿⣿⣿⣿⡿⠋⠀⠀⠀⣴⣆⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣷⡀⠀⠀\A⠀⢠⣾⣿⣿⣿⣿⣿⡏⠀⠀⠀⢠⣾⣿⣿⣷⣄⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⠆⠀\A⠀⠀⠉⠻⣿⣿⣿⣿⠀⠀⠀⢰⣿⣿⣿⣿⣿⣿⠆⠀⠀⠀⣿⣿⣿⣿⠟⠁⠀⠀\A⠀⠀⠀⠀⠈⣿⣿⣿⠀⠀⠀⠀⠙⢿⣿⣿⡿⠋⠀⠀⠀⠀⣿⣿⡿⠋⠀⠀⠀⠀\A⠀⣄⡀⠀⠀⣿⣿⣿⡀⠀⠀⠀⠀⠈⠻⠟⠀⠀⠀⠀⠀⢠⣿⣿⡇⠀⠀⢀⣠⠖\A⠀⠹⣿⣷⣶⣿⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⠏⠀\A⠀⠀⠘⢿⣿⣿⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣿⣿⠋⠀⠀\A⠀⠀⠀⠈⠋⠁⠀⠀⠈⠻⣷⡀⠀⠀⠀⠀⠀⠀⢠⣿⠏⠁⠀⠀⠈⠙⠃⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣷⡀⠀⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣷⠀⠀⠀⠀⣸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⠀⠀⠀⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠠⣤⣴⣿⣿⠀⠀⠀⠀⣿⣿⣦⣤⡴⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⠀⠀⠀⠀⣿⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⠀⠀⠀⠀⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⠀⠀⠀⠀⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⠀⠀⠀⠀⠹⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\A";
+  --tf-navbar-margin: 8px 8px 2px; /* navbar margin */
+  --tf-navbar-padding: 4px; /* navbar padding */
+}
