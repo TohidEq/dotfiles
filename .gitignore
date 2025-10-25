@@ -109,6 +109,8 @@ fish/fish_variables
 
 Void/
 
+!websites-conf/
+!websites-conf/*
 !wget/
 !X11/
 !zathura/
