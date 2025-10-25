@@ -96,7 +96,7 @@ toolbar {
   vbox.browserContainer
   stack.browserStack
   browser {
-  background: #ff00ff00 !important;
+  background: #ffffff00 !important;
   opacity: 0.4;
 }
 

@@ -6,9 +6,9 @@
   /*--tf-font-family: "SF Mono", Consolas, monospace; /* Font family of config */
   --tf-font-family: "JetBrainsMono Nerd Font", Consolas, monospace; /* Font family of config */
   --tf-font-size: 14px; /* Font size of config */
-  --tf-accent: #e5b247;
+  --tf-accent: #efefef;
   --tf-bg: rgba(0, 0, 0, 0.6);
-  --tf-border: #757575;
+  --tf-border: #656565;
   --tf-border-transition: 0.2s ease; /* Smooth color transitions for borders */
   --tf-border-width: 2px; /* Width of borders */
   --tf-margin: 0.8rem; /* Margin used between elements in sidebery */

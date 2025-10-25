@@ -345,6 +345,7 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 |     `SUPER` + `ALT` + `M`     |                             Music Player                             |        `SUPER` + `ALT` + `N`         |  Next Wallpaper  |
 |         `SUPER` + `T`         | Run [TouchServer](https://github.com/SKRInternationals/TouchServer/) |       `SUPER` + `SHIFT` + `T`        | Kill TouchServer |
 |     `SUPER` + `ALT` + `V`     |                              Run WayVNC                              |       `SUPER` + `SHIFT` + `V`        |   Kill WayVNC    |
+|     `SUPER` + `ALT` + `F`     |                              Run FTP-Server                          |                  .                   |         .        |
 |              ⚙️               |                             System Ctrl                              |       Screenshots, Lock, Power       |        ⚙️        |
 |         `SUPER` + `9`         |                             Lock Screen                              |            `SUPER` + `0`             |    Power Menu    |
 |    `SUPER` + `SHIFT` + `0`    |                             Exit Session                             |            `SUPER` + `S`             |    Screenshot    |
@@ -393,6 +394,7 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 |                 | `SUPER` + `SHIFT` + `T`                 | Kill [TouchServer](https://github.com/SKRInternationals/TouchServer/) |
 |                 | `SUPER` + `ALT` + `V`                   | Run WayVNC                                                            |
 |                 | `SUPER` + `SHIFT` + `V`                 | Kill WayVNC                                                           |
+|                 | `SUPER` + `ALT` + `F`                   | Run FileZilla-server (FTP-Server)|
 | ⚙️ System Ctrl  | `SUPER` + `S`                           | Screenshot with grim + swappy                                         |
 |                 | `SUPER` + `9`                           | Lock screen (swaylock)                                                |
 |                 | `SUPER` + `0`                           | Open wlogout                                                          |

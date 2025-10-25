@@ -1,4 +1,7 @@
 @-moz-document url("about:home"), url("about:newtab") {
+  .search-inner-wrapper{
+    display:none !important;
+  }
   body {
     &.lightWallpaper {
       color-scheme: light !important;
