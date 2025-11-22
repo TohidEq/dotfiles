@@ -339,13 +339,14 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 |              🚀               |                             Applications                             |      Favorite apps & launchers       |        🚀        |
 |      `SUPER` + `Return`       |                            Kitty Terminal                            |     `SUPER` + `SHIFT` + `Return`     |    Retro-Term    |
 |      `SUPER` + `F1`–`F4`      |                         f1-Obsidian, f2-FFox                         |          f3-Thunar, f4-Void          |       Apps       |
+|    `SUPER` + `SHIFT` +`F2`    |                              Tor Browser                             |       `SUPER` + `ALT` + `F2`         |    QuteBrowser   |
 |         `SUPER` + `D`         |                               Rofi X11                               |       `SUPER` + `SHIFT` + `D`        |   Rofi Wayland   |
 |    `SUPER` + `SHIFT` + `C`    |                             Color Picker                             |       `SUPER` + `SHIFT` + `X`        |   Kill w/Mouse   |
 |   `SUPER` + `SHIFT` + `ESC`   |                                 BTop                                 |       `SUPER` + `ALT` + `ESC`        |      NVTop       |
 |     `SUPER` + `ALT` + `M`     |                             Music Player                             |        `SUPER` + `ALT` + `N`         |  Next Wallpaper  |
 |         `SUPER` + `T`         | Run [TouchServer](https://github.com/SKRInternationals/TouchServer/) |       `SUPER` + `SHIFT` + `T`        | Kill TouchServer |
 |     `SUPER` + `ALT` + `V`     |                              Run WayVNC                              |       `SUPER` + `SHIFT` + `V`        |   Kill WayVNC    |
-|     `SUPER` + `ALT` + `F`     |                              Run FTP-Server                          |                  .                   |         .        |
+|     `SUPER` + `ALT` + `F`     |                              Run FTP-Server                          |       `SUPER` + `ALT` + `S`          |  Run SSH-server  |
 |              ⚙️               |                             System Ctrl                              |       Screenshots, Lock, Power       |        ⚙️        |
 |         `SUPER` + `9`         |                             Lock Screen                              |            `SUPER` + `0`             |    Power Menu    |
 |    `SUPER` + `SHIFT` + `0`    |                             Exit Session                             |            `SUPER` + `S`             |    Screenshot    |
@@ -382,6 +383,8 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 | 🚀 Applications | `SUPER` + `Return`                      | Launch Kitty terminal                                                 |
 |                 | `SUPER` + `SHIFT` + `Return`            | Launch cool-retro-term                                                |
 |                 | `SUPER` + `F1` to `F4`                  | Obsidian, Firefox, Thunar, Void                                       |
+|                 | `SUPER` + `SHIFT` +`F2`                 | Tor Browser                                                           |
+|                 | `SUPER` + `ALT` + `F2`                  | QuteBrowser                                                           |
 |                 | `SUPER` + `D` / `SHIFT` + `D`           | Launch Rofi (X11 / Wayland)                                           |
 |                 | `SUPER` + `W`                           | Launch archwiki-offline                                               |
 |                 | `SUPER` + `SHIFT` + `C`                 | Color picker and copy to clipboard                                    |
@@ -394,7 +397,7 @@ Here are some of the key Hyprland keybindings for navigation and window manageme
 |                 | `SUPER` + `SHIFT` + `T`                 | Kill [TouchServer](https://github.com/SKRInternationals/TouchServer/) |
 |                 | `SUPER` + `ALT` + `V`                   | Run WayVNC                                                            |
 |                 | `SUPER` + `SHIFT` + `V`                 | Kill WayVNC                                                           |
-|                 | `SUPER` + `ALT` + `F`                   | Run FileZilla-server (FTP-Server)|
+|                 | `SUPER` + `ALT` + `F`                   | Run FileZilla-server (FTP-Server)                                     |
 | ⚙️ System Ctrl  | `SUPER` + `S`                           | Screenshot with grim + swappy                                         |
 |                 | `SUPER` + `9`                           | Lock screen (swaylock)                                                |
 |                 | `SUPER` + `0`                           | Open wlogout                                                          |

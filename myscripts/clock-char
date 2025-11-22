@@ -1,0 +1,37 @@
+#!/usr/bin/env fish
+
+# گرفتن ساعت سیستم
+
+set hour (date +%H)
+
+# پیش‌فرض مود
+
+set mode 1
+
+# بررسی آرگومان --mode
+
+if test (count $argv) -gt 0
+    if test $argv[1] = --mode
+        set mode $argv[2]
+    end
+end
+
+# تعریف کاراکترها
+
+if test $mode -eq 1
+    set chars "󱑊" "󱐿" "󱑀" "󱑁" "󱑂" "󱑃" "󱑄" "󱑅" "󱑆" "󱑇" "󱑈" "󱑉"
+else if test $mode -eq 2
+    set chars "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑑" "󱑐" "󱑒" "󱑓" "󱑔" "󱑕"
+end
+
+# گرفتن تعداد کاراکترها
+
+set len (count $chars)
+
+# محاسبه ایندکس با استفاده از ریاضی داخلی fish
+
+set index (math "$hour % $len + 1")
+
+# نمایش کاراکتر مربوط به ساعت
+
+echo $chars[$index]

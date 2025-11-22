@@ -1,0 +1,18 @@
+#!/usr/bin/env fish
+
+set FILE ~/.config/myscripts/moon-face/moon-face-char
+set MODE 1
+
+if test (count $argv) -ge 2
+    if test $argv[1] = --mode
+        set MODE $argv[2]
+    end
+end
+
+if test $MODE -eq 1
+    sed -n 1p $FILE
+else if test $MODE -eq 2
+    sed -n 2p $FILE
+else
+    sed -n 1p $FILE
+end

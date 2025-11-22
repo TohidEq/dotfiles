@@ -1,0 +1,196 @@
+
+format = """\
+[](fg:#fbf1c7)\
+${custom.moon}\
+[](fg:#fbf1c7)\
+\
+$character\
+[](fg:#fbf1c7)\
+
+$directory\
+[ ](fg:#fbf1c7 )\
+
+$git_branch\
+$git_status\
+
+[ ](fg:#d79921)\
+$c\
+$cpp\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[ ](fg:#d79921)\
+$docker_context\
+
+[\n](fg:none)\
+
+[ ](fg:#fbf1c7)\
+"""
+
+# $docker_context\
+# [](fg:#06969A)\
+#   		▶  		▹  ➤		➤  ▶		▶  ▸		▸
+
+
+
+# RIGHT SIDE --
+right_format = """\
+[](fg:#fbf1c7)\
+${custom.time-char}\
+$time\
+[](fg:#fbf1c7)\
+"""
+# -------------
+
+
+add_newline = true
+
+
+[character]
+success_symbol="[●](#83a598)"
+error_symbol="[●](#dc3545)"
+format="$symbol"
+
+
+
+[custom.moon]
+when = true
+style="bg:#fbf1c7 fg:#282828"
+command = "~/.config/myscripts/moon-face/moon-face-print --mode 2"
+format = "[$output ]($style)"
+
+
+
+[directory]
+home_symbol = "󱄫 "
+read_only=" "
+style = "bold bg:#fbf1c7 fg:#282828"
+read_only_style="bg:#fbf1c7 fg:#282828"
+
+format = "[ $read_only]($read_only_style)[$path]($style)"
+truncation_length = 4
+truncation_symbol = "󰇘 /"
+# shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+"Videos" = " "
+"myworld" = " "
+"WorkSpace"="󱎃 "
+"web"="󰖟 "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#fbf1c7 fg:#3c3836"
+format = '[ $time]($style)'
+
+[custom.time-char]
+command="~/.config/myscripts/clock-char --mode 1"
+when=true
+style = "bg:#fbf1c7 fg:#3c3836"
+format = '[$output]($style)'
+
+
+
+[git_branch]
+symbol = ""
+style = "fg:#689d6a"
+format = '[$symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#fb4934"
+format = '[$all_status$ahead_behind]($style)'
+
+
+
+[docker_context]
+symbol = " "
+style = "fg:#458588"
+format = '[ $symbol $context ]($style)'
+
+
+
+
+
+# ---- LANGS ----
+[c]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[cpp]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[elixir]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "fg:#fff9e9 bg:#d79921"
+format = '[ $symbol ($version) ]($style)'
+# ---- END LANGS ----

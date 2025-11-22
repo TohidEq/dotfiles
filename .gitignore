@@ -92,6 +92,7 @@ fish/fish_variables
 !qt6ct/*
 !ranger/
 !rofi/
+!starship.toml
 !superfile
 !superfile/*
 !swaylock

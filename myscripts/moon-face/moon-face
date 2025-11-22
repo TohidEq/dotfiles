@@ -1,0 +1,19 @@
+#!/usr/bin/env fish
+
+set MOON_FILE $HOME/.config/myscripts/moon-face/moon-face-char
+
+set year (date +%Y)
+set month (date +%m)
+set day (date +%d)
+
+set day_of_year (date -d "$year-$month-$day" +%j)
+set phase (math "(($day_of_year + ($year - 2000) * 365) % 30)")
+
+set line1 "                           "
+set line2 "                           "
+
+set char1 (echo $line1 | tr ' ' '\n' | sed -n "$phase p")
+set char2 (echo $line2 | tr ' ' '\n' | sed -n "$phase p")
+
+echo "$char1" >$MOON_FILE
+echo "$char2" >>$MOON_FILE

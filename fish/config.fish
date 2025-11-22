@@ -33,3 +33,6 @@ set -x XDG_CURRENT_DESKTOP hyprland
 set -x QT_QUICK_CONTROLS_STYLE kvantum
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+starship init fish | source
