@@ -1,18 +1,16 @@
 #!/usr/bin/env fish
+# moon-face-print
 
-set FILE ~/.config/myscripts/moon-face/moon-face-char
-set MODE 1
+set FILE $HOME/.config/myscripts/moon-face/moon-face-char
 
-if test (count $argv) -ge 2
-    if test $argv[1] = --mode
-        set MODE $argv[2]
-    end
-end
+# mode 1 outline characters
+# mode 2 simple characters
+set MODE 2
 
-if test $MODE -eq 1
-    sed -n 1p $FILE
-else if test $MODE -eq 2
-    sed -n 2p $FILE
-else
-    sed -n 1p $FILE
-end
+# soth 0 = starts at right side
+# soth 1 = starts at left side
+set SOUTH 0
+# set south to 0 if u are in north of the Earth
+# set south to 1 if u are in south of the Earth
+
+sed -n (math "$SOUTH * 2 + $MODE")p $FILE

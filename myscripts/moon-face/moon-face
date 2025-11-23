@@ -6,14 +6,29 @@ set year (date +%Y)
 set month (date +%m)
 set day (date +%d)
 
-set day_of_year (date -d "$year-$month-$day" +%j)
-set phase (math "(($day_of_year + ($year - 2000) * 365) % 30)")
+set a (math "floor((14 - $month)/12)")
+set y (math "$year + 4800 - $a")
+set m (math "$month + 12*$a - 3")
+set jdn (math "$day + floor((153*$m + 2)/5) + 365*$y + floor($y/4) - floor($y/100) + floor($y/400) - 32045")
 
-set line1 "                           "
-set line2 "                           "
+# 2451550.1 = Julian Date
+set phase (math "floor(($jdn - 2451550.1) % 29.530588853)")
+set phase (math "$phase + 1")
 
-set char1 (echo $line1 | tr ' ' '\n' | sed -n "$phase p")
-set char2 (echo $line2 | tr ' ' '\n' | sed -n "$phase p")
+set lineNorth1                             
+set lineNorth2                             
 
-echo "$char1" >$MOON_FILE
-echo "$char2" >>$MOON_FILE
+set lineSouth1                             
+set lineSouth2                             
+
+set charN1 $lineNorth1[$phase]
+set charN2 $lineNorth2[$phase]
+
+set charS1 $lineSouth1[$phase]
+set charS2 $lineSouth2[$phase]
+
+#echo "$phase"
+echo "$charN1" >$MOON_FILE
+echo "$charN2" >>$MOON_FILE
+echo "$charS1" >>$MOON_FILE
+echo "$charS2" >>$MOON_FILE

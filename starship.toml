@@ -51,18 +51,11 @@ right_format = """\
 $cmd_duration\
 [](fg:#fbf1c7)\
 ${custom.time-char}\
-$time\
 [](fg:#fbf1c7)\
 """
 
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#fbf1c7 fg:#3c3836"
-format = '[ $time]($style)'
-
 [custom.time-char]
-command="~/.config/myscripts/clock-char --mode 1"
+command="~/.config/myscripts/clock-char"
 when=true
 style = "bg:#fbf1c7 fg:#3c3836"
 format = '[$output]($style)'
@@ -79,7 +72,7 @@ format = '[$duration](bold yellow) '
 
 
 [character]
-success_symbol="[●](#83a598)"
+success_symbol="[●](#06969A)"
 error_symbol="[●](#dc3545)"
 format="$symbol"
 
@@ -105,14 +98,17 @@ truncation_symbol = "󰇘 /"
 # shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
+"Desktop"=" "
 "Documents" = "󰈙 "
 "Downloads" = " "
+"Media" = "   "
 "Music" = " "
 "Pictures" = " "
-"Videos" = " "
+"Videos" = " "
 "myworld" = " "
 "WorkSpace"="󱎃 "
 "web"="󰖟 "
+"test"="󰙨 "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = " 󰈙 "
 # will not be replaced, because "Documents" was already substituted before.
