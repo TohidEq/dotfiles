@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SETTINGS="/home/arc/.config/Void/User/settings.json"
+
+THEME_A="Gruvbox Dark Hard"
+THEME_B="One Dark Pro Night Flat"
+
+CURRENT=$(grep -oP '"workbench.colorTheme":\s*"\K[^"]+' "$SETTINGS")
+
+if [ "$CURRENT" = "$THEME_A" ]; then
+  sed -i "s/$THEME_A/$THEME_B/" "$SETTINGS"
+  notify-send -u low --icon="$HOME/.config/custom_images/good_job.png" "VSCode Theme" "Switched to $THEME_B"
+else
+  sed -i "s/$THEME_B/$THEME_A/" "$SETTINGS"
+  notify-send -u low --icon="$HOME/.config/custom_images/good_job.png" "VSCode Theme" "Switched to $THEME_A"
+fi

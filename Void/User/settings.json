@@ -27,7 +27,7 @@
       "codicon": "explorer-view-icon"
     }
   ],
-  "workbench.colorTheme": "One Dark Pro Mix",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
   "workbench.navigationControl.enabled": false,
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
@@ -47,18 +47,18 @@
 
   "glassit.alpha": 240,
   "symbols.hidesExplorerArrows": false,
-  "editor.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF','Droid Sans Mono', 'monospace', 'monocraft',monospace",
-  "editor.codeLensFontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+  "editor.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF','Droid Sans Mono', 'monospace', 'monocraft',monospace",
+  "editor.codeLensFontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
   "editor.experimentalInlineEdit.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "editor.inlayHints.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "debug.console.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "scm.inputFontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "terminal.integrated.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
+  "editor.inlayHints.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
+  "debug.console.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
+  "scm.inputFontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
+  "terminal.integrated.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
   "editor.inlineSuggest.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "notebook.output.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "chat.editor.fontFamily": "'MesloLGM Nerd Font','JetBrainsMono NF'",
-  "chat.editor.fontWeight": "'JetBrainsMono NF'",
-  "markdown.preview.fontFamily": "'MesloLGM Nerd Font',-apple-system,'JetBrainsMono NF', BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+  "notebook.output.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
+  "chat.editor.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font','JetBrainsMono NF'",
+  "chat.editor.fontWeight": "'JetBrainsMonoNL Nerd Font','JetBrainsMono NF'",
+  "markdown.preview.fontFamily": "'JetBrainsMonoNL Nerd Font','MesloLGM Nerd Font',-apple-system,'JetBrainsMono NF', BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnType": true,
   "workbench.startupEditor": "none",
@@ -144,5 +144,6 @@
   "git.openRepositoryInParentFolders": "never",
   "html-css-class-completion.enableEmmetSupport": true,
   "tailwindCSS.emmetCompletions": true,
-  "window.menuBarVisibility": "compact"
+  "window.menuBarVisibility": "compact",
+  "notebook.markup.fontFamily": "'JetBrainsMonoNL Nerd Font'"
 }
