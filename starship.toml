@@ -1,3 +1,6 @@
+add_newline = false
+
+
 
 format = """\
 [](fg:#fbf1c7)\
@@ -35,6 +38,8 @@ $docker_context\
 [ ](fg:#fbf1c7)\
 """
 
+
+
 # $docker_context\
 # [](fg:#06969A)\
 #   		▶  		▹  ➤		➤  ▶		▶  ▸		▸
@@ -43,15 +48,34 @@ $docker_context\
 
 # RIGHT SIDE --
 right_format = """\
+$cmd_duration\
 [](fg:#fbf1c7)\
 ${custom.time-char}\
 $time\
 [](fg:#fbf1c7)\
 """
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#fbf1c7 fg:#3c3836"
+format = '[ $time]($style)'
+
+[custom.time-char]
+command="~/.config/myscripts/clock-char --mode 1"
+when=true
+style = "bg:#fbf1c7 fg:#3c3836"
+format = '[$output]($style)'
+
+
+[cmd_duration]
+min_time = 500
+format = '[$duration](bold yellow) '
 # -------------
 
 
-add_newline = true
+
+
 
 
 [character]
@@ -94,18 +118,6 @@ truncation_symbol = "󰇘 /"
 # will not be replaced, because "Documents" was already substituted before.
 # So either put "Important Documents" before "Documents" or use the substituted version:
 # "Important 󰈙 " = " 󰈙 "
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#fbf1c7 fg:#3c3836"
-format = '[ $time]($style)'
-
-[custom.time-char]
-command="~/.config/myscripts/clock-char --mode 1"
-when=true
-style = "bg:#fbf1c7 fg:#3c3836"
-format = '[$output]($style)'
 
 
 
