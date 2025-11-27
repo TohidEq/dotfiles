@@ -7,7 +7,7 @@ set hour (date +%H)
 set mode 2
 
 if test $mode -eq 1
-    set chars "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑑" "󱑐" "󱑒" "󱑓" "󱑔" "󱑕"
+    set chars "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑐" "󱑑" "󱑒" "󱑓" "󱑔" "󱑕"
 else
     set chars "󱑊" "󱐿" "󱑀" "󱑁" "󱑂" "󱑃" "󱑄" "󱑅" "󱑆" "󱑇" "󱑈" "󱑉"
 end
