@@ -8,20 +8,24 @@ while true; do
   S=$(date +%S)
 
   hh=$(awk "BEGIN {printf \"%d\", ($H % 12) * 5 + ($M / 12)}")
-  mm=$M
-  ss=$S
+  if [ "$hh" -lt 10 ]; then
+    hh="0$hh"
+  fi
 
-  echo "h: $hh"
-  echo "m: $mm"
-  echo "s: $ss"
+
+
+
+  # echo "h: $hh"
+  # echo "m: $M"
+  # echo "s: $S"
   # hour
   sed -i -E "s|(url\('/home/arc/.config/clockimgs/hms/h/h-)[0-9]+(\.png'\))|\1$hh\2|" "$EWK_FILE"
 
   # minute
-  sed -i -E "s|(url\('/home/arc/.config/clockimgs/hms/m/m-)[0-9]+(\.png'\))|\1$mm\2|" "$EWK_FILE"
+  sed -i -E "s|(url\('/home/arc/.config/clockimgs/hms/m/m-)[0-9]+(\.png'\))|\1$M\2|" "$EWK_FILE"
 
   # second
-  sed -i -E "s|(url\('/home/arc/.config/clockimgs/hms/s/s-)[0-9]+(\.png'\))|\1$ss\2|" "$EWK_FILE"
+  sed -i -E "s|(url\('/home/arc/.config/clockimgs/hms/s/s-)[0-9]+(\.png'\))|\1$S\2|" "$EWK_FILE"
 
-  sleep 30
+  sleep 1
 done
