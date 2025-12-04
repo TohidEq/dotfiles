@@ -1,0 +1,38 @@
+/** Global *******************************************/
+* {
+  all: unset;
+  font-family: Mononoki Nerd Font;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center;
+}
+
+/** Generic window ***********************************/
+
+/** Clock ********************************************/
+.time_hour,
+.time_min {
+  color: #131313;
+  font-size: 65px;
+  font-weight: bold;
+
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2),
+    0 0 2px rgba(255, 255, 255, 0.2), 0 0 2px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(255, 255, 255, 0.2), 0 0 10px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(255, 255, 255, 0.2), 0 0 15px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 255, 255, 0.2);
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center;
+}
+
+.time_hour {
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center;
+}
+.time_min {
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: center;
+}

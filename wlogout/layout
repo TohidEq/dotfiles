@@ -4,7 +4,6 @@
     "text" : "Lock",
     "keybind" : "l"
 }
-
 {
     "label" : "logout",
     "action" : "loginctl terminate-user $USER",
@@ -28,10 +27,4 @@
     "action" : "systemctl suspend",
     "text" : "Suspend",
     "keybind" : "u"
-}
-{
-    "label" : "hibernate",
-    "action" : "notify-send -u normal --icon='/home/arc/.config/custom_images/good_job.png' 'Good Job Anyway' 'This one does nothing'",
-    "text" : "Hibernate",
-    "keybind" : "h"
 }

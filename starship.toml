@@ -55,7 +55,7 @@ ${custom.time-char}\
 """
 
 [custom.time-char]
-command="~/.config/myscripts/clock-char"
+command="$HOME/.config/myscripts/clock-char"
 when=true
 style = "bg:#fbf1c7 fg:#3c3836"
 format = '[$output]($style)'
@@ -81,7 +81,7 @@ format="$symbol"
 [custom.moon]
 when = true
 style="bg:#fbf1c7 fg:#282828"
-command = "~/.config/myscripts/moon-face/moon-face-print --mode 2"
+command = "$HOME/.config/myscripts/moon-face/moon-face-print --mode 2"
 format = "[$output ]($style)"
 
 

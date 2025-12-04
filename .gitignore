@@ -40,6 +40,8 @@
 .emacs/*
 !emacs/init.el
 !env
+!eww
+!eww/*
 !firefoxConf
 !firefoxConf/*
 !fish/

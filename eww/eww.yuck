@@ -1,0 +1,152 @@
+;; **
+;; ** Widgets config for EWW
+;; ** Created by : justmakeit0821
+;; **
+
+;; ** Variables ***********************************************************************
+;; Profile vars
+;;(defpoll HOUR :interval "5s" `date +\"%I\"`)
+;;(defpoll MIN  :interval "5s" `date +\"%M\"`)
+;;(defpoll SEC  :interval "1s" `date +\"%S\"`)
+;;"
+;; Widgets
+
+;; clock
+; (
+	; defwidget clock []
+		; (
+			; box :class "genwin" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+				; (
+					; box :orientation "h" :spacing 0
+						; (label :class "time_hour" :valign "start" :wrap "true" :limit-width 25 :text HOUR)
+						; (label :class "time_min" :valign "end" :wrap "true" :limit-width 25 :text SEC)
+				; )
+		; )
+; )
+;
+;
+;
+;
+; Windows
+;
+; clock
+; (
+	; defwindow clock :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	; :geometry (geometry :x 320 :y 315 :width 250 :height 150)
+	; (clock)
+; )
+
+
+;; ** Widgets ***********************************************************************
+
+
+
+
+
+
+(
+	defwidget time_stack_f []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_f" :style "background-image: url('/home/arc/.config/clockimgs/frames/frame.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+(
+	defwidget time_stack_ff []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_f" :style "background-image: url('/home/arc/.config/clockimgs/frames/fframe.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+(
+	defwidget time_stack_fff []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_f" :style "background-image: url('/home/arc/.config/clockimgs/frames/ffframe.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+
+(
+	defwidget time_stack_h []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-45.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+(
+	defwidget time_stack_m []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-60.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+
+
+(
+	defwidget time_stack_s []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_s" :style "background-image: url('/home/arc/.config/clockimgs/hms/s/s-25.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+
+
+(defvar CLOCK_SIZE "200")
+
+;; ** Windows ***********************************************************************
+
+(
+	defwindow time_stack_window_f :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	(time_stack_f)
+)(
+	defwindow time_stack_window_ff :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	(time_stack_ff)
+)(
+	defwindow time_stack_window_fff :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	(time_stack_fff)
+)
+(
+	defwindow time_stack_window_h :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	(time_stack_h)
+)
+(
+	defwindow time_stack_window_m :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	(time_stack_m)
+)
+(
+	defwindow time_stack_window_s :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	(time_stack_s)
+)
+
+
+
+
+
+
+
+
+
