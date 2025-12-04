@@ -4,10 +4,10 @@
 run_eww() {
 	eww --config $HOME/.config/eww open-many \
 				time_stack_window_f \
-				time_stack_window_h \
 				time_stack_window_m \
-				time_stack_window_s \
+				time_stack_window_h \
 				testa
+				#time_stack_window_s \
 				#clock \
 
 }
