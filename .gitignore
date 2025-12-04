@@ -52,6 +52,9 @@ fish/fish_variables
 !gh/
 !gh/config.yml
 .gh/hosts.yml
+!GRUB_THEME
+!GRUB_THEME/
+!GRUB_THEME/*
 !git/
 !gtk-2.0/
 .gtk-2.0/gtkfilechooser.ini
@@ -94,6 +97,9 @@ fish/fish_variables
 !qt6ct/*
 !ranger/
 !rofi/
+!SDDM_THEME
+!SDDM_THEME/
+!SDDM_THEME/*
 !starship.toml
 !superfile
 !superfile/*

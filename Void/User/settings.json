@@ -27,7 +27,7 @@
       "codicon": "explorer-view-icon"
     }
   ],
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "One Dark Pro Night Flat",
   "workbench.navigationControl.enabled": false,
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
