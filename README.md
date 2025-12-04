@@ -57,9 +57,9 @@
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <img src="./dotfiles_assets/ss/launcher.png" alt="Launcher rofi" style="width: 33%;">
+    <img src="./dotfiles_assets/ss/launcher.png" alt="Launcher rofi" style="width: 32%;">
     <img src="./dotfiles_assets/ss/wlogout.png" alt="lougout menu wlogout" style="width: 33%;">
-    <img src="./dotfiles_assets/ss/sddm.png" alt="SDDM theme" style="width: 33%;">
+    <img src="./dotfiles_assets/ss/sddm.png" alt="SDDM theme" style="width: 32%;">
 </div>
 
 ## Terminal prompt ‍`inspired by` [voltyea's moonphase.sh](https://github.com/voltyea/nixos/blob/main/dotfiles/matugen/templates/moonphase.sh)
