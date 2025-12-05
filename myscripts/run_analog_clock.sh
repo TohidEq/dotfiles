@@ -12,9 +12,6 @@ while true; do
     hh="0$hh"
   fi
 
-
-
-
   # echo "h: $hh"
   # echo "m: $M"
   # echo "s: $S"
@@ -27,5 +24,5 @@ while true; do
   # second
   sed -i -E "s|(url\('/home/arc/.config/clockimgs/hms/s/s-)[0-9]+(\.png'\))|\1$S\2|" "$EWK_FILE"
 
-  sleep 1
+  sleep 30
 done
