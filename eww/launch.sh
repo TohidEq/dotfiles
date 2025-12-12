@@ -6,8 +6,7 @@ run_eww() {
     time_stack_window_m \
     time_stack_window_h \
     time_stack_window_ff \
-    time_stack_window_f \
-    testa
+    time_stack_window_f
   #time_stack_window_s \
   #time_stack_window_fff \
   #clock \
