@@ -21,6 +21,9 @@
 !cava/*
 !cleanup
 !clipit/
+!Code/User/keybindings.json
+!Code/User/settings.json
+!Code/User/
 !colorls/
 !copyq/
 .copyq/*

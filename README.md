@@ -18,7 +18,7 @@
 - shell: Fish
 - prompt: Starship
 - editor:
-  - void: gruvbox dark hard, one dark pro night flat
+  - VSCode: gruvbox dark hard, one dark pro night flat
   - neovim: Lazyvim (onedark)
 - bar: Waybar
 - widgets: Eww
@@ -53,7 +53,7 @@
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
     <img src="./dotfiles_assets/ss/apps.png" alt="apps firefox thunar obsidian" style="width: 49%;">
-    <img src="./dotfiles_assets/ss/editors.png" alt="Editors nvim vodi" style="width: 49%;">
+    <img src="./dotfiles_assets/ss/editors.png" alt="Editors nvim void" style="width: 49%;">
 </div>
 
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -91,8 +91,8 @@
 |        `SUPER` + `Tab`        |                               Prev WS                                |     `SUPER` + `CTRL` + `J` / `L`     |     WS Navigate      |
 |              🚀               |                             Applications                             |      Favorite apps & launchers       |          🚀          |
 |      `SUPER` + `Return`       |                            Kitty Terminal                            |     `SUPER` + `SHIFT` + `Return`     |      Retro-Term      |
-|      `SUPER` + `F1`–`F4`      |                         f1-Obsidian, f2-FFox                         |          f3-Thunar, f4-Void          |    Just Runs Apps    |
-|   `SUPER` + `SHIFT` + `F4`    |                  ToggleVoidTheme (gruvbox/onedark)                   |                                      |                      |
+|      `SUPER` + `F1`–`F4`      |                         f1-Obsidian, f2-FFox                         |         f3-Thunar, f4-VSCode         |    Just Runs Apps    |
+|   `SUPER` + `SHIFT` + `F4`    |                 ToggleVSCodeTheme (gruvbox/onedark)                  |                                      |                      |
 |    `SUPER` + `SHIFT` +`F2`    |                             Tor Browser                              |        `SUPER` + `ALT` + `F2`        |     QuteBrowser      |
 |         `SUPER` + `D`         |                               Rofi X11                               |       `SUPER` + `SHIFT` + `D`        |     Rofi Wayland     |
 |    `SUPER` + `SHIFT` + `C`    |                             Color Picker                             |       `SUPER` + `SHIFT` + `X`        |     Kill w/Mouse     |

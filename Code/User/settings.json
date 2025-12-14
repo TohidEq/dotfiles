@@ -27,7 +27,6 @@
       "codicon": "explorer-view-icon"
     }
   ],
-  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.navigationControl.enabled": false,
   "editor.fontSize": 14,
   "editor.fontLigatures": true,
@@ -67,7 +66,7 @@
   "window.customTitleBarVisibility": "auto",
   "workbench.layoutControl.enabled": false,
   "editor.minimap.maxColumn": 45,
-  "editor.minimap.autohide": true,
+  "editor.minimap.autohide": "mouseover",
 
   "terminal.integrated.tabs.enabled": true,
   "files.autoSave": "afterDelay",
@@ -147,5 +146,8 @@
   "html-css-class-completion.enableEmmetSupport": true,
   "tailwindCSS.emmetCompletions": true,
   "window.menuBarVisibility": "compact",
-  "notebook.markup.fontFamily": "'JetBrainsMonoNL Nerd Font'"
+  "notebook.markup.fontFamily": "'JetBrainsMonoNL Nerd Font'",
+  "chat.mcp.gallery.enabled": true,
+  "animations.Install-Method": "Apc Customize UI++",
+  "workbench.colorTheme": "One Dark Pro Night Flat"
 }

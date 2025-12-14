@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SETTINGS="/home/arc/.config/Void/User/settings.json"
+SETTINGS="/home/arc/.config/Code/User/settings.json"
 
 THEME_A="Gruvbox Dark Hard"
 THEME_B="One Dark Pro Night Flat"
