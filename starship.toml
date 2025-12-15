@@ -1,22 +1,25 @@
 add_newline = false
 
 
-
+## [](fg:#fbf1c7)\
+##
+## [   ](fg:#fbf1c7)\
+## [  ](fg:#fbf1c7)\
+##
+##[ ](fg:#fbf1c7 )\
+##
+## [  ](fg:#d79921)\
+##
+##
 format = """\
-[](fg:#fbf1c7)\
-${custom.moon}\
-[](fg:#fbf1c7)\
-\
-$character\
-[](fg:#fbf1c7)\
-
+[](fg:#fbf1c7)\
 $directory\
-[ ](fg:#fbf1c7 )\
 
+
+[  ](fg:#fbf1c7)\
 $git_branch\
 $git_status\
 
-[ ](fg:#d79921)\
 $c\
 $cpp\
 $elixir\
@@ -30,12 +33,13 @@ $nodejs\
 $nim\
 $rust\
 $scala\
-[ ](fg:#d79921)\
+
 $docker_context\
 
-[\n](fg:none)\
+[\n ](fg:n;;one)\
 
-[ ](fg:#fbf1c7)\
+$character\
+[  ](fg:#fbf1c7)\
 """
 
 
@@ -49,15 +53,17 @@ $docker_context\
 # RIGHT SIDE --
 right_format = """\
 $cmd_duration\
-[](fg:#fbf1c7)\
+[ ](fg:#fbf1c7)\
+${custom.moon}\
+[  ](fg:#fbf1c7)\
 ${custom.time-char}\
-[](fg:#fbf1c7)\
+[    ](fg:#fbf1c7)\
 """
 
 [custom.time-char]
 command="$HOME/.config/myscripts/clock-char"
 when=true
-style = "bg:#fbf1c7 fg:#3c3836"
+style = "fg:#fbf1c7"
 format = '[$output]($style)'
 
 
@@ -72,29 +78,29 @@ format = '[$duration](bold yellow) '
 
 
 [character]
-success_symbol="[●](#06969A)"
-error_symbol="[●](#dc3545)"
+success_symbol="[](#06d66A)"
+error_symbol="[](#cd3545)"
 format="$symbol"
 
 
 
 [custom.moon]
 when = true
-style="bg:#fbf1c7 fg:#282828"
+style="fg:#fbf1c7"
 command = "$HOME/.config/myscripts/moon-face/moon-face-print --mode 2"
-format = "[$output ]($style)"
+format = "[$output]($style)"
 
 
 
 [directory]
-home_symbol = "󱄫 "
-read_only=" "
-style = "bold bg:#fbf1c7 fg:#282828"
-read_only_style="bg:#fbf1c7 fg:#282828"
+home_symbol = " ~"
+read_only=" "
+style = "bold fg:#fbf1c7"
+read_only_style="fg:#ff8187"
 
 format = "[ $read_only]($read_only_style)[$path]($style)"
 truncation_length = 4
-truncation_symbol = "󰇘 /"
+truncation_symbol = ".../"
 # shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
 [directory.substitutions]
@@ -105,10 +111,10 @@ truncation_symbol = "󰇘 /"
 "Music" = " "
 "Pictures" = " "
 "Videos" = " "
-"myworld" = " "
-"WorkSpace"="󱎃 "
-"web"="󰖟 "
-"test"="󰙨 "
+#"myworld" = " "
+#"WorkSpace"="󱎃 "
+#"web"=""
+#"test"="󰙨 "
 # Keep in mind that the order matters. For example:
 # "Important Documents" = " 󰈙 "
 # will not be replaced, because "Documents" was already substituted before.
@@ -140,65 +146,66 @@ format = '[ $symbol $context ]($style)'
 # ---- LANGS ----
 [c]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [cpp]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [elixir]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "fg:#fff9e9 bg:#d79921"
+symbol = " "
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
 symbol = ""
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = "󰆥 "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
 symbol = ""
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
 symbol = " "
-style = "fg:#fff9e9 bg:#d79921"
+style = "fg:#d79921"
 format = '[ $symbol ($version) ]($style)'
 # ---- END LANGS ----

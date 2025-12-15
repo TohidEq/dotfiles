@@ -14,4 +14,4 @@ end
 
 set index (math "$hour % 12 + 1")
 
-echo "$chars[$index] $hour:$(date +%M)"
+echo "$hour:$(date +%M) $chars[$index]"

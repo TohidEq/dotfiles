@@ -180,3 +180,28 @@
 ;;;; If you experience a slow down in performance when rendering multiple icons simultaneously,
 ;;;; you can try setting the following variable
 ;;(setq inhibit-compacting-font-caches t)
+
+
+(use-package dired
+  :config
+  (use-package treemacs-icons-dired
+    :if (display-graphic-p)
+    :config (treemacs-icons-dired-mode)))
+
+(use-package! rainbow-mode
+  :hook (prog-mode . rainbow-mode))
+(setq rainbow-hexadecimal-colors t)
+(setq rainbow-html-colors nil)
+
+
+
+
+
+
+
+
+
+
+
+
+;;
