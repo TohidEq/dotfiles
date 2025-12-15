@@ -79,7 +79,7 @@
 	defwidget time_stack_h []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-49.png');"
+				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-55.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -89,7 +89,7 @@
 	defwidget time_stack_m []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-50.png');"
+				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-07.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -101,7 +101,7 @@
 	defwidget time_stack_s []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_s" :style "background-image: url('/home/arc/.config/clockimgs/hms/s/s-32.png');"
+				(box :class "time_stack_s" :style "background-image: url('/home/arc/.config/clockimgs/hms/s/s-08.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 

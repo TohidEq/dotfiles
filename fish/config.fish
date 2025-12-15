@@ -3,14 +3,14 @@ if status is-interactive
 end
 
 alias vim="nvim"
+alias vin="emacs"
+alias vem="emacs -nw"
 alias ttmux="tmuxinator"
 alias ls="lsd"
 #alias cat="bat"
 alias gitl="clear && echo -e '---- GIT STATUS ----\n' && git status && echo -e '\n----  GIT  LOG  ----\n' && git log --oneline -10 --graph --decorate"
 
 alias ffch="clear && fastfetch --config hypr2.jsonc"
-
-
 
 #set -x QT_QPA_PLATFORMTHEME qt5ct
 #set -x QT_QPA_PLATFORMTHEME qt6ct

@@ -69,7 +69,6 @@
   "editor.minimap.autohide": "mouseover",
 
   "terminal.integrated.tabs.enabled": true,
-  "files.autoSave": "afterDelay",
   "editor.lineHeight": 1.5,
   "editor.letterSpacing": 1.0,
   "editor.wordWrap": "on",
@@ -149,5 +148,6 @@
   "notebook.markup.fontFamily": "'JetBrainsMonoNL Nerd Font'",
   "chat.mcp.gallery.enabled": true,
   "animations.Install-Method": "Apc Customize UI++",
-  "workbench.colorTheme": "One Dark Pro Night Flat"
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "glassit-custom.opacity": 220
 }
