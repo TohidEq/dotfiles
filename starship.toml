@@ -54,14 +54,13 @@ $character\
 right_format = """\
 $cmd_duration\
 [ ](fg:#fbf1c7)\
-${custom.moon}\
-[  ](fg:#fbf1c7)\
 ${custom.time-char}\
 [    ](fg:#fbf1c7)\
 """
 
+# using fish function (right_prompt_starship)
 [custom.time-char]
-command="$HOME/.config/myscripts/clock-char"
+command="right_prompt_starship"
 when=true
 style = "fg:#fbf1c7"
 format = '[$output]($style)'
@@ -84,11 +83,11 @@ format="$symbol"
 
 
 
-[custom.moon]
-when = true
-style="fg:#fbf1c7"
-command = "$HOME/.config/myscripts/moon-face/moon-face-print --mode 2"
-format = "[$output]($style)"
+#[custom.moon]
+#when = true
+#style="fg:#fbf1c7"
+#command = "$HOME/.config/myscripts/moon-face/moon-face-print --mode 2"
+#format = "[$output]($style)"
 
 
 

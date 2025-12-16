@@ -52,11 +52,40 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
-;; Package Manager
-(package! paradox)
+ 
 ;; Add gruvbox theme
 (package! gruvbox-theme)
 
 
 
 (package! nerd-icons)
+
+(package! 2048-game)
+(package! typit)
+(package! xbm-life)
+(package! chess)
+(package! gameoflife)
+(package! mines)
+(package! minesweeper)
+(package! sudoku)
+
+(package! rainbow-mode)
+(package! su)
+(package! sudo-utils)
+(package! treemacs-all-the-icons)
+(package! treemacs-icons-dired)
+(package! treemacs-nerd-icons)
+(package! treemacs-tab-bar)
+(package! lsp-tailwindcss)
+
+;;(package! web-beautify)
+;;(package! ranger)
+;;(package! js-format)
+;;(package! js-import)
+;;(package! js-react-redux-yasnippets)
+;;(package! less-css-mode)
+;;(package! eslint-rc)
+;;(package! flymake-eslint)
+;;(package! all-the-icons-dired)
+;;(package! buffer-flip)
+;;(package! cargo)

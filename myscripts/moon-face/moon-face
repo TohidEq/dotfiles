@@ -1,5 +1,18 @@
 #!/usr/bin/env fish
 
+# mode 1 outline characters
+# mode 2 simple characters
+set MODE 2
+
+# soth 0 = starts at right side
+# soth 1 = starts at left side
+set SOUTH 1
+
+# set south to 0 if u are in north of the Earth
+# set south to 1 if u are in south of the Earth
+
+#-------------------------------------------------------------
+
 set MOON_FILE $HOME/.config/myscripts/moon-face/moon-face-char
 
 set year (date +%Y)
@@ -28,7 +41,22 @@ set charS1 $lineSouth1[$phase]
 set charS2 $lineSouth2[$phase]
 
 #echo "$phase"
-echo "$charN1" >$MOON_FILE
-echo "$charN2" >>$MOON_FILE
-echo "$charS1" >>$MOON_FILE
-echo "$charS2" >>$MOON_FILE
+
+# ----------------
+
+#echo "$SOUTH * 2 + $MODE" >>$MOON_FILE
+#sed -n (math 1)p $FILE
+
+if test $MODE -eq 1
+   if test $SOUTH -eq 1
+      echo "$charS1" >$MOON_FILE
+   else
+      echo "$charN1" >$MOON_FILE
+   end
+else
+   if test $SOUTH -eq 1
+      echo "$charS2" >$MOON_FILE
+   else
+      echo "$charN2" >$MOON_FILE
+   end
+end
