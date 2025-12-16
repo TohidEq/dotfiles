@@ -6,7 +6,7 @@ set MODE 2
 
 # soth 0 = starts at right side
 # soth 1 = starts at left side
-set SOUTH 1
+set SOUTH 0
 
 # set south to 0 if u are in north of the Earth
 # set south to 1 if u are in south of the Earth
