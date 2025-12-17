@@ -34,7 +34,6 @@ $nim\
 $rust\
 $scala\
 
-$docker_context\
 
 [\n ](fg:n;;one)\
 
@@ -78,7 +77,7 @@ format = '[$duration](bold yellow) '
 
 [character]
 success_symbol="[](#06d66A)"
-error_symbol="[](#cd3545)"
+error_symbol="[](#ff7575)"
 format="$symbol"
 
 
@@ -92,24 +91,30 @@ format="$symbol"
 
 
 [directory]
-home_symbol = " ~"
-read_only=" "
-style = "bold fg:#fbf1c7"
-read_only_style="fg:#ff8187"
+home_symbol =       "   ~"
+read_only=          "  !"
+repo_root_format= '[$before_root_path]($before_repo_root_style)[  ](#aD90ff)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)'
+truncation_symbol = ' ../'
+fish_style_pwd_dir_length=4
+truncation_length = 2
+use_logical_path=true
+truncate_to_repo=false
+before_repo_root_style="#9DC183"
+repo_root_style="bold yellow"
+style = "fg:#fbf1c7"
+read_only_style="fg:#ff7575"
 
-format = "[ $read_only]($read_only_style)[$path]($style)"
-truncation_length = 4
-truncation_symbol = ".../"
+format = "[$read_only]($read_only_style)[$path]($style)"
 # shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:
-[directory.substitutions]
-"Desktop"=" "
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Media" = "   "
-"Music" = " "
-"Pictures" = " "
-"Videos" = " "
+#[directory.substitutions]
+#"Desktop"=" "
+#"Documents" = "󰈙 "
+#"Downloads" = " "
+#"Media" = "   "
+#"Music" = " "
+#"Pictures" = " "
+#"Videos" = " "
 #"myworld" = " "
 #"WorkSpace"="󱎃 "
 #"web"=""
@@ -133,10 +138,10 @@ format = '[$all_status$ahead_behind]($style)'
 
 
 
-[docker_context]
-symbol = " "
-style = "fg:#458588"
-format = '[ $symbol $context ]($style)'
+#[docker_context]
+#symbol = " "
+#style = "fg:#458588"
+#format = '[ $symbol $context ]($style)'
 
 
 
