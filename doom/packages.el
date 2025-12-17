@@ -60,16 +60,7 @@
 
 (package! nerd-icons)
 
-(package! 2048-game)
-(package! typit)
-(package! xbm-life)
-(package! chess)
-(package! gameoflife)
-(package! mines)
-(package! minesweeper)
-(package! sudoku)
-
-(package! rainbow-mode)
+(package! rainbow-mode) ;; colorize like this: #ff00ff #ff0000 #00ff00 (#00f);; rgb(0,0,0) rgba(125,255,0,200)
 (package! su)
 (package! sudo-utils)
 (package! treemacs-all-the-icons)
@@ -77,6 +68,15 @@
 (package! treemacs-nerd-icons)
 (package! treemacs-tab-bar)
 (package! lsp-tailwindcss)
+(package! zoom-window)
+
+(package! mu4e)
+(package! smtpmail)
+(package! org-mime)
+
+
+
+
 
 ;;(package! web-beautify)
 ;;(package! ranger)
@@ -89,3 +89,20 @@
 ;;(package! all-the-icons-dired)
 ;;(package! buffer-flip)
 ;;(package! cargo)
+
+
+
+
+
+
+
+
+;; Games
+(package! 2048-game)
+(package! typit)
+(package! xbm-life)
+(package! chess)
+(package! gameoflife)
+(package! mines)
+(package! minesweeper)
+(package! sudoku)

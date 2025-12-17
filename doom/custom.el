@@ -1,0 +1,22 @@
+;;; -*- lexical-binding: t -*-
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(2048-game all-the-icons-dired buffer-flip cargo centaur-tabs chess eslint-rc
+     flymake-eslint gameoflife js-format js-import js-react-redux-yasnippets
+     json-par less-css-mode lsp-tailwindcss mines minesweeper org-mime
+     postcss-sorting rainbow-mode ranger react-snippets scss-mode smtpmail-multi
+     su sudo-utils sudoku treemacs-all-the-icons treemacs-icons-dired
+     treemacs-nerd-icons treemacs-tab-bar typit web-beautify xbm-life))
+ '(smtpmail-smtp-server "smtp.gmail.com")
+ '(smtpmail-smtp-service 25)
+ '(zoom-window-mode-line-color "#282828"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

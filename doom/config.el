@@ -23,10 +23,8 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Vazir Code" :size 18 :weight 'semi-light)
-      )
 ;;
-;;(setq doom-font (font-spec :family "Vazir Code" :size 12 :weight 'semi-light)
+;;(setq doom-font (font-spec :family "Vazir Code" :size 12      uuui:weight 'semi-light)
 ;;      doom-variable-pitch-font (font-spec :family "Fira Sans" :size 13))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -80,120 +78,9 @@
 ;; they are implemented.
 
 
-;; Theme
-;;(setq doom-theme 'gruvbox-dark-hard) ;; or gruvbox-light-medium
-;;(setq doom-theme 'doom-one)
-;; Green GruvBox == doom-pine
-;;(setq doom-theme 'doom-pine)
-;;(setq doom-theme 'doom-homage-black)
-(setq doom-theme 'doom-gruvbox)
-
-(setq centaur-tabs-set-icons t
-        centaur-tabs-height 36
-        centaur-tabs-gray-out-icons 'buffer
-        centaur-tabs-set-bar 'over
-        centaur-tabs-set-modified-marker t
-        ;;centaur-tabs-close-button ""
-        centaur-tabs-close-button ""
-        centaur-tabs-new-tab-text "  "
-        centaur-tabs-modified-marker ""
-        centaur-tabs-icon-type 'nerd-icons
-        ;; Scrolling (with the mouse wheel) past the end of the tab list
-        ;; replaces the tab list with that of another Doom workspace. This
-        ;; prevents that.
-        centaur-tabs-cycle-scope 'tabs)
-
-
-
-
-
-
-;; Cursor
-(setq evil-normal-state-cursor 'box)
-(setq evil-insert-state-cursor '(bar . 2))
-(setq evil-visual-state-cursor 'box)
-(setq evil-replace-state-cursor 'hbar)
-
-
-
-;; Enable mouse support
-(xterm-mouse-mode 1)
-(mouse-wheel-mode 1)
-(context-menu-mode 1)
-
-;; Better mouse behavior with Evil
-(setq mouse-yank-at-point t)
-
-
-(setq fancy-splash-image "~/.config/doom/images/logo.png")
-
-
-
-
-;;(add-to-list 'default-frame-alist '(alpha . (50 . 10)))
-
-;; Enable Centaur Tabs automatically
-;;(setq centaur-tabs t)
-;;(setq centaur-tabs-mode t)
-;;(setq centaur-tabs-style "alternate")
-;;(setq centaur-tabs-icon-type 'all-the-icons)
-;;(setq centaur-tabs-close-button "")
-;;(setq centaur-tabs-new-tab-text "")
-;;
-
-
-
-
-
-;; Treemacs on the right side + smaller width
-(setq treemacs-position 'right)
-(setq treemacs-width 30) ;; adjust number as you like
-(setq treemacs-nerd-icons t)
-
-
-
-(with-eval-after-load 'treemacs
-  (set-face-attribute 'treemacs-root-face nil
-                      :height 130))
-
-
-
-
-;;;; Whether display the icons.
-;;(setq nerd-icons-ibuffer-icon t)
-;;
-;;;; Whether display the colorful icons.
-;;;; It respects `nerd-icons-color-icons'.
-;;(setq nerd-icons-ibuffer-color-icon t)
-;;
-;;;; The default icon size in ibuffer.
-;;(setq nerd-icons-ibuffer-icon-size 1.0)
-;;
-;;;; Use human readable file size in ibuffer.
-(setq  nerd-icons-ibuffer-human-readable-size t)
-;;
-;;;; A list of ways to display buffer lines with `nerd-icons'.
-;;;; See `ibuffer-formats' for details.
-;;nerd-icons-ibuffer-formats
-;;
-;;;; Slow Rendering
-;;;; If you experience a slow down in performance when rendering multiple icons simultaneously,
-;;;; you can try setting the following variable
-;;(setq inhibit-compacting-font-caches t)
-
-
-(use-package dired
-  :config
-  (use-package treemacs-icons-dired
-    :if (display-graphic-p)
-    :config (treemacs-icons-dired-mode)))
-
-(use-package! rainbow-mode
-  :hook (prog-mode . rainbow-mode))
-(setq rainbow-hexadecimal-colors t)
-(setq rainbow-html-colors nil)
-
-
+(load! "customs/look_and_feel")
+(load! "customs/keybinds")
+(load! "customs/email")
 
 
 

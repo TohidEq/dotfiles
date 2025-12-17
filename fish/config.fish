@@ -7,6 +7,8 @@ alias vin="emacs"
 alias vem="emacs -nw"
 alias ttmux="tmuxinator"
 alias ls="lsd"
+alias atree="atree++"
+alias ptree="tree++"
 #alias cat="bat"
 alias gitl="clear && echo -e '---- GIT STATUS ----\n' && git status && echo -e '\n----  GIT  LOG  ----\n' && git log --oneline -10 --graph --decorate"
 
