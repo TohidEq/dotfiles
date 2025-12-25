@@ -1,5 +1,17 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+
+;; Use bash internally in Emacs
+(setq shell-file-name (executable-find "bash"))
+
+;; Keep fish for vterm or explicit shells
+(setq-default vterm-shell "/bin/fish")
+(setq-default explicit-shell-file-name "/bin/fish")
+
+
+
+
+
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
@@ -98,3 +110,8 @@
 
 
 ;;
+
+
+;;(after! org
+;;  (add-to-list 'org-export-backends 'latex))
+

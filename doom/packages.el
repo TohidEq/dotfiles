@@ -74,12 +74,15 @@
 (package! smtpmail)
 (package! org-mime)
 (package! org-bullets)
+(package! org-fragtog)
+
 
 (package! rainbow-delimiters)
 (package! nyan-mode)
 
 (package! ef-themes)
 
+(package! pulsar)
 
 
 ;;(package! web-beautify)
