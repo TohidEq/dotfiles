@@ -73,8 +73,12 @@
 (package! mu4e)
 (package! smtpmail)
 (package! org-mime)
+(package! org-bullets)
 
+(package! rainbow-delimiters)
+(package! nyan-mode)
 
+(package! ef-themes)
 
 
 

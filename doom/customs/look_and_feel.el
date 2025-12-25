@@ -10,7 +10,14 @@
 
 
 (setq doom-font
-      (font-spec :family "Vazir Code" :size 18 :weight 'regular))
+      (font-spec :family "JetBrainsMonoNL Nerd Font" :size 16 :weight 'regular))
+
+;;(setq doom-font
+;;      (font-spec :family "Inter" :size 18 :weight 'regular))
+
+(+global-word-wrap-mode +1)
+
+
 
 
 ;; Cursor
@@ -119,3 +126,31 @@
 ;;      ;; replaces the tab list with that of another Doom workspace. This
 ;;      ;; prevents that.
 ;;      centaur-tabs-cycle-scope 'tabs)
+
+
+
+
+
+;; Highlight cursor when u lsot it
+(use-package pulsar
+  :config
+  (pulsar-global-mode 1)
+  (pulsar-mode 1)
+  )
+
+
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+
+;;(nyan-mode 1)
+;;(nyan-start-animation)
+(use-package! nyan-mode
+  :config
+  (nyan-mode 1)
+  (setq nyan-animate-nyancat t)
+  (setq nyan-bar-length 14))
+
+
+(zone-mode)

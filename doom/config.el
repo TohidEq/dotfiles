@@ -58,6 +58,7 @@
 ;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
 ;;   - Setting doom variables (which start with 'doom-' or '+').
 ;;
+;;
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -79,11 +80,16 @@
 
 
 (load! "customs/look_and_feel")
+(load! "customs/writeroom")
+(load! "customs/org")
+(load! "customs/theme-cycle")
 (load! "customs/keybinds")
 (load! "customs/email")
 
 
 
+;; enable word-wrap (almost) everywhere
+(+global-word-wrap-mode +1)
 
 
 
