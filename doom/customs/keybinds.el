@@ -31,6 +31,14 @@
       "t H" #'font-lock-mode)
 
 
+;; Toggle write good
+(map! :leader
+      :desc "Toggle write good"
+      "t M" #'writegood-mode)
+
+
+
+
 
 
 

@@ -48,6 +48,8 @@
   ;;(font-lock-mode -1)
   (show-paren-mode -1)
   (diff-hl-mode -1)
+  (writegood-mode -1)
+  (vi-tilde-fringe-mode -1)
   )
 
 
@@ -72,6 +74,8 @@
   ;;(font-lock-mode 1)
   (show-paren-mode 1)
   (diff-hl-mode 1)
+  (writegood-mode 1)
+  (vi-tilde-fringe-mode 1)
   )
 
 ;; -----------------------------

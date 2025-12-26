@@ -115,3 +115,50 @@
 ;;(after! org
 ;;  (add-to-list 'org-export-backends 'latex))
 
+;;(after! flyspell
+;;  (setq flyspell-mark-duplications-flag nil))
+;;(add-hook 'org-mode-hook
+;;          (lambda ()
+;;            (setq-local flyspell-mark-duplications-flag nil)))
+;;
+;;(after! writegood
+;;  (setq writegood-duplicates-font-lock-keywords-regexp nil))
+;;
+;;(after! writegood
+;;  (defun writegood-duplicates-font-lock-keywords ()
+;;    nil))
+
+
+
+
+
+;; Left side, character of empty lines after file ends
+;; >> customize-group
+;; >> vi-tilde-fringe
+;; >> vi tilde fringe face
+;; =>>
+;;  [#b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000
+;;   #b11000000]
+;;
