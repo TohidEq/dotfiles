@@ -23,16 +23,18 @@ set -x XDG_CURRENT_DESKTOP hyprland
 
 set -x QT_QUICK_CONTROLS_STYLE kvantum
 
+set -x STARSHIP_LOG off
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 #starship init fish | source
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-    set -U fish_greeting
-    function starship_transient_prompt_func
-        echo " "
-    end
-    starship init fish | source
-    enable_transience
-end
+## if status is-interactive
+##     # Commands to run in interactive sessions can go here
+##     set -U fish_greeting
+##     function starship_transient_prompt_func
+##         echo " "
+##     end
+##     starship init fish | source
+##     enable_transience
+## end
