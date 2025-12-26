@@ -28,7 +28,7 @@
 
   ;; Spacious padding for top/bottom
 
-(set-window-margins (selected-window) 1 1)
+  (set-window-margins (selected-window) 1 1)
   ;;;; Distractions off
   (display-line-numbers-mode -1)
 
@@ -96,3 +96,4 @@
       "t W" #'writeroom-mode)
 
 (provide 'writemoon)
+;;; writemoon.el end here
