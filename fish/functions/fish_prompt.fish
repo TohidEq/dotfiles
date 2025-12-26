@@ -35,8 +35,7 @@ set __fish_git_prompt_color_upstream_behind red
 
 #red
 set __fish_git_prompt_color_dirtystate FF7575
-#green git
-set __fish_git_prompt_color_stagedstate 689d6a
+set __fish_git_prompt_color_stagedstate yellow
 set __fish_git_prompt_color_untrackedfiles magenta
 set __fish_git_prompt_color_stashstate blue
 # red
