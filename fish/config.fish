@@ -16,14 +16,16 @@ alias ffch="clear && fastfetch --config hypr2.jsonc"
 
 #set -x QT_QPA_PLATFORMTHEME qt5ct
 #set -x QT_QPA_PLATFORMTHEME qt6ct
-set -x QT_QPA_PLATFORMTHEME kvantum
-set -x GTK_THEME Nordic-darker-standard-buttons-v40
-set -x XDG_CURRENT_DESKTOP hyprland
+set -Ux QT_QPA_PLATFORMTHEME kvantum
+set -Ux GTK_THEME Nordic-darker-standard-buttons-v40
+set -Ux XDG_CURRENT_DESKTOP hyprland
 #set -x XDG_DESKTOP_PORTAL kde
 
-set -x QT_QUICK_CONTROLS_STYLE kvantum
+set -Ux QT_QUICK_CONTROLS_STYLE kvantum
 
-set -x STARSHIP_LOG off
+set -Ux STARSHIP_LOG off
+
+set -Ux DOOMDIR "/home/arc/.config/doom"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 

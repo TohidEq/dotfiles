@@ -162,3 +162,73 @@
 ;;   #b11000000
 ;;   #b11000000]
 ;;
+
+
+
+
+
+
+
+;; --- UI & Editor ---
+(setq user-full-name "Your Name"
+      user-mail-address "your@email.com"
+      display-line-numbers-type 'relative
+      inhibit-startup-screen t
+      ring-bell-function 'ignore)
+
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
+
+;; --- Search & Undo ---
+(setq case-replace nil
+      case-fold-search t
+      search-upper-case t)
+
+(setq undo-limit 80000000
+      undo-strong-limit 120000000
+      undo-outer-limit 1200000000
+      evil-want-fine-undo t)
+
+;; --- Evil Behavior ---
+;;(setq evil-respect-visual-line-mode t
+;;      evil-kill-on-visual-paste nil
+;;      evil-want-C-u-scroll t)
+
+;; --- LSP & Completion ---
+(after! lsp-mode
+  (setq lsp-enable-symbol-highlighting nil
+        lsp-ui-doc-enable nil
+        lsp-headerline-breadcrumb-enable nil
+        lsp-lens-enable nil))
+
+(after! company
+  (setq company-idle-delay 0.1
+        company-minimum-prefix-length 1))
+
+;; --- Languages & Frameworks ---
+(add-hook 'web-mode-hook 'emmet-mode)
+(add-hook 'python-mode-hook 'pyvenv-mode)
+(add-hook! '(rust-mode-hook c-mode-hook c++-mode-hook) #'lsp)
+
+(setq +format-on-save-enabled-modes
+      '(typescript-mode js-mode js2-mode typescript-tsx-mode css-mode scss-mode web-mode python-mode))
+
+;; --- Keys & Navigation ---
+(map! :nv "C-h" #'evil-window-left
+      :nv "C-j" #'evil-window-down
+      :nv "C-k" #'evil-window-up
+      :nv "C-l" #'evil-window-right
+      :nv "g s" #'magit-status
+      :nv "g c" #'magit-commit-create
+      :nv "C-`" #'vterm-toggle
+      :nv "g m" #'evil-mc-make-cursor-here)
+
+;; --- Projects ---
+(after! projectile
+  (setq projectile-project-search-path '("~/myworld/WorkSpace/")
+        projectile-enable-caching t))
+
+(after! yasnippet
+  (yas-global-mode 1))

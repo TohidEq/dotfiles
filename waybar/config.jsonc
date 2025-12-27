@@ -6,7 +6,7 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 20,
-  "modules-left": ["clock", "hyprland/window"],
+  "modules-left": ["custom/moon_clock","custom/weather","clock"],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "network",
@@ -41,6 +41,10 @@
     "show-empty": true,
     "active-only": false
   },
+  "custom/moon_clock": {
+    "exec": "waybar-moon-clock",
+    "interval": 15
+  },
   "custom/power_profile": {
     //shows the current power profile and switches to next on click
     "exec": "asusctl profile -p | sed s:'Active profile is'::",
@@ -54,7 +58,7 @@
     //shows the current weather and forecast
     "tooltip": true,
     "format": "{}",
-    "interval": 30,
+    "interval": 3600,
     "exec": "~/.config/waybar/scripts/waybar-wttr.py",
     "return-type": "json"
   },
@@ -69,15 +73,15 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "clock": {
-    "format": "<b>  {:%H:%M 󰃭 %Y-%m-%d}</b>",
-    "format-alt": "<b>  {:%I:%M %p 󰃭 %a - %b %e, %Y}</b>",
+    "format": "<b>{:%Y-%m-%d}</b>",
+    "format-alt": "<b>{:%A, %B %e}</b>",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "format-icons": ["󰽢","󰃛","󰃜","󰃝","󰃞","󰃟", "󰃠"],
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
     "min-length": 6
@@ -127,7 +131,7 @@
 
   "temperature": {
     "thermal-zone": 3,
-    "format": "<b>{temperatureC}°C </b>",
+    "format": "<b> {temperatureC}°C</b>",
     "critical-threshold": 80,
     "format-critical": "<b>!{temperatureC}°C </b>"
   },

@@ -18,9 +18,12 @@
   ;; Fonts
   (variable-pitch-mode 1)
 
+  (set-fontset-font t 'arabic
+                  (font-spec :family "Vazirmatn" :size 20))
+
 
   ;; Visual Fill Column
-  (setq visual-fill-column-width 40
+  (setq visual-fill-column-width 16
         visual-fill-column-center-text t
         visual-fill-column-fringes-outside-margins t)
   (visual-fill-column-mode 1)
@@ -59,7 +62,7 @@
 (defun writeroom-disable ()
   "Restore normal Doom behavior."
   (variable-pitch-mode -1)
-  
+
   (visual-fill-column-mode -1)
   (+word-wrap-mode -1)
 
@@ -70,7 +73,7 @@
   (centaur-tabs-mode 1)
   ;; HighLight current line (Enable)
   (hl-line-mode 1)
-  
+
   ;;(font-lock-mode 1)
   (show-paren-mode 1)
   (diff-hl-mode 1)

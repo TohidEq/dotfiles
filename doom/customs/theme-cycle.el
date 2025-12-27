@@ -1,6 +1,9 @@
 ;; Theme cycler
 (defvar my/theme-cycle
   '(
+    doom-acario-dark
+    doom-acario-light
+    doom-challenger-deep
     ;;modus-operandi
     modus-vivendi
     ;;doom-one
