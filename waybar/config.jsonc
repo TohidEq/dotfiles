@@ -6,7 +6,13 @@
   "passthrough": false,
   "gtk-layer-shell": true,
   "height": 20,
-  "modules-left": ["custom/moon_clock","custom/weather","clock"],
+  "modules-left": [
+    "custom/spacexd",
+    "custom/powerbtn",
+    "custom/moon_clock",
+    "custom/weather",
+    "clock"
+  ],
   "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "network",
@@ -16,7 +22,8 @@
     "backlight",
     "pulseaudio",
     "pulseaudio#microphone",
-    "tray"
+    "tray",
+    "custom/spacexd"
   ],
   "hyprland/window": {
     "on-click": "",
@@ -40,6 +47,13 @@
     "on-click": "activate", // با کلیک روی هر ورک اسپیس، به اونجا برو
     "show-empty": true,
     "active-only": false
+  },
+  "custom/spacexd": {
+    "exec": "echo ' '",
+  },
+  "custom/powerbtn": {
+    "exec": "echo '⏻'",
+    "on-click": "wlogout --protocol layer-shell -b 5"
   },
   "custom/moon_clock": {
     "exec": "waybar-moon-clock",
@@ -97,13 +111,13 @@
     "format-charging": "<b> {capacity}%</b>",
     "format-plugged": "<b> {capacity}%</b>",
     "format-alt": "<b>{time} {icon}</b>",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    "format-icons": [" ", "", "", "", "", "", "", "", "", "", ""]
   },
 
   "pulseaudio": {
     "format": "<b>{icon}  {volume}%</b>",
     "tooltip": false,
-    "format-muted": "<b> Muted</b>",
+    "format-muted": "<b>  Shhh..</b>",
     "on-click": "pamixer -t",
     "on-scroll-up": "pamixer -i 5",
     "on-scroll-down": "pamixer -d 5",
@@ -121,8 +135,8 @@
 
   "pulseaudio#microphone": {
     "format": "{format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": " Muted",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭 Shhh...",
     "on-click": "pamixer --default-source -t",
     "on-scroll-up": "pamixer --default-source -i 5",
     "on-scroll-down": "pamixer --default-source -d 5",
@@ -138,7 +152,7 @@
 
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "  {signalStrength}%",
+    "format-wifi": "󰤨  {signalStrength}%",
     "format-ethernet": "{ipaddr}/{cidr}",
     "tooltip-format": "{essid} - {ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
@@ -147,11 +161,11 @@
   },
 
   "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "", // an empty format will hide the module
-    "format-connected": " {num_connections}",
+    "format": " {status}",
+    "format-disabled": "󰂲 off", // an empty format will hide the module
+    "format-connected": " {num_connections}",
     "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-connected": " {device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}"
   }
 }

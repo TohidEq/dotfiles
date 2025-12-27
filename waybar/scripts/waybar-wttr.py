@@ -149,7 +149,7 @@ data['text'] = ''+ \
     extrachar+weather['current_condition'][0]['FeelsLikeC']+"° " + \
     WEATHER_CODES[weather['current_condition'][0]['weatherCode']] 
 
-data['tooltip'] = f"\n<b> {weather['current_condition'][0]['weatherDesc'][0]['value']} {weather['current_condition'][0]['temp_F']}°</b>\n"
+data['tooltip'] = f"\n<b> {weather['current_condition'][0]['weatherDesc'][0]['value']} {weather['current_condition'][0]['temp_C']}°</b>\n"
 data['tooltip'] += f" Feels like: {weather['current_condition'][0]['FeelsLikeC']}°\n"
 data['tooltip'] += f" Wind: {weather['current_condition'][0]['windspeedKmph']}Km/h\n"
 data['tooltip'] += f" Humidity: {weather['current_condition'][0]['humidity']}%\n"
@@ -169,7 +169,7 @@ for i, day in enumerate(weather['weather']):
 	#data['tooltip'] += " The Day After Tomorrow , "
         # There is no short word for Pasfarda in English XD
     data['tooltip'] += f"{day['date']}</b>\n"
-    data['tooltip'] += f"   {day['maxtempF']}°  {day['mintempF']}° "
+    data['tooltip'] += f"   {day['maxtempC']}°  {day['mintempC']}° "
     data['tooltip'] += f"  {day['astronomy'][0]['sunrise']}    {day['astronomy'][0]['sunset']}  \n"
     for hour in day['hourly']:
         if i == 0:
