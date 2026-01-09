@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #waypaper --folder $HOME/Pictures/wallpapers/wow-blackwhite --random
-waypaper --folder $HOME/Pictures/wallpapers/text-paper --random
+waypaper --folder $HOME/Pictures/wallpapers/current-papers --random

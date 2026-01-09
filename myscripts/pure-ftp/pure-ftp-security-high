@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+SETTINGS="/etc/pure-ftpd/pure-ftpd.conf"
+
+notify-send -u low --icon="$HOME/.config/custom_images/good_job.png" "PURE_FTP: TLS 2" "Refuse connections that don't use the TLS security mechanism, including anonymous sessions."
+
+kitty sudo sed -i "s/TLS 1/TLS 2/" "$SETTINGS" &
+sudo systemctl restart pure-ftpd

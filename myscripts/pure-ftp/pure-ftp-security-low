@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+SETTINGS="/etc/pure-ftpd/pure-ftpd.conf"
+
+notify-send -u low --icon="$HOME/.config/custom_images/good_job.png" "PURE_FTP: TLS 1" "Accept both cleartext and encrypted sessions."
+
+kitty sudo sed -i "s/TLS 2/TLS 1/" "$SETTINGS" &
+sudo systemctl restart pure-ftpd
