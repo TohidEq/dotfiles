@@ -79,7 +79,7 @@
 	defwidget time_stack_h []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-52.png');"
+				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-04.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -89,7 +89,7 @@
 	defwidget time_stack_m []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-31.png');"
+				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-51.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -101,7 +101,7 @@
 	defwidget time_stack_s []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_s" :style "background-image: url('/home/arc/.config/clockimgs/hms/s/s-57.png');"
+				(box :class "time_stack_s" :style "background-image: url('/home/arc/.config/clockimgs/hms/s/s-13.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -116,38 +116,32 @@
 
 (
 	defwindow time_stack_window_s :stacking "bg" :monitor 0 :focusable "false" :screen 1
-	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	:geometry (geometry :x 0 :y 0 :width 1920 :height 350)
 	(time_stack_s)
 )
 (
 	defwindow time_stack_window_h :stacking "bg" :monitor 0 :focusable "false" :screen 1
-	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	:geometry (geometry :x 0 :y 0 :width 1920 :height 350)
 	(time_stack_h)
 )
 
 (
 	defwindow time_stack_window_m :stacking "bg" :monitor 0 :focusable "false" :screen 1
-	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	:geometry (geometry :x 0 :y 0 :width 1920 :height 350)
 	(time_stack_m)
 )
 (
 	defwindow time_stack_window_fff :stacking "bg" :monitor 0 :focusable "false" :screen 1
-	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	:geometry (geometry :x 0 :y 0 :width 1920 :height 350)
 	(time_stack_fff)
 )
 (
 	defwindow time_stack_window_ff :stacking "bg" :monitor 0 :focusable "false" :screen 1
-	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	:geometry (geometry :x 0 :y 0 :width 1920 :height 350)
 	(time_stack_ff)
 )
 (
 	defwindow time_stack_window_f :stacking "bg" :monitor 0 :focusable "false" :screen 1
-	:geometry (geometry :x 20 :y 20 :width 200 :height 200)
+	:geometry (geometry :x 0 :y 0 :width 1920 :height 350)
 	(time_stack_f)
 )
-
-
-
-
-
-
