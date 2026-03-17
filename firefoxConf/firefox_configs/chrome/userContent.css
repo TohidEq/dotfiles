@@ -13,14 +13,14 @@
 @import url("content/newtab.css");
 
 :root {
-  --bg: rgba(0, 0, 0, 0.5) !important;
-  --in-content-page-backgroud: rgba(0, 0, 0, 0.5) !important;
-  --in-content-box-backgroud: rgba(0, 0, 0, 0.5) !important;
-  --tabpanel-background-color: rgba(0, 0, 0, 0.5) !important;
+  --bg: rgba(0, 0, 0, 0.8) !important;
+  --in-content-page-backgroud: rgba(0, 0, 0, 0.8) !important;
+  --in-content-box-backgroud: rgba(0, 0, 0, 0.8) !important;
+  --tabpanel-background-color: rgba(0, 0, 0, 0.8) !important;
 }
 
 .tabbrowser-tab {
-  background: rgba(0, 0, 0, 0.5) !important;
+  background: rgba(0, 0, 0, 0.8) !important;
 }
 
 /*window transparency*/
@@ -97,7 +97,7 @@ toolbar {
   stack.browserStack
   browser {
   background: #ffffff00 !important;
-  opacity: 0.4;
+  opacity: 0.8;
 }
 
 #main-window
