@@ -3,22 +3,25 @@
     border-radius: 0;
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
-    font-size: 14px;
+    font-size: 10px;
     min-height: 0;
     padding:0;
-    margin:0;
+    margin:-2px 0px;
 }
 
 window#waybar {
     background: rgba(21, 18, 27, 0);
-    color: #cdd6f4;
+    color: #ffffff;
     margin-top:-20px;
 }
 
 tooltip {
-    background:rgba(0, 0, 0, 120);
-    border-radius: 10px;
-    border-width: 1.5px;
+    background:rgba(0, 0, 0, 0.4);
+    font-size:14px;
+    padding: 2px 2px;
+    margin:20px 0px;
+    border-radius: 4px;
+    border-width: 1px;
     border-style: solid;
     border-color: #aeaeae;
 }
@@ -135,39 +138,44 @@ tooltip {
 
 /* --- استایل ماژول hyprland/workspaces --- */
 #workspaces {
-    font-size: 0px;
-    padding:10px;
+    font-size: 30px;
+    /*
+     *
     background: rgba(200, 200, 200,0);
+     */
     opacity: 0.8;
-    padding: 0px 0px;
-    margin-left: 10px;
-    margin-top: 4px;
-    margin-bottom: 10px;
+    padding: 0px 0px 0px 0px;
+    margin: 3px 0px 0px 0px;
     border:none;
-    border-radius:0 0 10px 10px;
     font-weight: normal;
 }
 
 
 #workspaces button {
-    border: 1px solid rgba(0,0,0,0.1);
-    font-size: 0px;
-    background-color: rgba(255,255,255,1); /* رنگ دایره سفید */
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(0,0,0,0.0);
+    font-size: 30px;
+    /*
+     *
+    background-color: rgba(255,255,255,1);
+     * dayereye sefid
+     */
     border-radius: 999px; /* برای اینکه دایره باشه که نشد متاسفانه ولی قابل قبوله */
     padding: 0px 0px; /* اندازه اولیه دایره */
     padding-top: 0px;
     opacity: 0.6; /* اوپاسیتی اولیه (برای وقتی که خالی و بدون فوکوسه) */
-    margin: 0px 4px; /* فاصله بین دایره ها */
-    margin-top:15px;
+    margin: 0px 0px; /* فاصله بین دایره ها */
     /* ترنزیشن 170 میلی‌ثانیه با منحنی Bezier برای جلوه نرم */
     transition: all 170ms cubic-bezier(0.5, 0, 1, 1);
+    /*
+     *
     box-shadow: 0px 1px 3px 4px rgba(125,125,125,0.6);
+     */
     font-weight: normal;
 }
 
 
 
-/* وقتی ورک اسپیس خالی باشه و فوکوس هم روش نباشه (حالت پیش فرض) */
 #workspaces button.empty {
     opacity: 0.5;
 }
@@ -177,28 +185,34 @@ tooltip {
     opacity: 0.9;
 }
 #workspaces button.urgent {
+    /*
+     *
     background: #a6e3a1;
+     */
+    color: #A6E3A1;
     opacity:1.0;
 }
 
 /* وقتی فوکوس شده باشه */
 #workspaces button.active {
+    color:rgba(255,255,255,1);
     opacity: 1.0;
-    padding-left: 10px; /* برای کپسول شدن، عرض رو بیشتر میکنیم */
-    padding-right: 10px; /* برای کپسول شدن، عرض رو بیشتر میکنیم */
-    border-radius: 9999px; /* برای اینکه لبه‌ها گرد و حالت کپسول بشه */
+    /*
     background-color: #ffffff;
+     */
 }
 
 #workspaces button.focused{
     opacity: 1.0;
-    padding-left: 10px; /* برای کپسول شدن، عرض رو بیشتر میکنیم */
-    padding-right: 10px; /* برای کپسول شدن، عرض رو بیشتر میکنیم */
-    border-radius: 9999px; /* برای اینکه لبه‌ها گرد و حالت کپسول بشه */
+    /*
+     *
     background-color: #ffffff;
+     */
 }
 
 /* اگر خواستی که وقتی ماوس میره روش هم تغییری بکنه */
 #workspaces button:hover {
+    background-color: rgba(0,0,0,0);
+    color: #ffff00;
     opacity: 1.0;
 }

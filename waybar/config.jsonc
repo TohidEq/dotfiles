@@ -5,7 +5,7 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "height": 20,
+  "height": 8,
   "modules-left": [
     "custom/spacexd",
     "custom/powerbtn",
@@ -36,10 +36,10 @@
     "icon-size": 0,
     "font-size": 0,
     "format-source": "", // از ID ورک اسپیس برای نامگذاری استفاده کن
-    "format": "<span size='1%'>.</span>",
+    "format": "{icon}",
     "format-icons": {
-      "active": "1",
-      "default": "1"
+      "active": "",
+      "default": ""
     },
 
     "all-outputs": true, // اگر چند مانیتور داری، همه ورک اسپیس ها رو نشون بده

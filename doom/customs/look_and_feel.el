@@ -10,7 +10,7 @@
 
 
 (setq doom-font
-      (font-spec :family "JetBrainsMonoNL Nerd Font" :size 16 :weight 'regular))
+      (font-spec :family "JetBrainsMonoNL Nerd Font" :size 12 :weight 'regular))
 
 ;;(setq doom-font
 ;;      (font-spec :family "Inter" :size 18 :weight 'regular))

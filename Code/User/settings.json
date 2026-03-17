@@ -28,7 +28,7 @@
     }
   ],
   "workbench.navigationControl.enabled": false,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
   "editor.fontLigatures": true,
   "editor.mouseWheelZoom": true,
   "workbench.iconTheme": "symbols",
@@ -144,10 +144,11 @@
   "git.openRepositoryInParentFolders": "never",
   "html-css-class-completion.enableEmmetSupport": true,
   "tailwindCSS.emmetCompletions": true,
-  "window.menuBarVisibility": "compact",
   "notebook.markup.fontFamily": "'JetBrainsMonoNL Nerd Font'",
   "chat.mcp.gallery.enabled": true,
   "animations.Install-Method": "Apc Customize UI++",
   "workbench.colorTheme": "Gruvbox Dark Hard",
-  "glassit-custom.opacity": 220
+  "glassit-custom.opacity": 220,
+  "window.menuBarVisibility": "compact",
+  "editor.lineNumbers": "on"
 }
