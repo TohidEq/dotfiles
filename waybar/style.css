@@ -7,12 +7,13 @@
     min-height: 0;
     padding:0;
     margin:-2px 0px;
+    margin-top:-4px;
+    margin-bottom:0.5px;
 }
 
 window#waybar {
     background: rgba(21, 18, 27, 0);
     color: #ffffff;
-    margin-top:-20px;
 }
 
 tooltip {
@@ -145,9 +146,10 @@ tooltip {
      */
     opacity: 0.8;
     padding: 0px 0px 0px 0px;
-    margin: 3px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
     border:none;
     font-weight: normal;
+
 }
 
 
@@ -177,14 +179,17 @@ tooltip {
 
 
 #workspaces button.empty {
+    margin: 0px 0px; /* فاصله بین دایره ها */
     opacity: 0.5;
 }
 
 /* وقتی آیتم وجود داشته باشه ولی فوکوس نشده باشه */
 #workspaces button.occupied:not(.active) {
+    margin: 0px 0px; /* فاصله بین دایره ها */
     opacity: 0.9;
 }
 #workspaces button.urgent {
+    margin: 0px 0px; /* فاصله بین دایره ها */
     /*
      *
     background: #a6e3a1;
@@ -195,6 +200,7 @@ tooltip {
 
 /* وقتی فوکوس شده باشه */
 #workspaces button.active {
+    margin: 0px 0px; /* فاصله بین دایره ها */
     color:rgba(255,255,255,1);
     opacity: 1.0;
     /*
@@ -203,6 +209,7 @@ tooltip {
 }
 
 #workspaces button.focused{
+    margin: 0px 0px; /* فاصله بین دایره ها */
     opacity: 1.0;
     /*
      *
@@ -212,6 +219,7 @@ tooltip {
 
 /* اگر خواستی که وقتی ماوس میره روش هم تغییری بکنه */
 #workspaces button:hover {
+    margin: 0px 0px; /* فاصله بین دایره ها */
     background-color: rgba(0,0,0,0);
     color: #ffff00;
     opacity: 1.0;
