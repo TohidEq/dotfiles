@@ -53,5 +53,5 @@ window_manager/dwl/backup/
 !.gitignore
 !window_manager/
 !doom
-
+!eww
 

@@ -1,0 +1,361 @@
+;; **
+;; ** Widgets config for EWW
+;; ** Created by : justmakeit0821
+;; **
+
+;; ** Variables ***********************************************************************
+;; Profile vars
+;;(defpoll HOUR :interval "5s" `date +\"%I\"`)
+;;(defpoll MIN  :interval "5s" `date +\"%M\"`)
+;;(defpoll SEC  :interval "1s" `date +\"%S\"`)
+;;"
+;; Widgets
+
+;; clock
+; (
+	; defwidget clock []
+		; (
+			; box :class "genwin" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
+				; (
+					; box :orientation "h" :spacing 0
+						; (label :class "time_hour" :valign "start" :wrap "true" :limit-width 25 :text HOUR)
+						; (label :class "time_min" :valign "end" :wrap "true" :limit-width 25 :text SEC)
+				; )
+		; )
+; )
+;
+;
+;
+;
+; Windows
+;
+; clock
+; (
+	; defwindow clock :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	; :geometry (geometry :x 320 :y 315 :width 250 :height 150)
+	; (clock)
+; )
+
+
+;; ** Widgets ***********************************************************************
+
+
+
+
+(
+	defwidget time_stack_f []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_f" :style "background-image: url('/home/arc/.config/clockimgs/frames/frame.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+(
+	defwidget time_stack_ff []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_f" :style "background-image: url('/home/arc/.config/clockimgs/frames/fframe.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+(
+	defwidget time_stack_fff []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_f" :style "background-image: url('/home/arc/.config/clockimgs/frames/ffframe.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+
+(
+	defwidget time_stack_h []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-54.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+(
+	defwidget time_stack_m []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-57.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+
+
+(
+	defwidget time_stack_s []
+		(
+			box :class "clock-stack" :orientation "stack"
+				(box :class "time_stack_s" :style "background-image: url('/home/arc/.config/clockimgs/hms/s/s-22.png');"
+					 :class "face" :halign "center"
+					 (label :text "" :halign "center" :width CLOCK_SIZE))
+
+		)
+)
+
+
+(defvar CLOCK_SIZE "200")
+
+;; ** Windows ***********************************************************************
+
+
+(
+	defwindow time_stack_window_s :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 1547 :y 0 :width 350 :height 350)
+	(time_stack_s)
+)
+(
+	defwindow time_stack_window_h :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 1547 :y 0 :width 350 :height 350)
+	(time_stack_h)
+)
+
+(
+	defwindow time_stack_window_m :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 1547 :y 0 :width 350 :height 350)
+	(time_stack_m)
+)
+(
+	defwindow time_stack_window_fff :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 1547 :y 0 :width 350 :height 350)
+	(time_stack_fff)
+)
+(
+	defwindow time_stack_window_ff :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 1547 :y 0 :width 350 :height 350)
+	(time_stack_ff)
+)
+(
+	defwindow time_stack_window_f :stacking "bg" :monitor 0 :focusable "false" :screen 1
+	:geometry (geometry :x 1547 :y 0 :width 350 :height 350)
+	(time_stack_f)
+)
+
+
+;; =====================================================================
+
+
+(defwindow launcher_controlls :stacking "bg" :monitor 0 :focusable "false" :screen 1
+  :geometry (geometry
+		:y 5
+		:x 0
+		:width 18
+		:anchor "top right"
+	)
+
+  (box :orientation "v" :class "launchers-items"
+       :spacing 0
+
+    (button
+      :onclick "pamixer -i 5"
+      "")
+
+    (button
+      "")
+
+    (button
+      :onclick "pamixer -d 5"
+      "")
+
+    (button
+      " ")
+
+
+    (button
+      :onclick "brightnessctl set 5%+"
+      "")
+
+    (button
+      "󰃟")
+
+    (button
+      :onclick "brightnessctl set 5%-"
+      "")
+
+
+    (button
+      " ")
+
+
+    (button
+      :onclick "run_gamma_up"
+      "")
+
+    (button
+      :onclick "run_gamma_reset"
+      "")
+
+    (button
+      :onclick "run_gamma_down"
+      "")
+
+
+    (button
+      " ")
+
+
+
+    (button
+      :onclick "run_temp_up"
+      "")
+
+    (button
+      :onclick "run_temp_reset"
+      "")
+
+    (button
+      :onclick "run_temp_down"
+      "")
+
+
+
+
+
+  )
+)
+
+
+;; -- -- --
+
+(defwindow launcher_apps_right :stacking "fg" :monitor 0 :focusable "false" :screen 1
+  :geometry (geometry
+		:y 10
+		:x 0
+		:width 18
+    :exclusive false
+    :wm-ignore true
+		:anchor "bottom right"
+	)
+
+  (box :orientation "v"  :class "launcher-items"
+       :spacing 30
+
+			;; vpn throne
+    (button
+      :onclick "throne &"
+      "")
+			;; browser service
+    (button
+      :onclick ""
+      "")
+			;; vnc server
+    (button
+      :onclick ""
+      "󰦉")
+			;; ssh
+    (button
+      "󰆍")
+			;; ftp
+    (button
+      :onclick ""
+      "")
+			;; touch server
+    (button
+      :onclick ""
+      "󰈷")
+			;; color picker
+    (button
+      :onclick "run_color_picker &"
+      "")
+		;; waypaper wallpaper manager
+		;; bluetooth manager
+		;; galculator
+		;; scrcpy script ** TODO
+		;; pomotroid
+		;; sniffnet
+
+  )
+)
+
+
+
+(defwindow launcher_apps_left :stacking "bg" :monitor 0 :focusable "false" :screen 1
+  :geometry (geometry
+		:x 0
+		:width 18
+		:anchor "center left"
+	)
+
+  (box :orientation "v"  :class "launchers-items"
+       :spacing 30
+
+			 ;; launcher
+    (button
+      :onclick "run_wmenu"
+      "")
+
+			 ;; launcher + icons
+    (button
+      :onclick "run_rofi"
+      "")
+
+			 ;; wiki arch
+    (button
+      :onclick "run_wikiarch"
+      "󰖬")
+
+			;; code editor
+    (button
+      :onclick "code &"
+      "")
+
+			;; emacs
+    (button
+      :onclick "emacs &"
+      "")
+
+			;; download manager uget
+    (button
+      :onclick "uget-gtk &"
+      "")
+
+			;; browser firefox
+    (button
+      :onclick "firefox &"
+      "")
+
+			;; browser tor
+    (button
+      :onclick "tor-browser &"
+      "")
+
+
+
+			;; obsidian
+    (button
+      :onclick "obsidian &"
+      "")
+
+			;; steam
+    (button
+      :onclick "steam &"
+      "")
+
+			;; file browser thunar
+    (button
+      :onclick "thunar &"
+      "")
+
+
+  )
+)
+
+
+
+
+;; ======================================================================
+
+
