@@ -5,10 +5,6 @@
 /*
 
 
-!LICENSE
-!README.md
-!.gitignore
-
 
 .copyq/*
 .docker/.buildNodeID
@@ -49,4 +45,12 @@ doom/customs/email.el
 **/Trash/
 **/node_modules/
 **/__pycache__/
+
+# ---------------------------------------- #
+
+!LICENSE
+!README.md
+!.gitignore
+!window_manager/
+
 

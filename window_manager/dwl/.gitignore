@@ -1,0 +1,13 @@
+dwl
+*.o
+*-protocol.c
+*-protocol.h
+.ccls-cache
+config.h
+*.rej
+*.orig
+
+./.git/
+./.gitea/
+./patches/dwl-patches
+./backup/
