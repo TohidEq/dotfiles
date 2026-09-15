@@ -10,7 +10,6 @@
 .docker/.buildNodeID
 .docker/.token_seed
 .docker/.token_seed.lock
-doom/customs/email.el
 .emacs
 .emacs/*
 .gh/hosts.yml
@@ -27,7 +26,8 @@ doom/customs/email.el
 .tmux/plugins
 
 
-
+doom/customs/email.el
+window_manager/dwl/backup/
 
 
 
@@ -52,5 +52,6 @@ doom/customs/email.el
 !README.md
 !.gitignore
 !window_manager/
+!doom
 
 

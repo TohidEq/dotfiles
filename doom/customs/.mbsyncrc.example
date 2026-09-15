@@ -1,0 +1,181 @@
+# Reddit: https://www.reddit.com/r/emacs/comments/bfsck6/mu4e_for_dummies/
+
+# mbsyncrc based on
+# http://www.ict4g.net/adolfo/notes/2014/12/27/EmacsIMAP.html
+# ACCOUNT INFORMATION
+IMAPAccount [USER_A]-gmail
+# Address to connect to
+
+#  ! ! ! ! ! ! ! ! ! ! !
+# [USER_A]   ==> MyName
+# [[USER_A]] ==> [MyName]
+#  ! ! ! ! ! ! ! ! ! ! !
+
+Host imap.gmail.com
+User [USER_A]@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d path/to/.mbsyncpass-[USER_A].gpg"
+AuthMechs PLAIN
+TLSType IMAPS
+TLSVersions +1.2 +1.3
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+# THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE
+# - THE REMOTE STORAGE IS WHERE WE GET THE MAIL FROM (E.G., THE
+#   SPECIFICATION OF AN IMAP ACCOUNT)
+# - THE LOCAL STORAGE IS WHERE WE STORE THE EMAIL ON OUR COMPUTER
+# REMOTE STORAGE (USE THE IMAP ACCOUNT SPECIFIED ABOVE)
+IMAPStore [USER_A]-gmail-remote
+Account [USER_A]-gmail
+# LOCAL STORAGE (CREATE DIRECTORIES with mkdir -p ~/Maildir/[USER_A]-gmail)
+MaildirStore [USER_A]-gmail-local
+Path path/to/[USER_A]-gmail/
+Inbox path/to/[USER_A]-gmail/INBOX
+# REQUIRED ONLY IF YOU WANT TO DOWNLOAD ALL SUBFOLDERS; SYNCING SLOWS DOWN
+# SubFolders Verbatim
+# CONNECTIONS SPECIFY LINKS BETWEEN REMOTE AND LOCAL FOLDERS
+#
+# CONNECTIONS ARE SPECIFIED USING PATTERNS, WHICH MATCH REMOTE MAIl
+# FOLDERS. SOME COMMONLY USED PATTERS INCLUDE:
+#
+# 1 "*" TO MATCH EVERYTHING
+# 2 "!DIR" TO EXCLUDE "DIR"
+# 3 "DIR" TO MATCH DIR
+Channel [USER_A]-gmail-inbox
+Far :[USER_A]-gmail-remote:
+Near :[USER_A]-gmail-local:
+Patterns INBOX
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 600
+ExpireUnread yes
+Channel [USER_A]-gmail-trash
+Far :[USER_A]-gmail-remote:"[Gmail]/Trash"
+Near :[USER_A]-gmail-local:"[[USER_A]].Trash"
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 600
+ExpireUnread yes
+Channel [USER_A]-gmail-sent
+Far :[USER_A]-gmail-remote:"[Gmail]/Sent Mail"
+Near :[USER_A]-gmail-local:"[[USER_A]].Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 600
+ExpireUnread yes
+#
+# Channel [USER_A]-gmail-all
+# Far :[USER_A]-gmail-remote:"[Gmail]/All Mail"
+# Near :[USER_A]-gmail-local:"[[USER_A]].All Mail"
+# Create Both
+# Expunge Both
+# SyncState *
+# MaxMessages 600
+# ExpireUnread yes
+# Channel [USER_A]-gmail-starred
+# Far :[USER_A]-gmail-remote:"[Gmail]/Starred"
+# Near :[USER_A]-gmail-local:"[[USER_A]].Starred"
+# Create Both
+# Expunge Both
+# SyncState *
+# MaxMessages 600
+# ExpireUnread yes
+# GROUPS PUT TOGETHER CHANNELS, SO THAT WE CAN INVOKE
+# MBSYNC ON A GROUP TO SYNC ALL CHANNELS
+#
+# FOR INSTANCE: "mbsync gmail" GETS MAIL FROM
+# "gmail-inbox", "gmail-sent", and "gmail-trash"
+#
+Group [USER_A]-gmail
+Channel [USER_A]-gmail-inbox
+Channel [USER_A]-gmail-sent
+Channel [USER_A]-gmail-trash
+# Channel [USER_A]-gmail-all
+# Channel [USER_A]-gmail-starred
+# ================================================================================
+#
+# ACCOUNT INFORMATION
+IMAPAccount [USER_B]-gmail
+# Address to connect to
+Host imap.gmail.com
+User [USER_B]@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d path/to/.mbsyncpass-[USER_B].gpg"
+AuthMechs PLAIN
+TLSType IMAPS
+TLSVersions +1.2 +1.3
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+# THEN WE SPECIFY THE LOCAL AND REMOTE STORAGE
+# - THE REMOTE STORAGE IS WHERE WE GET THE MAIL FROM (E.G., THE
+#   SPECIFICATION OF AN IMAP ACCOUNT)
+# - THE LOCAL STORAGE IS WHERE WE STORE THE EMAIL ON OUR COMPUTER
+# REMOTE STORAGE (USE THE IMAP ACCOUNT SPECIFIED ABOVE)
+IMAPStore [USER_B]-gmail-remote
+Account [USER_B]-gmail
+# LOCAL STORAGE (CREATE DIRECTORIES with mkdir -p ~/Maildir/[USER_B]-gmail)
+MaildirStore [USER_B]-gmail-local
+Path path/to/[USER_B]-gmail/
+Inbox path/to/[USER_B]-gmail/INBOX
+# CONNECTIONS SPECIFY LINKS BETWEEN REMOTE AND LOCAL FOLDERS
+#
+# CONNECTIONS ARE SPECIFIED USING PATTERNS, WHICH MATCH REMOTE MAIl
+# FOLDERS. SOME COMMONLY USED PATTERS INCLUDE:
+#
+# 1 "*" TO MATCH EVERYTHING
+# 2 "!DIR" TO EXCLUDE "DIR"
+# 3 "DIR" TO MATCH DIR
+Channel [USER_B]-gmail-inbox
+Far :[USER_B]-gmail-remote:
+Near :[USER_B]-gmail-local:
+Patterns INBOX
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 600
+ExpireUnread yes
+Channel [USER_B]-gmail-trash
+Far :[USER_B]-gmail-remote:"[Gmail]/Trash"
+Near :[USER_B]-gmail-local:"[[USER_B]].Trash"
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 600
+ExpireUnread yes
+Channel [USER_B]-gmail-sent
+Far :[USER_B]-gmail-remote:"[Gmail]/Sent Mail"
+Near :[USER_B]-gmail-local:"[[USER_B]].Sent Mail"
+Create Both
+Expunge Both
+SyncState *
+MaxMessages 600
+ExpireUnread yes
+#
+# Channel [USER_B]-gmail-all
+# Far :[USER_B]-gmail-remote:"[Gmail]/All Mail"
+# Near :[USER_B]-gmail-local:"[[USER_B]].All Mail"
+# Create Both
+# Expunge Both
+# SyncState *
+# MaxMessages 600
+# ExpireUnread yes
+#
+# Channel [USER_B]-gmail-starred
+# Far :[USER_B]-gmail-remote:"[Gmail]/Starred"
+# Near :[USER_B]-gmail-local:"[[USER_B]].Starred"
+# Create Both
+# Expunge Both
+# SyncState *
+# MaxMessages 600
+# ExpireUnread yes
+# GROUPS PUT TOGETHER CHANNELS, SO THAT WE CAN INVOKE
+# MBSYNC ON A GROUP TO SYNC ALL CHANNELS
+#
+# FOR INSTANCE: "mbsync gmail" GETS MAIL FROM
+# "gmail-inbox", "gmail-sent", and "gmail-trash"
+#
+Group [USER_B]-gmail
+Channel [USER_B]-gmail-inbox
+Channel [USER_B]-gmail-sent
+Channel [USER_B]-gmail-trash
+#Channel [USER_B]-gmail-all
+#Channel [USER_B]-gmail-starred
