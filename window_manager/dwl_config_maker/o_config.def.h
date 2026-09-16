@@ -52,8 +52,8 @@ static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You ca
 
 /* Cursor Theme */
 //static const char *cursor_theme            = "Adwaita";
-static const char *cursor_theme            = "Moga-Candy-Grey";
-static const char cursor_size[]            = "24"; /* Make sure it's a valid integer, otherwise things will break */
+static const char *cursor_theme            = "volantes_cursors";
+static const char cursor_size[]            = "16"; /* Make sure it's a valid integer, otherwise things will break */
 
 static const int cursor_timeout = 5; // 5 sec and then invis
 
