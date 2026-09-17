@@ -249,33 +249,49 @@
       "")
 			;; browser service
     (button
-      :onclick ""
+      :onclick "run_toggle_tor &"
       "")
 			;; vnc server
     (button
-      :onclick ""
+      :onclick "run_toggle_vnc &"
       "󰦉")
 			;; ssh
     (button
+      :onclick "run_toggle_ssh %"
       "󰆍")
 			;; ftp
     (button
-      :onclick ""
+      :onclick "run_toggle_ftp &"
       "")
 			;; touch server
     (button
-      :onclick ""
+      :onclick "run_toggle_touchserver &"
       "󰈷")
 			;; color picker
     (button
       :onclick "run_color_picker &"
       "")
 		;; waypaper wallpaper manager
+    (button
+      :onclick "waypaper &"
+      "󰸉")
 		;; bluetooth manager
+    (button
+      :onclick "blueman-manager &"
+      "")
 		;; galculator
+    (button
+      :onclick "galculator &"
+      "󰪚")
 		;; scrcpy script ** TODO
 		;; pomotroid
+    (button
+      :onclick "pomotroid &"
+      "")
 		;; sniffnet
+    (button
+      :onclick "sniffnet &"
+      "󰀂")
 
   )
 )
@@ -357,5 +373,3 @@
 
 
 ;; ======================================================================
-
-
