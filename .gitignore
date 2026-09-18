@@ -29,6 +29,7 @@ tmux/plugins
 
 doom/customs/email.el
 window_manager/dwl/backup/
+fish/fish_variables
 
 
 
@@ -58,4 +59,4 @@ window_manager/dwl/backup/
 !mako
 !cava
 !tmux
-
+!fish
