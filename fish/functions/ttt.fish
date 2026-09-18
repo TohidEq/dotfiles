@@ -3,6 +3,9 @@ function ttt
 
     if test (count $argv) -eq 0 -o "$argv[1]" = "--help"
         echo "=============== Help ==============="
+        echo "Personal script to use TT ezier"
+        echo "TT's github repo: https://github.com/lemnos/tt/"
+        echo ""
         echo "Usage: ttt [OPTIONS]"
         echo ""
         echo "Options:"
@@ -22,6 +25,7 @@ function ttt
             if test $i -eq 1
                 echo "=============== All Themes ==============="
                 echo "Use (PgDn) or (Arrow Down) to scroll down"
+                echo "Search: press '/' key then write your fav theme name to find its number"
                 echo "Use (Q) to exit"
                 echo "=========================================="
                 echo
