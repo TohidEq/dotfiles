@@ -1,0 +1,16 @@
+#!/bin/sh
+
+percent=$(pamixer --get-volume)
+
+
+if [ "$percent" -eq 0 ]; then
+    icon=""
+elif [ "$percent" -ge 1 ] && [ "$percent" -le 33 ]; then
+    icon=""
+elif [ "$percent" -ge 34 ] && [ "$percent" -le 66 ]; then
+    icon=""
+else
+    icon=""
+fi
+
+echo "^lm(kitty alsamixer)^rm(kitty pavucontrol)^ds(pamixer -d 2;pkill -RTMIN+6 someblocks)^us(pamixer -i 2;pkill -RTMIN+6 someblocks)${icon}  ${percent}%"

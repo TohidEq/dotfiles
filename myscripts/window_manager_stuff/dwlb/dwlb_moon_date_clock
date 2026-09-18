@@ -1,0 +1,26 @@
+#!/usr/bin/env fish
+
+# Print moon phase + date + time for dwlb
+# Output is plain text on stdout
+
+set hour (date +%H)
+
+# Moon clock characters
+set chars \
+    "󱑊" "󱐿" "󱑀" "󱑁" "󱑂" "󱑃" "󱑄" "󱑅" \
+    "󱑆" "󱑇" "󱑈" "󱑉" \
+    "󱑊" "󱐿" "󱑀" "󱑁" "󱑂" "󱑃" "󱑄" "󱑅" \
+    "󱑆" "󱑇" "󱑈" "󱑉"
+
+#set chars "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑐" "󱑑" "󱑒" "󱑓" "󱑔" "󱑕" "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑐" "󱑑" "󱑒" "󱑓" "󱑔" "󱑕"
+
+# ----- Update Moon Phase ------
+$HOME/.config/myscripts/moon-face/moon-face
+# --------- MOON PHASE ---------
+set FILE "$HOME/.config/myscripts/moon-face/moon-face-char"
+
+# Current time
+set clck (string split " " (date +"%H %M"))
+
+# Output
+echo "^lm(kitty khal interactive)$(cat $FILE) $(date '+%Y,%m,%d')  $clck[1]:$clck[2] $chars[$(math "$clck[1] + 1")]   "

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+
+
+if pgrep -f '/home/arc/.config/myscripts/touchserver/TouchServer' >/dev/null; then
+    notif_send 0 "Kill TouchServer" "" "skull"
+    pkill -f '/home/arc/.config/myscripts/touchserver/TouchServer'
+else
+    notif_send 0 "Start TouchServer" "" "check"
+    python /home/arc/.config/myscripts/touchserver/TouchServer &
+fi

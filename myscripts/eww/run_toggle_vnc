@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+if pgrep -x wayvnc >/dev/null; then
+    notif_send 0 "Kill VNC Server" "" "skull"
+    pkill -x wayvnc
+else
+    notif_send 0 "Start VNC Server" "" "check"
+    wayvnc 0.0.0.0 -g &
+fi

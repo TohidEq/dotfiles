@@ -1,0 +1,30 @@
+#!/usr/bin/env fish
+
+# Fish script to send a notification via Mako using notify-send
+# Usage: notif_send <level> <title> <text> <icon>
+# Level can be: low(1), normal(2), critical(3) (maps to urgency)
+
+set level $argv[1]
+set title $argv[2]
+set text $argv[3]
+set icon $argv[4]
+
+
+set icon_path "/home/arc/.config/custom_images/$icon.png"
+
+switch $level
+    case 1
+        set urgency low
+    case 2
+        set urgency normal
+    case 3
+        set urgency critical
+    case '*'
+        set urgency normal
+end
+
+
+
+
+# Send notification
+notify-send -u "$urgency" -i "$icon_path" "$title" "$text"

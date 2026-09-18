@@ -1,0 +1,5 @@
+﻿#!/bin/sh
+
+cd $HOME/myworld/Applications/TS/teamspeak3-server_linux_amd64
+
+./ts3server license_accepted=1

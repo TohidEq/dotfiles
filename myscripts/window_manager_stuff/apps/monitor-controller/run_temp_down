@@ -1,0 +1,3 @@
+#!/bin/sh
+
+busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100

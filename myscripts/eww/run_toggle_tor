@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+SERVICE="tor"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    notif_send 0 "Kill Tor" "" "skull"
+    pkexec systemctl stop "$SERVICE"
+else
+    notif_send 0 "Start Tor" "" "check"
+    pkexec systemctl start "$SERVICE"
+fi

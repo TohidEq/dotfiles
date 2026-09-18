@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pkill someblocks
+pkill dwlb
+pkill dwlb2
+sdwlb

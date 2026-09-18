@@ -1,0 +1,8 @@
+﻿#!/bin/sh
+
+
+notif_send 1 "Selectable Screenshot" "Press Esc to exit"
+
+grim -g "$(slurp)" - | swappy -f -
+
+

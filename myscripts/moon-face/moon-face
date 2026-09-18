@@ -1,0 +1,62 @@
+#!/usr/bin/env fish
+
+# mode 1 outline characters
+# mode 2 simple characters
+set MODE 2
+
+# soth 0 = starts at right side
+# soth 1 = starts at left side
+set SOUTH 0
+
+# set south to 0 if u are in north of the Earth
+# set south to 1 if u are in south of the Earth
+
+#-------------------------------------------------------------
+
+set MOON_FILE $HOME/.config/myscripts/moon-face/moon-face-char
+
+set year (date +%Y)
+set month (date +%m)
+set day (date +%d)
+
+set a (math "floor((14 - $month)/12)")
+set y (math "$year + 4800 - $a")
+set m (math "$month + 12*$a - 3")
+set jdn (math "$day + floor((153*$m + 2)/5) + 365*$y + floor($y/4) - floor($y/100) + floor($y/400) - 32045")
+
+# 2451550.1 = Julian Date
+set phase (math "floor(($jdn - 2451550.1) % 29.530588853)")
+set phase (math "$phase + 1")
+
+set lineNorth1                             
+set lineNorth2                             
+
+set lineSouth1                             
+set lineSouth2                             
+
+set charN1 $lineNorth1[$phase]
+set charN2 $lineNorth2[$phase]
+
+set charS1 $lineSouth1[$phase]
+set charS2 $lineSouth2[$phase]
+
+#echo "$phase"
+
+# ----------------
+
+#echo "$SOUTH * 2 + $MODE" >>$MOON_FILE
+#sed -n (math 1)p $FILE
+
+if test $MODE -eq 1
+   if test $SOUTH -eq 1
+      echo "$charS1" >$MOON_FILE
+   else
+      echo "$charN1" >$MOON_FILE
+   end
+else
+   if test $SOUTH -eq 1
+      echo "$charS2" >$MOON_FILE
+   else
+      echo "$charN2" >$MOON_FILE
+   end
+end

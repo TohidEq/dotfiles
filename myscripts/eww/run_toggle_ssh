@@ -1,0 +1,12 @@
+#!/bin/sh
+
+
+SERVICE="sshd"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    notif_send 0 "Kill SSH" "" "skull"
+    pkexec systemctl stop "$SERVICE"
+else
+    notif_send 0 "Start SSH" "" "check"
+    pkexec systemctl start "$SERVICE"
+fi

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Temperature q 6500

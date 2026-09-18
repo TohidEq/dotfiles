@@ -1,0 +1,10 @@
+﻿#!/bin/sh
+
+
+
+grim - | wl-copy
+sleep 0.2
+notif_send 1 "Say Cheese :D" ""
+sleep 0.2
+notif_send 2 "Fullscreen Screenshot" "it's in your clipboard, use Ctrl+V anywhere you want" "check"
+

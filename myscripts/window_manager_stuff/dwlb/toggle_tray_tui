@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pkill -x tray-tui || kitty tray-tui &

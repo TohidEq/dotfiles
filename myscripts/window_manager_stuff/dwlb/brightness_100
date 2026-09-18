@@ -1,0 +1,27 @@
+#!/bin/sh
+
+current=$(brightnessctl g)
+max=$(brightnessctl m)
+
+if [ "$max" -eq 0 ]; then
+    echo "󰽢   0%"
+else
+    percent=$(( current * 100 / max ))
+
+    if [ "$percent" -eq 0 ] && [ "$percent" -le 6 ]; then
+        icon="󰽢"
+    elif [ "$percent" -ge 7 ] && [ "$percent" -le 17 ]; then
+        icon="󰃛"
+    elif [ "$percent" -ge 18 ] && [ "$percent" -le 24 ]; then
+        icon="󰃜"
+    elif [ "$percent" -ge 25 ] && [ "$percent" -le 41 ]; then
+        icon="󰃞"
+    elif [ "$percent" -ge 42 ] && [ "$percent" -le 58 ]; then
+        icon="󰃟"
+    elif [ "$percent" -ge 59 ] && [ "$percent" -le 75 ]; then
+        icon="󰃝"
+    else
+        icon="󰃠"
+    fi
+    echo "^us(pkill -RTMIN+5 someblocks;brightnessctl set 5%+)^ds(pkill -RTMIN+5 someblocks;brightnessctl set 5%-)${icon}  ${percent}%"
+fi

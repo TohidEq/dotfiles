@@ -1,0 +1,11 @@
+#!/bin/sh
+
+dwlb &
+dwlb2 &
+sleep 1;
+#dwlb2 -status all '^bg(000000)^fg(ffffff)^lm(wlogout -b 5)  ⏻  ^lm()^lm(toggle_tray_tui) 󰧟󰧞  󰧞󰧟  ^bg()^lm()';
+dwlb2 -status all '^bg(000000)^fg(ffffff)^lm()^lm(toggle_tray_tui) 󰧟󰧞  󰧞󰧟  ^bg()^lm()';
+
+sleep 1;
+
+someblocks -p | dwlb -status-stdin all &

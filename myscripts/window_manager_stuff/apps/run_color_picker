@@ -1,0 +1,5 @@
+#!/bin/sh
+
+color=$(hyprpicker)
+echo -n "$color" | wl-copy
+notif_send 1 "Color: $color" "Use Ctrl+V anywhere you want" "colors"

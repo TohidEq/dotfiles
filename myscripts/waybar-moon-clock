@@ -1,0 +1,24 @@
+#!/usr/bin/env fish
+
+# Print moon phase + time for waybar
+# Output is plain text on stdout
+
+set hour (date +%H)
+
+# Moon clock characters
+set chars \
+    "󱑊" "󱐿" "󱑀" "󱑁" "󱑂" "󱑃" "󱑄" "󱑅" \
+    "󱑆" "󱑇" "󱑈" "󱑉" \
+    "󱑊" "󱐿" "󱑀" "󱑁" "󱑂" "󱑃" "󱑄" "󱑅" \
+    "󱑆" "󱑇" "󱑈" "󱑉"
+
+#set chars "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑐" "󱑑" "󱑒" "󱑓" "󱑔" "󱑕" "󱑖" "󱑋" "󱑌" "󱑍" "󱑎" "󱑏" "󱑐" "󱑑" "󱑒" "󱑓" "󱑔" "󱑕"
+
+# --------- MOON PHASE ---------
+set FILE "$HOME/.config/myscripts/moon-face/moon-face-char"
+
+# Current time
+set clck (string split " " (date +"%H %M"))
+
+# Output
+echo " $chars[$(math "$clck[1] + 1")]  $clck[1]:$clck[2]  $(cat $FILE)"

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+percent=$(cat /sys/class/power_supply/BAT0/capacity | tr -d '\n')
+
+if [ "$percent" -ge 0 ] && [ "$percent" -le 9 ]; then
+    icon=" "
+elif [ "$percent" -ge 10 ] && [ "$percent" -le 18 ]; then
+    icon=""
+elif [ "$percent" -ge 19 ] && [ "$percent" -le 27 ]; then
+    icon=""
+elif [ "$percent" -ge 28 ] && [ "$percent" -le 36 ]; then
+    icon=""
+elif [ "$percent" -ge 37 ] && [ "$percent" -le 45 ]; then
+    icon=""
+elif [ "$percent" -ge 46 ] && [ "$percent" -le 54 ]; then
+    icon=""
+elif [ "$percent" -ge 55 ] && [ "$percent" -le 63 ]; then
+    icon=""
+elif [ "$percent" -ge 64 ] && [ "$percent" -le 72 ]; then
+    icon=""
+elif [ "$percent" -ge 73 ] && [ "$percent" -le 81 ]; then
+    icon=""
+elif [ "$percent" -ge 82 ] && [ "$percent" -le 90 ]; then
+    icon=""
+else
+    icon=""
+fi
+
+echo "${icon}  ${percent}%"

@@ -1,0 +1,5 @@
+﻿#!/bin/sh
+
+
+
+archwiki-offline -m "wmenu -N 000000ff -n ffffffff -S ffffffff -s 000000ff -M 000000ff -m 999999ff -l 39 -f 'JetBriansMono NF 12' -i -p 'ArchWiki >'"
