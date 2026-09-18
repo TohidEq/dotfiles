@@ -24,6 +24,7 @@
 .vim/plugin/
 .pcmanfm/default/pcmanfm.conf
 .tmux/plugins
+tmux/plugins
 
 
 doom/customs/email.el
@@ -56,5 +57,5 @@ window_manager/dwl/backup/
 !eww
 !mako
 !cava
-
+!tmux
 
