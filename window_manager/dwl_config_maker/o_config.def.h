@@ -88,6 +88,7 @@ static const char *const autostart[] = {
         //"wbg", "/path/to/your/image", NULL,
         "waypaper", "--restore", NULL,
         "sdwlb",NULL, // start dwlb top and bottom, + their blocks
+        "smako",NULL, // start notif service
         "lxqt-policykit-agent", NULL,
         "wl-gammarelay-rs", NULL,
         "run_toggle_eww", NULL,
@@ -267,8 +268,8 @@ static const char *termcmd[]                    = { "kitty", NULL },
                   *run_spf[]                    = { "run_spf", NULL },
                   *run_ranger[]  			          = { "run_ranger", NULL },
                   *run_code[]  				          = { "code", NULL },
-                  *run_code_toggle_theme[]      = { "code_toggle_theme", NULL };
-
+                  *run_code_toggle_theme[]      = { "code_toggle_theme", NULL },
+                  *run_toggle_dwlb[]            = { "run_toggle_dwlb", NULL };
 
 // ====--__\  import end  /__--==== //
 
@@ -339,7 +340,8 @@ static const Key keys[] = {
 	{ 0, 												 XKB_KEY_XF86MonBrightnessUp,   spawn,            {.v = bright_up} },
 	{ 0, 												 XKB_KEY_XF86MonBrightnessDown, spawn,            {.v = bright_down} },
 	// ===== Bar (dwlb)
-	{ MODKEY,                    XKB_KEY_b,                     togglebar,      	{0} },
+	{ MODKEY,                    XKB_KEY_b,                     spawn,            {.v = run_toggle_dwlb} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,                     togglebar,       {0} },
 	// ===== GenericGAPS
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_h,           incgaps,          {.i = +1 } },
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_l,           incgaps,          {.i = -1 } },

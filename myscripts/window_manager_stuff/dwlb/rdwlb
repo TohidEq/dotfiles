@@ -1,6 +1,8 @@
 #!/bin/sh
 
-pkill someblocks
-pkill dwlb
-pkill dwlb2
+
+
+pkill -x dwlb
+pkill -x someblocks
+pkill -x dwlb2
 sdwlb

@@ -5,6 +5,7 @@ run_eww() {
   eww --config $HOME/.config/eww open-many \
     launcher_controlls\
     launcher_apps_left\
+    launcher_apps_left_bottom\
     launcher_apps_right
 
     # time_stack_window_m \

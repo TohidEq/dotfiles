@@ -148,7 +148,7 @@
 ;; =====================================================================
 
 
-(defwindow launcher_controlls :stacking "bg" :monitor 0 :focusable "false" :screen 1
+(defwindow launcher_controlls :stacking "fg" :monitor 0 :focusable "false" :screen 1
   :geometry (geometry
 		:y 5
 		:x 0
@@ -298,7 +298,7 @@
 
 
 
-(defwindow launcher_apps_left :stacking "bg" :monitor 0 :focusable "false" :screen 1
+(defwindow launcher_apps_left :stacking "fg" :monitor 0 :focusable "false" :screen 1
   :geometry (geometry
 		:x 0
 		:width 18
@@ -371,5 +371,28 @@
 
 
 
+
+;; ======================================================================
+
+(defwindow launcher_apps_left_bottom :stacking "fg" :monitor 0 :focusable "false" :screen 1
+  :geometry (geometry
+		:y 10
+		:x 0
+		:width 18
+		:anchor "bottom left"
+	)
+
+  (box :orientation "v"  :class "launchers-items"
+       :spacing 30
+
+			 ;; powermenu
+    (button
+      :onclick "run_powermenu"
+      "⏻")
+
+
+
+  )
+)
 
 ;; ======================================================================

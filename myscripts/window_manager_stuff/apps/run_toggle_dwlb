@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if pgrep -x "dwlb" > /dev/null; then
+    notif_send 0 "Kill Both Bars" "dwlb and dwlb2" "skull"
+    pkill -x dwlb
+    pkill -x someblocks
+    pkill -x dwlb2
+else
+    dwlb &
+    dwlb2 &
+    notif_send 0 "Run Bottom Bar" ">> dwlb2" "check"
+    sleep 0.5;
+    dwlb2 -status all '^bg(000000)^fg(ffffff)^lm()^lm(toggle_tray_tui) 󰧟󰧞  󰧞󰧟  ^bg()^lm()';
+
+    notif_send 0 "Run Top Bar" ">> dwlb" "check"
+    sleep 0.5;
+    someblocks -p | dwlb -status-stdin all &
+fi
