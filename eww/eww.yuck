@@ -221,8 +221,56 @@
       "")
 
 
-
-
+        ;;
+    (button
+      " ")
+			;; ftp
+    (button
+      :onclick "pure_ftp_security_high &"
+      "")
+			;; ftp
+    (button
+      :onclick "run_toggle_ftp &"
+      "")
+			;; ftp
+    (button
+      :onclick "pure_ftp_security_low &"
+      "")
+        ;;
+    (button
+      " ")
+			;; browser service
+    (button
+      :onclick "run_toggle_tor &"
+      "")
+        ;;
+    (button
+      " ")
+			;; vnc server
+    (button
+      :onclick "run_toggle_vnc &"
+      "󰦉")
+        ;;
+    (button
+      " ")
+			;; ssh
+    (button
+      :onclick "run_toggle_ssh &"
+      "󰆍")
+        ;;
+    (button
+      " ")
+			;; touch server
+    (button
+      :onclick "run_toggle_touchserver &"
+      "󰈷")
+        ;;
+    (button
+      " ")
+			;; nginx
+    (button
+      :onclick "run_toggle_nginx&"
+      "")
 
   )
 )
@@ -241,36 +289,21 @@
 	)
 
   (box :orientation "v"  :class "launcher-items"
-       :spacing 30
+       :spacing 18
+
 
 			;; vpn throne
     (button
       :onclick "throne &"
       "")
-			;; browser service
-    (button
-      :onclick "run_toggle_tor &"
-      "")
-			;; vnc server
-    (button
-      :onclick "run_toggle_vnc &"
-      "󰦉")
-			;; ssh
-    (button
-      :onclick "run_toggle_ssh %"
-      "󰆍")
-			;; ftp
-    (button
-      :onclick "run_toggle_ftp &"
-      "")
-			;; touch server
-    (button
-      :onclick "run_toggle_touchserver &"
-      "󰈷")
 			;; color picker
     (button
       :onclick "run_color_picker &"
       "")
+			;; vnc server
+    (button
+      :onclick "vncviewer &"
+      "󱎴")
 		;; waypaper wallpaper manager
     (button
       :onclick "waypaper &"
@@ -364,7 +397,6 @@
     (button
       :onclick "thunar &"
       "")
-
 
   )
 )

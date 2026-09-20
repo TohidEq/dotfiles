@@ -7,5 +7,6 @@ static const char *const autostart[] = {
         "lxqt-policykit-agent", NULL,
         "wl-gammarelay-rs", NULL,
         "run_toggle_eww", NULL,
+        "clapboard", "--record", NULL,
         NULL /* terminate */
 };

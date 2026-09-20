@@ -4,9 +4,11 @@
 SERVICE="pure-ftpd"
 
 if systemctl is-active --quiet "$SERVICE"; then
-    notif_send 0 "Kill FTP" "" "skull"
+    notif_send 2 "Kill FTP" "" ""
     pkexec systemctl stop "$SERVICE"
+    notif_send 2 "FTP has benn Killed" "" "skull"
 else
-    notif_send 0 "Start FTP" "" "check"
+    notif_send 2 "Start FTP" "" ""
     pkexec systemctl start "$SERVICE"
+    notif_send 2 "FTP has benn Started" "" "check"
 fi

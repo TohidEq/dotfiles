@@ -2,7 +2,11 @@
 
 SETTINGS="/etc/pure-ftpd/pure-ftpd.conf"
 
-notif_send 0 "PURE_FTP: TLS 1" "Accept both cleartext and encrypted sessions." "check"
+notif_send 2 "PURE_FTP: TLS 1 Low Security" "Accept both cleartext and encrypted sessions." "check"
 
-kitty sudo sed -i "s/TLS 2/TLS 1/" "$SETTINGS" &
-sudo systemctl restart pure-ftpd
+
+notif_send 1 "PURE_FTP: TLS 1 Low Security" "Password to change setting..." ""
+pkexec sed -i "s/TLS 2/TLS 1/" "$SETTINGS"
+
+notif_send 1 "PURE_FTP: TLS 1 Low Security" "Password to restart pure-ftpd..." ""
+pkexec systemctl restart pure-ftpd

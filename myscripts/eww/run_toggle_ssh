@@ -4,9 +4,11 @@
 SERVICE="sshd"
 
 if systemctl is-active --quiet "$SERVICE"; then
-    notif_send 0 "Kill SSH" "" "skull"
+    notif_send 2 "Kill SSH" "" ""
     pkexec systemctl stop "$SERVICE"
+    notif_send 2 "SSH has benn Killed" "" "skull"
 else
-    notif_send 0 "Start SSH" "" "check"
+    notif_send 2 "Start SSH" "" ""
     pkexec systemctl start "$SERVICE"
+    notif_send 2 "SSH has benn Started" "" "check"
 fi

@@ -28,4 +28,5 @@ static const char *termcmd[]                    = { "kitty", NULL },
                   *run_ranger[]  			          = { "run_ranger", NULL },
                   *run_code[]  				          = { "code", NULL },
                   *run_code_toggle_theme[]      = { "code_toggle_theme", NULL },
-                  *run_toggle_dwlb[]            = { "run_toggle_dwlb", NULL };
+                  *run_toggle_dwlb[]            = { "run_toggle_dwlb", NULL },
+                  *run_clipboard[]            = { "clapboard", NULL };

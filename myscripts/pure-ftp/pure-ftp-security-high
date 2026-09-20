@@ -2,6 +2,11 @@
 
 SETTINGS="/etc/pure-ftpd/pure-ftpd.conf"
 
-notif_send 0 "PURE_FTP: TLS 2" "Refuse connections that don't use the TLS security mechanism, including anonymous sessions." "check"
-kitty sudo sed -i "s/TLS 1/TLS 2/" "$SETTINGS" &
-sudo systemctl restart pure-ftpd
+notif_send 0 "PURE_FTP: TLS 2 High Security" "Refuse connections that don't use the TLS security mechanism, including anonymous sessions." "check"
+
+
+notif_send 1 "PURE_FTP: TLS 2 High Security" "Password to change setting..." ""
+pkexec sed -i "s/TLS 1/TLS 2/" "$SETTINGS"
+
+notif_send 1 "PURE_FTP: TLS 2 High Security" "Password to restart pure-ftpd..." ""
+pkexec systemctl restart pure-ftpd

@@ -1,0 +1,6 @@
+﻿launcher = ["wmenu", "-N","000000ff", "-n", "ffffffff", "-S", "ffffffff", "-s", "000000ff", "-M", "000000ff", "-m", "999999ff", "-p", "Clapboard >", "-l", "39", "-f", "JetBriansMono NF 12" ]
+history_size = 50
+
+[favorites]
+# You can add your favorite clipboard pastes here like this:
+# "some key" = "some value"

@@ -29,6 +29,7 @@ static const Key keys[] = {
   { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_code} },
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F4,                    spawn,            {.v = run_code_toggle_theme} },
 
+  { MODKEY,                    XKB_KEY_v,                     spawn,            {.v = run_clipboard} },
 
 
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_j,                     focusstack,       {.i = +1} },
@@ -62,7 +63,7 @@ static const Key keys[] = {
 	{ 0, 												 XKB_KEY_XF86MonBrightnessDown, spawn,            {.v = bright_down} },
 	// ===== Bar (dwlb)
 	{ MODKEY,                    XKB_KEY_b,                     spawn,            {.v = run_toggle_dwlb} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,                     togglebar,       {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,                     togglebar,        {0} },
 	// ===== GenericGAPS
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_h,           incgaps,          {.i = +1 } },
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_l,           incgaps,          {.i = -1 } },

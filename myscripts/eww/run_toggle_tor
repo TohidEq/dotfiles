@@ -4,9 +4,11 @@
 SERVICE="tor"
 
 if systemctl is-active --quiet "$SERVICE"; then
-    notif_send 0 "Kill Tor" "" "skull"
+    notif_send 2 "Kill Tor" "" ""
     pkexec systemctl stop "$SERVICE"
+    notif_send 2 "Tor has benn Killed" "" "skull"
 else
-    notif_send 0 "Start Tor" "" "check"
+    notif_send 2 "Start Tor" "" ""
     pkexec systemctl start "$SERVICE"
+    notif_send 2 "Tor has benn Started" "" "check"
 fi

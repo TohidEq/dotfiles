@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+SERVICE="nginx"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    notif_send 2 "Kill $SERVICE" "" ""
+    pkexec systemctl disable --now "$SERVICE"
+    notif_send 2 "$SERVICE has benn Killed" "" "skull"
+else
+    notif_send 2 "Start $SERVICE" "" ""
+    pkexec systemctl enable --now "$SERVICE"
+    notif_send 2 "$SERVICE has benn Started" "" "check"
+fi
