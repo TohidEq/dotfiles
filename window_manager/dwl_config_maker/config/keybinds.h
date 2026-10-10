@@ -29,15 +29,20 @@ static const Key keys[] = {
   { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_code} },
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F4,                    spawn,            {.v = run_code_toggle_theme} },
 
-  { MODKEY,                    XKB_KEY_v,                     spawn,            {.v = run_clipboard} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_emacs} },
 
+  { MODKEY,                    XKB_KEY_v,                     spawn,            {.v = run_clipboard} },
+  { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_v,                     spawn,            {.v = run_reset_clipboard_history} },
+
+
+  { MODKEY,                    XKB_KEY_n,                     spawn,            {.v = run_emoji_picker} },
 
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_j,                     focusstack,       {.i = +1} },
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_k,                     focusstack,       {.i = -1} },
-	{ MODKEY,                    XKB_KEY_i,                     incnmaster,       {.i = +1} },
-	{ MODKEY,                    XKB_KEY_p,                     incnmaster,       {.i = -1} },
-	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_h,                     setmfact,         {.f = -0.05f} },
-	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_l,                     setmfact,         {.f = +0.05f} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_i,                     incnmaster,       {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_p,                     incnmaster,       {.i = -1} },
+	{ MODKEY,                    XKB_KEY_i,                     setmfact,         {.f = -0.05f} },
+	{ MODKEY,                    XKB_KEY_p,                     setmfact,         {.f = +0.05f} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,                zoom,             {0} },
 	{ MODKEY,                    XKB_KEY_Tab,                   view,             {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,                     killclient,       {0} },
@@ -64,6 +69,8 @@ static const Key keys[] = {
 	// ===== Bar (dwlb)
 	{ MODKEY,                    XKB_KEY_b,                     spawn,            {.v = run_toggle_dwlb} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,                     togglebar,        {0} },
+	{ MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_b,                     spawn,            {.v = run_restart_dwlb_eww} },
+
 	// ===== GenericGAPS
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_h,           incgaps,          {.i = +1 } },
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_l,           incgaps,          {.i = -1 } },

@@ -243,12 +243,12 @@ static const double accel_speed = 0.0;
 static const char *termcmd[]                    = { "kitty", NULL },
              ///  *run_cool_retro_termm[]       = { "cool-retro-term", NULL },
              ///  Audio commands :
-                  *vol_up[]   									= { "pamixer", "-i", "5", NULL },   // Increase by 5%
-                  *vol_down[] 									= { "pamixer", "-d", "5", NULL },   // Decrease by 5%
-                  *vol_mute[]		 								= { "pamixer", "-t", NULL },        // Toggle mute
+                  *vol_up[]                     = { "pamixer", "-i", "5", NULL },   // Increase by 5%
+                  *vol_down[]                   = { "pamixer", "-d", "5", NULL },   // Decrease by 5%
+                  *vol_mute[]                   = { "pamixer", "-t", NULL },        // Toggle mute
              ///  Screen Brightness commands :
-                  *bright_up[]   								= { "brightnessctl", "set", "5%+", NULL },
-                  *bright_down[] 								= { "brightnessctl", "set", "5%-", NULL },
+                  *bright_up[]                  = { "brightnessctl", "set", "5%+", NULL },
+                  *bright_down[]                = { "brightnessctl", "set", "5%-", NULL },
              /////////////////////////////////////////////////////////////////////////////
                   *menucmd[]                    = { "run_wmenu", NULL },
                   *run_powermenu[]              = { "run_powermenu", NULL },
@@ -256,22 +256,26 @@ static const char *termcmd[]                    = { "kitty", NULL },
                   *run_rofi[]                   = { "run_rofi", NULL },
                   *run_selectable_screenshot[]  = { "run_selectable_screenshot", NULL },
                   *run_fullscreen_screenshot[]  = { "run_fullscreen_screenshot", NULL },
-                  *run_wikiarch[]  		          = { "run_wikiarch", NULL },
-                  *run_toggle_eww[]  	          = { "run_toggle_eww", NULL },
-                  *run_btop[]  				          = { "run_btop", NULL },
-                  *run_nvtop[]  			          = { "run_nvtop", NULL },
+                  *run_wikiarch[]               = { "run_wikiarch", NULL },
+                  *run_toggle_eww[]             = { "run_toggle_eww", NULL },
+                  *run_btop[]                   = { "run_btop", NULL },
+                  *run_nvtop[]                  = { "run_nvtop", NULL },
                   *run_color_picker[]           = { "run_color_picker", NULL },
-                  *run_obsidian[]  		          = { "obsidian", NULL },
-                  *run_firefox[]  		          = { "firefox", NULL },
-                  *run_tor[]  				          = { "tor-browser", NULL },
+                  *run_obsidian[]               = { "obsidian", NULL },
+                  *run_firefox[]                = { "firefox", NULL },
+                  *run_tor[]                    = { "tor-browser", NULL },
                   *run_qutebrowser[]            = { "qutebrowser", NULL },
                   *run_thunar[]                 = { "thunar", NULL },
                   *run_spf[]                    = { "run_spf", NULL },
-                  *run_ranger[]  			          = { "run_ranger", NULL },
-                  *run_code[]  				          = { "code", NULL },
+                  *run_ranger[]                 = { "run_ranger", NULL },
+                  *run_code[]                   = { "code", NULL },
                   *run_code_toggle_theme[]      = { "code_toggle_theme", NULL },
+                  *run_emacs[]                  = { "emacs", NULL },
                   *run_toggle_dwlb[]            = { "run_toggle_dwlb", NULL },
-                  *run_clipboard[]            = { "clapboard", NULL };
+                  *run_restart_dwlb_eww[]       = { "run_restart_dwlb_eww", NULL },
+                  *run_clipboard[]              = { "clapboard", NULL },
+                  *run_reset_clipboard_history[]= { "run_reset_clipboard_history", NULL },
+                  *run_emoji_picker[]           = { "wmoji", NULL };
 
 // ====--__\  import end  /__--==== //
 
@@ -310,15 +314,20 @@ static const Key keys[] = {
   { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_code} },
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F4,                    spawn,            {.v = run_code_toggle_theme} },
 
-  { MODKEY,                    XKB_KEY_v,                     spawn,            {.v = run_clipboard} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_emacs} },
 
+  { MODKEY,                    XKB_KEY_v,                     spawn,            {.v = run_clipboard} },
+  { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_v,                     spawn,            {.v = run_reset_clipboard_history} },
+
+
+  { MODKEY,                    XKB_KEY_n,                     spawn,            {.v = run_emoji_picker} },
 
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_j,                     focusstack,       {.i = +1} },
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_k,                     focusstack,       {.i = -1} },
-	{ MODKEY,                    XKB_KEY_i,                     incnmaster,       {.i = +1} },
-	{ MODKEY,                    XKB_KEY_p,                     incnmaster,       {.i = -1} },
-	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_h,                     setmfact,         {.f = -0.05f} },
-	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_l,                     setmfact,         {.f = +0.05f} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_i,                     incnmaster,       {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_p,                     incnmaster,       {.i = -1} },
+	{ MODKEY,                    XKB_KEY_i,                     setmfact,         {.f = -0.05f} },
+	{ MODKEY,                    XKB_KEY_p,                     setmfact,         {.f = +0.05f} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,                zoom,             {0} },
 	{ MODKEY,                    XKB_KEY_Tab,                   view,             {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,                     killclient,       {0} },
@@ -345,6 +354,8 @@ static const Key keys[] = {
 	// ===== Bar (dwlb)
 	{ MODKEY,                    XKB_KEY_b,                     spawn,            {.v = run_toggle_dwlb} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,                     togglebar,        {0} },
+	{ MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_b,                     spawn,            {.v = run_restart_dwlb_eww} },
+
 	// ===== GenericGAPS
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_h,           incgaps,          {.i = +1 } },
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_l,           incgaps,          {.i = -1 } },
