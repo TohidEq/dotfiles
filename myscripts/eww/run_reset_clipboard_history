@@ -1,0 +1,5 @@
+#!/bin/sh
+
+rm -rf ~/.cache/clapboard/* ;
+
+notif_send 0 "Clapboard" "The clipboard history has been reset." "check"

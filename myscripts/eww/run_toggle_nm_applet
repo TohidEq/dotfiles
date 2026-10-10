@@ -1,0 +1,13 @@
+﻿#!/bin/sh
+
+SERVICE="nm-applet"
+
+if pgrep -x $SERVICE > /dev/null; then
+    notif_send 2 "Kill $SERVICE" "" ""
+    pkill -x $SERVICE
+    notif_send 2 "$SERVICE has benn Killed" "" "skull"
+else
+    notif_send 2 "Start $SERVICE" "" ""
+    $SERVICE &
+    notif_send 2 "$SERVICE has benn Started" "" "check"
+fi
