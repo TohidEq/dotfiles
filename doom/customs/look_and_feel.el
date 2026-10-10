@@ -135,8 +135,8 @@
         centaur-tabs-set-bar 'under
         x-underline-at-descent-line t
 
-        ;;centaur-tabs-close-button "✕"
-        centaur-tabs-close-button " "
+        centaur-tabs-close-button "✕"
+        ;;centaur-tabs-close-button " "
 
         centaur-tabs-new-tab-text "  "
         centaur-tabs-modified-marker ""
