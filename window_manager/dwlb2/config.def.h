@@ -25,7 +25,8 @@ static bool active_color_title = true;
 // scale
 static uint32_t buffer_scale = 1;
 // font
-static char *fontstr = "Hurmit Nerd Font Propo:style=bold:size=10";
+static char *fontstr = "JetBrainsMono Nerd Font:style=bold:size=10";
+//static char *fontstr = "Hurmit Nerd Font Propo:style=bold:size=10";
 // tag names
 static char *tags_names[] = {""};
 //static char *tags_names[] = { "󰬺", "󰬻", "󰬼", "󰬽", "󰬾", "󰬿", "󰭀", "󰭁" , "󰭂" };
