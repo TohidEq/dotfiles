@@ -77,7 +77,7 @@
 	defwidget time_stack_h []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-54.png');"
+				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-00.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -87,7 +87,7 @@
 	defwidget time_stack_m []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-57.png');"
+				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-09.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -160,14 +160,14 @@
        :spacing 0
 
     (button
-      :onclick "pamixer -i 5"
+      :onclick "pamixer -i 5; pkill -RTMIN+6 someblocks"
       "")
 
     (button
       "")
 
     (button
-      :onclick "pamixer -d 5"
+      :onclick "pamixer -d 5; pkill -RTMIN+6 someblocks"
       "")
 
     (button
@@ -175,14 +175,14 @@
 
 
     (button
-      :onclick "brightnessctl set 5%+"
+      :onclick "brightnessctl set 5%+; pkill -RTMIN+5 someblocks"
       "")
 
     (button
       "󰃟")
 
     (button
-      :onclick "brightnessctl set 5%-"
+      :onclick "brightnessctl set 5%-; pkill -RTMIN+5 someblocks"
       "")
 
 
@@ -326,6 +326,8 @@
       :onclick "sniffnet &"
       "󰀂")
 
+
+
   )
 )
 
@@ -335,7 +337,7 @@
   :geometry (geometry
 		:x 0
 		:width 18
-		:anchor "center left"
+		:anchor "top left"
 	)
 
   (box :orientation "v"  :class "launchers-items"
@@ -415,11 +417,24 @@
 	)
 
   (box :orientation "v"  :class "launchers-items"
-       :spacing 30
+       :spacing 18
+
+			 ;; reset clipboard history
+    (button
+      :onclick "clapboard"
+      :onrightclick "run_reset_clipboard_history"
+      "")
+
+		;; Network
+    (button
+      :onclick "nmgui &"
+      :onrightclick "run_toggle_nm_applet &"
+      "")
 
 			 ;; powermenu
     (button
-      :onclick "run_powermenu"
+     :onclick "run_powermenu &"
+     :onrightclick "wlogout -b 5 &"
       "⏻")
 
 
