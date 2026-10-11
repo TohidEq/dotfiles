@@ -80,6 +80,20 @@ static const int lock_cursor = 0;	/* 1: lock cursor, 0: don't lock */
 // ====--__\  import end  /__--==== //
 
 //----------------------------------------------------------------------------------//
+// import: "./config/patches/menu.h"
+// __.---==/ import start \==---.__ //
+
+
+static const Menu menus[] = {
+	/* command                            feed function        action function */
+	{ "wmenu -i -N 000000ff -n ffffffff -S ffffffff -s 000000ff -M 000000ff -m 999999ff -p 'Windows >'  -l 39 -f 'JetBriansMono NF 12'",        menuwinfeed,         menuwinaction    },
+	{ "wmenu -i -N 000000ff -n ffffffff -S ffffffff -s 000000ff -M 000000ff -m 999999ff -p 'Layouts >'  -l 39 -f 'JetBriansMono NF 12'",              menulayoutfeed,      menulayoutaction },
+};
+
+
+// ====--__\  import end  /__--==== //
+
+//----------------------------------------------------------------------------------//
 // import: "./config/autostart.h"
 // __.---==/ import start \==---.__ //
 
@@ -132,8 +146,8 @@ static const Layout layouts[] = {
   { " 󰕰 ",      tile },
 	{ "  ",      NULL },    /* no layout function means floating behavior */
 	{ "  ",      monocle },
-	//{ " 󰋑 ",     dwindle },
-	{ "  ",     dwindle },
+	{ " 󰋑 ",     dwindle },
+	//{ "  ",     dwindle },
 
 };
 
@@ -389,6 +403,11 @@ static const Key keys[] = {
 	{ MODKEY,                   XKB_KEY_Up,             focusdir,         {.ui = 2} },
 	{ MODKEY,                   XKB_KEY_j,              focusdir,         {.ui = 3} },
 	{ MODKEY,                   XKB_KEY_Down,           focusdir,         {.ui = 3} },
+
+	// ===== Menu
+	{ MODKEY,                    XKB_KEY_o,           	menu,             {.v = &menus[0]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_O,           	menu,             {.v = &menus[1]} },
+
 
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),

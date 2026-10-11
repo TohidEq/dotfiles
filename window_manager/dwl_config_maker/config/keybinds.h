@@ -98,6 +98,11 @@ static const Key keys[] = {
 	{ MODKEY,                   XKB_KEY_j,              focusdir,         {.ui = 3} },
 	{ MODKEY,                   XKB_KEY_Down,           focusdir,         {.ui = 3} },
 
+	// ===== Menu
+	{ MODKEY,                    XKB_KEY_o,           	menu,             {.v = &menus[0]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_O,           	menu,             {.v = &menus[1]} },
+
+
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),
 	TAGKEYS(          XKB_KEY_3, XKB_KEY_numbersign,                    2),
