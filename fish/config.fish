@@ -16,7 +16,8 @@ alias gitc1="git clone --depth 1"
 
 alias ffch="clear && fastfetch --config dwl.jsonc"
 
-alias readme-reader="glow"
+alias crmd="glow"
+alias grmd="viewmd"
 #alias dwlbuild="cd ~/.config/dotfiles/dwl/;rm -rf config.h;sudo make clean install"
 
 #set -x QT_QPA_PLATFORMTHEME qt5ct
