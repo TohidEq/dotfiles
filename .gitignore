@@ -29,6 +29,7 @@ tmux/plugins
 
 doom/customs/email.el
 window_manager/dwl/backup/
+window_manager/all-dwl-patches/
 fish/fish_variables
 
 
