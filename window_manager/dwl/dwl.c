@@ -270,6 +270,7 @@ static void arrangelayers(Monitor *m);
 static void autostartexec(void);
 static void axisnotify(struct wl_listener *listener, void *data);
 static void buttonpress(struct wl_listener *listener, void *data);
+static void centeredmaster(Monitor *m);
 static void chvt(const Arg *arg);
 static void checkidleinhibitor(struct wlr_surface *exclude);
 static void cleanup(void);
@@ -812,6 +813,78 @@ buttonpress(struct wl_listener *listener, void *data)
 	 * pointer focus that a button press has occurred */
 	wlr_seat_pointer_notify_button(seat,
 			event->time_msec, event->button, event->state);
+}
+
+void
+centeredmaster(Monitor *m)
+{
+	int i, n, h, mw, mx, my, oty, ety, tw;
+	Client *c;
+
+	n = 0;
+	wl_list_for_each(c, &clients, link)
+		if (VISIBLEON(c, m) && !c->isfloating && !c->isfullscreen)
+			n++;
+	if (n == 0)
+		return;
+
+	/* initialize areas */
+	if (centeredmaster_always) {
+		mw = m->w.width / 2;
+		mx = m->w.width / 4;
+	} else {
+		mw = m->w.width;
+		mx = 0;
+	}
+	my = 0;
+	tw = mw;
+
+	if (n > m->nmaster) {
+		/* go mfact box in the center if more than nmaster clients */
+		if (centeredmaster_always) {
+			mw = m->nmaster ? (int)roundf(m->w.width / 2) : 0;
+			tw = mw / 2;
+		} else {
+			mw = m->nmaster ? (int)roundf(m->w.width * m->mfact) : 0;
+			tw = m->w.width - mw;
+		}
+
+		if (n - m->nmaster > 1) {
+			/* only one client */
+			mx = (m->w.width - mw) / 2;
+			tw = (m->w.width - mw) / 2;
+		}
+	}
+
+	i = 0;
+	oty = 0;
+	ety = 0;
+	wl_list_for_each(c, &clients, link) {
+		if (!VISIBLEON(c, m) || c->isfloating || c->isfullscreen)
+			continue;
+		if (i < m->nmaster) {
+			/* nmaster clients are stacked vertically, in the center
+			 * of the screen */
+			h = (m->w.height - my) / (MIN(n, m->nmaster) - i);
+			resize(c, (struct wlr_box){.x = m->w.x + mx, .y = m->w.y + my, .width = mw,
+				   .height = h}, 0);
+			my += c->geom.height;
+		} else {
+			/* stack clients are stacked vertically */
+			if ((i - m->nmaster) % 2) {
+				h = (m->w.height - ety) / ( (1 + n - i) / 2);
+				resize(c, (struct wlr_box){.x = m->w.x, .y = m->w.y + ety, .width = tw,
+					   .height = h}, 0);
+				ety += c->geom.height;
+			} else {
+				h = (m->w.height - oty) / ((1 + n - i) / 2);
+				resize(c, (struct wlr_box){.x = m->w.x + mx + mw, .y = m->w.y + oty, .width = tw,
+					.height = h}, 0);
+				oty += c->geom.height;
+			}
+		}
+		i++;
+	}
 }
 
 void

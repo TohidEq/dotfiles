@@ -9,5 +9,6 @@ static const Layout layouts[] = {
 	{ "  ",      monocle },
 	{ " 󰋑 ",     dwindle },
 	//{ "  ",     dwindle },
+	{ "  ",      centeredmaster },
 
 };

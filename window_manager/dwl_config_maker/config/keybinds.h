@@ -8,9 +8,9 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_0,                     spawn,            {.v = run_powermenu} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_0,                     spawn,            {.v = run_wlogout} },
   { MODKEY,                    XKB_KEY_s,                     spawn,            {.v = run_selectable_screenshot} },
-  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_s,                     spawn,            {.v = run_fullscreen_screenshot} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_S,                     spawn,            {.v = run_fullscreen_screenshot} },
   { MODKEY,                    XKB_KEY_w,                     spawn,            {.v = run_wikiarch} },
-  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_w,                     spawn,            {.v = run_toggle_eww} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_W,                     spawn,            {.v = run_toggle_eww} },
   { MODKEY,                    XKB_KEY_c,                     spawn,            {.v = run_color_picker} },
 
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Escape,                spawn,            {.v = run_btop} },
@@ -39,19 +39,19 @@ static const Key keys[] = {
 
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_j,                     focusstack,       {.i = +1} },
 	//{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_k,                     focusstack,       {.i = -1} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_i,                     incnmaster,       {.i = +1} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_p,                     incnmaster,       {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_I,                     incnmaster,       {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_P,                     incnmaster,       {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,                     setmfact,         {.f = -0.05f} },
 	{ MODKEY,                    XKB_KEY_p,                     setmfact,         {.f = +0.05f} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,                zoom,             {0} },
 	{ MODKEY,                    XKB_KEY_Tab,                   view,             {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_q,                     killclient,       {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,                     killclient,       {0} },
 	{ MODKEY,                    XKB_KEY_t,                     setlayout,        {.v = &layouts[0]} }, // tile
 	//{ MODKEY,                    XKB_KEY_f,                     setlayout,        {.v = &layouts[1]} }, // float
 	{ MODKEY,                    XKB_KEY_m,                     setlayout,        {.v = &layouts[2]} }, // monocle
 	{ MODKEY,                    XKB_KEY_r,                     setlayout,        {.v = &layouts[3]} }, // dwindle
 	//{ MODKEY,                    XKB_KEY_space,                setlayout,        {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_f,                     togglefloating,   {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,                     togglefloating,   {0} },
 	{ MODKEY,                    XKB_KEY_f,                     togglefullscreen, {0} },
 	//{ MODKEY,                    XKB_KEY_0,                     view,             {.ui = ~0} }, // view all windows
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright,            tag,              {.ui = ~0} },
@@ -68,7 +68,7 @@ static const Key keys[] = {
 	{ 0, 												 XKB_KEY_XF86MonBrightnessDown, spawn,            {.v = bright_down} },
 	// ===== Bar (dwlb)
 	{ MODKEY,                    XKB_KEY_b,                     spawn,            {.v = run_toggle_dwlb} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_b,                     togglebar,        {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_B,                     togglebar,        {0} },
 	{ MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_b,                     spawn,            {.v = run_restart_dwlb_eww} },
 
 	// ===== GenericGAPS
@@ -99,9 +99,12 @@ static const Key keys[] = {
 	{ MODKEY,                   XKB_KEY_Down,           focusdir,         {.ui = 3} },
 
 	// ===== Menu
-	{ MODKEY,                    XKB_KEY_o,           	menu,             {.v = &menus[0]} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_O,           	menu,             {.v = &menus[1]} },
+	{ MODKEY,                    XKB_KEY_e,           	menu,             {.v = &menus[0]} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_E,           	menu,             {.v = &menus[1]} },
 
+
+	// ===== CenteredMaster
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,           	setlayout,        {.v = &layouts[4]} },
 
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),
