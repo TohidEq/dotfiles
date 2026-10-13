@@ -16,7 +16,7 @@ static const Key keys[] = {
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Escape,                spawn,            {.v = run_btop} },
   { MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_Escape,                spawn,            {.v = run_nvtop} },
 
-  { MODKEY,                    XKB_KEY_F1,                    spawn,            {.v = run_obsidian} },
+  { MODKEY,                    XKB_KEY_F1,                    spawnorfocus,            {.v = run_obsidian} },
 
   { MODKEY,                    XKB_KEY_F2,                    spawn,            {.v = run_firefox} },
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F2,                    spawn,            {.v = run_tor} },

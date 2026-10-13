@@ -1,3 +1,6 @@
+/* The third element is used by the 'spawnorfocus' function to match a title/app_id.
++ * If the third element is 'NULL', match on the first element instead */
+
 static const char *termcmd[]                    = { "kitty", NULL },
              ///  *run_cool_retro_termm[]       = { "cool-retro-term", NULL },
              ///  Audio commands :
@@ -19,7 +22,8 @@ static const char *termcmd[]                    = { "kitty", NULL },
                   *run_btop[]                   = { "run_btop", NULL },
                   *run_nvtop[]                  = { "run_nvtop", NULL },
                   *run_color_picker[]           = { "run_color_picker", NULL },
-                  *run_obsidian[]               = { "obsidian", NULL },
+                  *run_obsidian[]               = { "obsidian", NULL, NULL },
+                  // OR : *run_obsidian[]               = { "obsidian", NULL, "Obsidian" },
                   *run_firefox[]                = { "firefox", NULL },
                   *run_tor[]                    = { "tor-browser", NULL },
                   *run_qutebrowser[]            = { "qutebrowser", NULL },
