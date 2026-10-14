@@ -1,4 +1,3 @@
-
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
 	/* modifier                  key                  function          argument */
@@ -88,6 +87,7 @@ static const Key keys[] = {
 	//{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_o,           incohgaps,        {.i = -1 } },
 	//{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Y,           incovgaps,        {.i = +1 } },
 	//{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_O,           incovgaps,        {.i = -1 } },
+
 	// ===== FocusDir
 	{ MODKEY,                   XKB_KEY_h,              focusdir,         {.ui = 0} },
 	{ MODKEY,                   XKB_KEY_Left,           focusdir,         {.ui = 0} },
@@ -98,6 +98,17 @@ static const Key keys[] = {
 	{ MODKEY,                   XKB_KEY_j,              focusdir,         {.ui = 3} },
 	{ MODKEY,                   XKB_KEY_Down,           focusdir,         {.ui = 3} },
 
+	// ==== SwapAndFocus
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_H,        	 		swapdir,          {.ui = 0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Left,        	swapdir,          {.ui = 0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_L,       			swapdir,          {.ui = 1} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Right,       	swapdir,          {.ui = 1} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_K,           	swapdir,          {.ui = 2} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Up,          	swapdir,          {.ui = 2} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_J,        	 		swapdir,          {.ui = 3} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Down,       		swapdir,          {.ui = 3} },
+
+
 	// ===== Menu
 	{ MODKEY,                    XKB_KEY_e,           	menu,             {.v = &menus[0]} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_E,           	menu,             {.v = &menus[1]} },
@@ -105,6 +116,12 @@ static const Key keys[] = {
 
 	// ===== CenteredMaster
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,           	setlayout,        {.v = &layouts[4]} },
+
+	// ===== viewnextocctag
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_H,          viewnextocctag, {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_L,          viewnextocctag, {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_Left,       viewnextocctag, {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_Right,          viewnextocctag, {.i = +1} },
 
 	TAGKEYS(          XKB_KEY_1, XKB_KEY_exclam,                        0),
 	TAGKEYS(          XKB_KEY_2, XKB_KEY_at,                            1),

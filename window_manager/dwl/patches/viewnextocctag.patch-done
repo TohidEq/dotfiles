@@ -1,0 +1,92 @@
+From 330fa634a83e9b332494fade75552e02583bad6c Mon Sep 17 00:00:00 2001
+From: Ben Collerson <benc@benc.cc>
+Date: Sat, 30 Dec 2023 13:39:31 +1000
+Subject: [PATCH] viewnextocctag
+
+---
+ config.def.h |  2 ++
+ dwl.c        | 34 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 36 insertions(+)
+
+diff --git a/config.def.h b/config.def.h
+index a784eb4f..e1a6a428 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -130,6 +130,8 @@ static const Key keys[] = {
+ 	{ MODKEY,                    XKB_KEY_d,          incnmaster,     {.i = -1} },
+ 	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },
+ 	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.05f} },
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_H,          viewnextocctag, {.i = -1} },
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_L,          viewnextocctag, {.i = +1} },
+ 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
+ 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
+ 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_C,          killclient,     {0} },
+diff --git a/dwl.c b/dwl.c
+index 6f041a0d..df5461d0 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -304,6 +304,7 @@ static void motionnotify(uint32_t time, struct wlr_input_device *device, double
+ 		double sy, double sx_unaccel, double sy_unaccel);
+ static void motionrelative(struct wl_listener *listener, void *data);
+ static void moveresize(const Arg *arg);
++unsigned int nextocctag(int);
+ static void outputmgrapply(struct wl_listener *listener, void *data);
+ static void outputmgrapplyortest(struct wlr_output_configuration_v1 *config, int test);
+ static void outputmgrtest(struct wl_listener *listener, void *data);
+@@ -344,6 +345,7 @@ static void updatemons(struct wl_listener *listener, void *data);
+ static void updatetitle(struct wl_listener *listener, void *data);
+ static void urgent(struct wl_listener *listener, void *data);
+ static void view(const Arg *arg);
++static void viewnextocctag(const Arg *argint);
+ static void virtualkeyboard(struct wl_listener *listener, void *data);
+ static void virtualpointer(struct wl_listener *listener, void *data);
+ static Monitor *xytomon(double x, double y);
+@@ -1868,6 +1870,27 @@ moveresize(const Arg *arg)
+ 	}
+ }
+ 
++unsigned int
++nextocctag(int direction)
++{
++	unsigned int seltag = selmon->tagset[selmon->seltags];
++	unsigned int occ = 0, i;
++	Client *c;
++
++	wl_list_for_each(c, &clients, link)
++		occ |= c->tags;
++
++	for (i=0; i<TAGCOUNT; i++) {
++		seltag = (direction > 0) ?
++			(seltag == (1u << (TAGCOUNT - 1)) ? 1u : seltag << 1) :
++			(seltag == 1 ? (1u << (TAGCOUNT - 1)) : seltag >> 1);
++		if (seltag & occ)
++			break;
++	}
++
++	return seltag & TAGMASK;
++}
++
+ void
+ outputmgrapply(struct wl_listener *listener, void *data)
+ {
+@@ -2852,6 +2875,17 @@ view(const Arg *arg)
+ 	printstatus();
+ }
+ 
++void
++viewnextocctag(const Arg *arg)
++{
++	unsigned int tmp;
++
++	if ((tmp = nextocctag(arg->i)) == selmon->tagset[selmon->seltags])
++		return;
++
++	view(&(const Arg){.ui = tmp});
++}
++
+ void
+ virtualkeyboard(struct wl_listener *listener, void *data)
+ {
+-- 
+2.45.1
+

@@ -260,6 +260,13 @@ typedef struct {
 	void (*feed)(FILE *f); /* feed input to menu */
 	void (*action)(char *line); /* do action based on menu output */
 } Menu;
+
+typedef struct {
+	int x;
+	int y;
+} Vector;
+
+
 /* function declarations */
 static void applybounds(Client *c, struct wlr_box *bbox);
 static void applyrules(Client *c);
@@ -321,7 +328,10 @@ static void dwl_ipc_output_release(struct wl_client *client, struct wl_resource 
 static void focusclient(Client *c, int lift);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
+
 static void focusdir(const Arg *arg);
+static void swapdir(const Arg *arg);
+
 static Client *focustop(Monitor *m);
 static void fullscreennotify(struct wl_listener *listener, void *data);
 static void gpureset(struct wl_listener *listener, void *data);
@@ -357,6 +367,7 @@ static void motionnotify(uint32_t time, struct wlr_input_device *device, double 
 		double sy, double sx_unaccel, double sy_unaccel);
 static void motionrelative(struct wl_listener *listener, void *data);
 static void moveresize(const Arg *arg);
+unsigned int nextocctag(int);
 static void outputmgrapply(struct wl_listener *listener, void *data);
 static void outputmgrapplyortest(struct wlr_output_configuration_v1 *config, int test);
 static void outputmgrtest(struct wl_listener *listener, void *data);
@@ -403,6 +414,7 @@ static void updatemons(struct wl_listener *listener, void *data);
 static void updatetitle(struct wl_listener *listener, void *data);
 static void urgent(struct wl_listener *listener, void *data);
 static void view(const Arg *arg);
+static void viewnextocctag(const Arg *argint);
 static void virtualkeyboard(struct wl_listener *listener, void *data);
 static void virtualpointer(struct wl_listener *listener, void *data);
 static void warpcursor(const Client *c);
@@ -1989,6 +2001,163 @@ void focusdir(const Arg *arg)
   }
 }
 
+Vector
+position_of_box(const struct wlr_box *box)
+{
+	return (Vector){
+		.x = box->x + box->width / 2,
+		.y = box->y + box->height / 2,
+	};
+}
+
+Vector
+diff_of_vectors(Vector *a, Vector *b)
+{
+	return (Vector){
+		.x = b->x - a->x,
+		.y = b->y - a->y,
+	};
+}
+
+const char *
+direction_of_vector(Vector *vector)
+{
+	// A zero length vector has no direction
+	if (vector->x == 0 && vector->y == 0) return "";
+
+	if (abs(vector->y) > abs(vector->x)) {
+		// Careful: We are operating in a Y-inverted coordinate system.
+		return (vector->y > 0) ? "bottom" : "top";
+	} else {
+		return (vector->x > 0) ? "right" : "left";
+	}
+}
+
+uint32_t
+vector_length(Vector *vector)
+{
+	// Euclidean distance formula
+	return (uint32_t)sqrt(vector->x * vector->x + vector->y * vector->y);
+}
+
+// Spatial direction, based on focused client position.
+Client *
+client_in_direction(const char *direction, const int *skipfloat)
+{
+	Client *cfocused = focustop(selmon);
+	Vector cfocusedposition;
+	Client *ctarget = NULL;
+	double targetdistance = INFINITY;
+	Client *c;
+
+	if (!cfocused || cfocused->isfullscreen || (skipfloat && cfocused->isfloating))
+		return NULL;
+
+	cfocusedposition = position_of_box(&cfocused->geom);
+
+	wl_list_for_each(c, &clients, link) {
+		Vector cposition;
+		Vector positiondiff;
+		uint32_t distance;
+
+		if (c == cfocused)
+			continue;
+
+		if (skipfloat && c->isfloating)
+			continue;
+
+		if (!VISIBLEON(c, selmon))
+			continue;
+
+		cposition = position_of_box(&c->geom);
+		positiondiff = diff_of_vectors(&cfocusedposition, &cposition);
+
+		if (strcmp(direction, direction_of_vector(&positiondiff)) != 0)
+			continue;
+
+		distance = vector_length(&positiondiff);
+
+		 if (distance < targetdistance) {
+			ctarget = c;
+			targetdistance = distance;
+		}
+	}
+
+	return ctarget;
+}
+
+// void
+// focusdir(const Arg *arg)
+// {
+// 	Client *c = NULL;
+
+// 	if (arg->ui == 0)
+// 		c = client_in_direction("left", (int *)0);
+// 	if (arg->ui == 1)
+// 		c = client_in_direction("right", (int *)0);
+// 	if (arg->ui == 2)
+// 		c = client_in_direction("top", (int *)0);
+// 	if (arg->ui == 3)
+// 		c = client_in_direction("bottom", (int *)0);
+
+// 	if (c != NULL)
+// 		focusclient(c, 1);
+// }
+
+void
+wl_list_swap(struct wl_list *list1, struct wl_list *list2)
+{
+	struct wl_list *prev1, *next1, *prev2, *next2;
+	struct wl_list temp;
+
+	if (list1 == list2) {
+		// No need to swap the same list
+		return;
+	}
+
+	// Get the lists before and after list1
+	prev1 = list1->prev;
+	next1 = list1->next;
+
+	// Get the lists before and after list2
+	prev2 = list2->prev;
+	next2 = list2->next;
+
+	// Update the next and previous pointers of adjacent lists
+	prev1->next = list2;
+	next1->prev = list2;
+	prev2->next = list1;
+	next2->prev = list1;
+
+	// Swap the next and previous pointers of the lists to actually swap them
+	temp = *list1;
+	*list1 = *list2;
+	*list2 = temp;
+}
+
+void
+swapdir(const Arg *arg)
+{
+	Client *c = NULL;
+	Client *cfocused;
+
+	if (arg->ui == 0)
+		c = client_in_direction("left", (int *)1);
+	if (arg->ui == 1)
+		c = client_in_direction("right", (int *)1);
+	if (arg->ui == 2)
+		c = client_in_direction("top", (int *)1);
+	if (arg->ui == 3)
+		c = client_in_direction("bottom", (int *)1);
+
+	if (c == NULL)
+		return;
+
+	cfocused = focustop(selmon);
+	wl_list_swap(&cfocused->link, &c->link);
+	arrange(selmon);
+}
+
 /* We probably should change the name of this: it sounds like it
  * will focus the topmost client of this mon, when actually will
  * only return that client */
@@ -2749,6 +2918,27 @@ moveresize(const Arg *arg)
 		wlr_cursor_set_xcursor(cursor, cursor_mgr, cursors[rzcorner]);
 		break;
 	}
+}
+
+unsigned int
+nextocctag(int direction)
+{
+	unsigned int seltag = selmon->tagset[selmon->seltags];
+	unsigned int occ = 0, i;
+	Client *c;
+
+	wl_list_for_each(c, &clients, link)
+		occ |= c->tags;
+
+	for (i=0; i<TAGCOUNT; i++) {
+		seltag = (direction > 0) ?
+			(seltag == (1u << (TAGCOUNT - 1)) ? 1u : seltag << 1) :
+			(seltag == 1 ? (1u << (TAGCOUNT - 1)) : seltag >> 1);
+		if (seltag & occ)
+			break;
+	}
+
+	return seltag & TAGMASK;
 }
 
 void
@@ -3878,6 +4068,17 @@ view(const Arg *arg)
 	focusclient(focustop(selmon), 1);
 	arrange(selmon);
 	printstatus();
+}
+
+void
+viewnextocctag(const Arg *arg)
+{
+	unsigned int tmp;
+
+	if ((tmp = nextocctag(arg->i)) == selmon->tagset[selmon->seltags])
+		return;
+
+	view(&(const Arg){.ui = tmp});
 }
 
 void
