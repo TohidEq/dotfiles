@@ -98,7 +98,7 @@ static const Menu menus[] = {
 // __.---==/ import start \==---.__ //
 
 
-static const int centeredmaster_always     = 1;  /* always center even if only 1 window */
+static const int centeredmaster_always     = 0;  /* always center even if only 1 window */
 
 // ====--__\  import end  /__--==== //
 
