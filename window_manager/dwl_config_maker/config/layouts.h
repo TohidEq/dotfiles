@@ -11,4 +11,6 @@ static const Layout layouts[] = {
 	//{ "  ",     dwindle },
 	{ "  ",      centeredmaster },
 
+	{ NULL,       NULL }, /* terminate */
+
 };

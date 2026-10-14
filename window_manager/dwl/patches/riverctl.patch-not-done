@@ -1,0 +1,1288 @@
+From 672df57ab7d5b52f91a712eaf3954d580cdf8ba3 Mon Sep 17 00:00:00 2001
+From: Zuki Air <zukirust@gmail.com>
+Date: Thu, 7 Aug 2025 13:19:59 +0100
+Subject: [PATCH] riverctl patch
+
+make setborderpx apply instantly
+
+add setting border colors via dwlctl
+---
+ .gitignore                              |   1 +
+ Makefile                                |  22 +-
+ config.def.h                            |  42 +-
+ dwl.c                                   |  47 +-
+ dwlctl.c                                | 133 ++++
+ protocols/river-control-unstable-v1.xml |  85 +++
+ river-control.h                         | 789 ++++++++++++++++++++++++
+ 7 files changed, 1094 insertions(+), 25 deletions(-)
+ create mode 100644 dwlctl.c
+ create mode 100644 protocols/river-control-unstable-v1.xml
+ create mode 100644 river-control.h
+
+diff --git a/.gitignore b/.gitignore
+index 0dde90e..251aa4f 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,4 +1,5 @@
+ dwl
++dwlctl
+ *.o
+ *-protocol.c
+ *-protocol.h
+diff --git a/Makefile b/Makefile
+index 578194f..029dfad 100644
+--- a/Makefile
++++ b/Makefile
+@@ -21,8 +21,15 @@ dwl: dwl.o util.o
+ 	$(CC) dwl.o util.o $(DWLCFLAGS) $(LDFLAGS) $(LDLIBS) -o $@
+ dwl.o: dwl.c client.h config.h config.mk cursor-shape-v1-protocol.h \
+ 	pointer-constraints-unstable-v1-protocol.h wlr-layer-shell-unstable-v1-protocol.h \
+-	wlr-output-power-management-unstable-v1-protocol.h xdg-shell-protocol.h
++	wlr-output-power-management-unstable-v1-protocol.h \
++	xdg-shell-protocol.h \
++	river-control-unstable-v1-protocol.h river-control-unstable-v1-private-protocol.c river-control.h \
++	dwlctl
+ util.o: util.c util.h
++#if there is a cleaner way of doing this please inform me this looks a little ugly
++dwlctl: river-control-unstable-v1-client-protocol.h river-control-unstable-v1-private-protocol.c river-control-unstable-v1-private-protocol.o dwlctl.c
++	$(CC) -c -o $@.o dwlctl.c 
++	$(CC) -lwayland-client -o $@ dwlctl.o river-control-unstable-v1-private-protocol.o
+ 
+ # wayland-scanner is a tool which generates C headers and rigging for Wayland
+ # protocols, which are specified in XML. wlroots requires you to rig these up
+@@ -30,6 +37,17 @@ util.o: util.c util.h
+ WAYLAND_SCANNER   = `$(PKG_CONFIG) --variable=wayland_scanner wayland-scanner`
+ WAYLAND_PROTOCOLS = `$(PKG_CONFIG) --variable=pkgdatadir wayland-protocols`
+ 
++river-control-unstable-v1-client-protocol.h:
++	$(WAYLAND_SCANNER) client-header \
++		protocols/river-control-unstable-v1.xml  $@
++river-control-unstable-v1-protocol.h:
++	$(WAYLAND_SCANNER) server-header \
++		protocols/river-control-unstable-v1.xml  $@
++river-control-unstable-v1-private-protocol.c:
++	$(WAYLAND_SCANNER) private-code \
++		protocols/river-control-unstable-v1.xml  $@
++river-control-unstable-v1-private-protocol.o:
++	$(CC) -c -o $@ river-control-unstable-v1-private-protocol.c
+ cursor-shape-v1-protocol.h:
+ 	$(WAYLAND_SCANNER) enum-header \
+ 		$(WAYLAND_PROTOCOLS)/staging/cursor-shape/cursor-shape-v1.xml $@
+@@ -49,7 +67,7 @@ xdg-shell-protocol.h:
+ config.h:
+ 	cp config.def.h $@
+ clean:
+-	rm -f dwl *.o *-protocol.h
++	rm -f dwl *.o *-protocol.h *-protocol.c
+ 
+ dist: clean
+ 	mkdir -p dwl-$(VERSION)
+diff --git a/config.def.h b/config.def.h
+index 95c2afa..ccc3edb 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -6,11 +6,11 @@
+ /* appearance */
+ static const int sloppyfocus               = 1;  /* focus follows mouse */
+ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
+-static const unsigned int borderpx         = 1;  /* border pixel of windows */
++static unsigned int borderpx         = 1;  /* border pixel of windows */
+ static const float rootcolor[]             = COLOR(0x222222ff);
+-static const float bordercolor[]           = COLOR(0x444444ff);
+-static const float focuscolor[]            = COLOR(0x005577ff);
+-static const float urgentcolor[]           = COLOR(0xff0000ff);
++static float bordercolor[]           = COLOR(0x444444ff);
++static float focuscolor[]            = COLOR(0x005577ff);
++static float urgentcolor[]           = COLOR(0xff0000ff);
+ /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
+ static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
+ 
+@@ -21,7 +21,14 @@ static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You ca
+ static int log_level = WLR_ERROR;
+ 
+ /* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
+-static const Rule rules[] = {
++/* with river-control patch these rules are still applied but cannot be disabled 
++ * Intended for when you have startup programs you want to apply rules to and want to a avoid a race condition with riverctl 
++ *
++ * the USE_RULES macro sets the rules array to be used without it the rules array goes full unused, allowing it to be removed.
++ * The new_rules_override macro makes new rules with the exact same app_id and title replace the old one. */
++#define USE_RULES
++#define NEW_RULES_OVERRIDE
++static Rule rules[] = {
+ 	/* app_id             title       tags mask     isfloating   monitor */
+ 	/* examples: */
+ 	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
+@@ -122,7 +129,11 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
+ static const char *termcmd[] = { "foot", NULL };
+ static const char *menucmd[] = { "wmenu-run", NULL };
+ 
+-static const Key keys[] = {
++/* note keys gets cleared with riverctl clear-binds but the keys_always are excluded from being cleared 
++ * this is to have a list of fallback keybinds if your riverctl script fails 
++ * if you won't like to have keys[] declared commented out the KEYS_USED macro below to disable the functionality*/
++#define KEYS_USED
++static Key keys[] = {
+ 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
+ 	/* modifier                  key                 function        argument */
+ 	{ MODKEY,                    XKB_KEY_p,          spawn,          {.v = menucmd} },
+@@ -157,13 +168,18 @@ static const Key keys[] = {
+ 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
+ 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
+ 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
+-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
+-
+-	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
+-	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
+-	/* Ctrl-Alt-Fx is used to switch to another VT, if you don't know what a VT is
+-	 * do not remove them.
+-	 */
++};
++static Key keys_always[] = {
++// 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
++// 	/* modifier                  key                 function        argument */
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_D,          spawn,           SHCMD("foot")},
++	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0}},
++//
++// 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
++// 	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_Terminate_Server, quit, {0} },
++// 	/* Ctrl-Alt-Fx is used to switch to another VT, if you don't know what a VT is
++// 	 * do not remove them.
++// 	 */
+ #define CHVT(n) { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT,XKB_KEY_XF86Switch_VT_##n, chvt, {.ui = (n)} }
+ 	CHVT(1), CHVT(2), CHVT(3), CHVT(4), CHVT(5), CHVT(6),
+ 	CHVT(7), CHVT(8), CHVT(9), CHVT(10), CHVT(11), CHVT(12),
+diff --git a/dwl.c b/dwl.c
+index 12f441e..a064dcf 100644
+--- a/dwl.c
++++ b/dwl.c
+@@ -145,7 +145,7 @@ typedef struct {
+ 	uint32_t mod;
+ 	xkb_keysym_t keysym;
+ 	void (*func)(const Arg *);
+-	const Arg arg;
++	Arg arg;
+ } Key;
+ 
+ typedef struct {
+@@ -452,6 +452,9 @@ static struct wlr_xwayland *xwayland;
+ /* configuration, allows nested code to access above variables */
+ #include "config.h"
+ 
++/* river control */
++#include "river-control.h"
++
+ /* attempt to encapsulate suck into one file */
+ #include "client.h"
+ 
+@@ -480,13 +483,15 @@ applyrules(Client *c)
+ 	const char *appid, *title;
+ 	uint32_t newtags = 0;
+ 	int i;
++    const Rule_linked *rl;
+ 	const Rule *r;
+ 	Monitor *mon = selmon, *m;
+ 
+ 	appid = client_get_appid(c);
+ 	title = client_get_title(c);
+ 
+-	for (r = rules; r < END(rules); r++) {
++    wl_list_for_each(rl,&rules_list,link) {
++        r = rl->rule;
+ 		if ((!r->title || strstr(title, r->title))
+ 				&& (!r->id || strstr(appid, r->id))) {
+ 			c->isfloating = r->isfloating;
+@@ -1605,6 +1610,16 @@ inputdevice(struct wl_listener *listener, void *data)
+ 	wlr_seat_set_capabilities(seat, caps);
+ }
+ 
++inline bool  
++keybinding_key(uint32_t mods, xkb_keysym_t sym,const Key *k) {
++    if (CLEANMASK(mods) == CLEANMASK(k->mod)
++    		&& sym == k->keysym && k->func) {
++    	k->func(&k->arg);
++    	return true;
++    }
++    return false;
++}
++
+ int
+ keybinding(uint32_t mods, xkb_keysym_t sym)
+ {
+@@ -1613,14 +1628,22 @@ keybinding(uint32_t mods, xkb_keysym_t sym)
+ 	 * processing keys, rather than passing them on to the client for its own
+ 	 * processing.
+ 	 */
+-	const Key *k;
+-	for (k = keys; k < END(keys); k++) {
+-		if (CLEANMASK(mods) == CLEANMASK(k->mod)
+-				&& sym == k->keysym && k->func) {
+-			k->func(&k->arg);
+-			return 1;
+-		}
+-	}
++    const Key_linked *kl;
++    const Key *k;
++    Mode *new_mode_if_oneshot = active_mode->oneshot_mode;
++
++    wl_list_for_each(kl,&active_mode->linked_keys,link) {
++        k = kl->key;
++        if (keybinding_key(mods,sym,k) == true) {
++            if (new_mode_if_oneshot != NULL) {
++                active_mode = new_mode_if_oneshot;
++            }
++            return 1;
++        }
++	}
++	for (k = keys_always; k < END(keys_always); k++) {
++        if (keybinding_key(mods,sym,k) == true) {return 1;}
++    }
+ 	return 0;
+ }
+ 
+@@ -2645,6 +2668,8 @@ setup(void)
+ 	wl_signal_add(&output_mgr->events.apply, &output_mgr_apply);
+ 	wl_signal_add(&output_mgr->events.test, &output_mgr_test);
+ 
++    wl_global_create(dpy, &zriver_control_v1_interface, 1, NULL, zriver_control_handle_bind);
++
+ 	/* Make sure XWayland clients don't connect to the parent X server,
+ 	 * e.g when running in the x11 backend or the wayland backend and the
+ 	 * compositor has Xwayland support */
+@@ -3187,6 +3212,8 @@ main(int argc, char *argv[])
+ {
+ 	char *startup_cmd = NULL;
+ 	int c;
++    setup_binds();
++    setup_rules();
+ 
+ 	while ((c = getopt(argc, argv, "s:hdv")) != -1) {
+ 		if (c == 's')
+diff --git a/dwlctl.c b/dwlctl.c
+new file mode 100644
+index 0000000..bb54071
+--- /dev/null
++++ b/dwlctl.c
+@@ -0,0 +1,133 @@
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <wayland-client.h>
++#include <wayland-client-protocol.h>
++#include "river-control-unstable-v1-protocol.h"
++#include "river-control-unstable-v1-client-protocol.h"
++
++struct wl_display *wl_display;
++struct wl_registry *wl_registry;
++struct wl_callback *sync_callback;
++struct zriver_control_v1 *zriver_ctl = NULL;
++struct zriver_command_callback_v1 *zriver_callback = NULL;
++struct wl_seat *seat = NULL;
++struct wl_callback *sync_callback;
++bool loop = true;
++char** argv;
++int argc;
++
++static void callback_failure(void *data,
++			struct zriver_command_callback_v1 *zriver_command_callback_v1,
++			const char *failure_message) {
++    if (failure_message != NULL) {
++        printf("error: %s\n",failure_message);
++    }
++    zriver_command_callback_v1_destroy(zriver_command_callback_v1);
++    zriver_control_v1_destroy(zriver_ctl);
++    zriver_ctl = NULL;
++    loop = false;
++}
++static void callback_success(void *data,
++			struct zriver_command_callback_v1 *zriver_command_callback_v1,
++			const char *output) {
++    if (output[0] != '\0') {
++        printf("%s\n",output);
++    }
++    zriver_command_callback_v1_destroy(zriver_command_callback_v1);
++    loop = false;
++}
++
++struct zriver_command_callback_v1_listener zriver_callback_listener = {
++    .success = callback_success,
++    .failure = callback_failure,
++};
++
++
++
++static void
++registry_handle_global(void *data, struct wl_registry *registry,
++		uint32_t name, const char *interface, uint32_t version) {
++	if ( strcmp(interface, zriver_control_v1_interface.name) == 0 ) {
++        zriver_ctl = wl_registry_bind(registry, name,
++				&zriver_control_v1_interface, 1);
++    } else if (strcmp(interface, wl_seat_interface.name) == 0) {
++        seat = wl_registry_bind(registry, name,
++                &wl_seat_interface, 1);
++    }
++}
++
++static void add_arguments(){
++    for (char **p = argv + 1; *p != NULL; p++) {
++        zriver_control_v1_add_argument(zriver_ctl,*p);
++    }
++    zriver_callback = zriver_control_v1_run_command(zriver_ctl,seat);
++    zriver_command_callback_v1_add_listener(zriver_callback,&zriver_callback_listener,NULL);
++}
++
++static void sync_handle_done (void *data, struct wl_callback *wl_callback,
++		uint32_t irrelevant) {
++	wl_callback_destroy(wl_callback);
++	sync_callback = NULL;
++    if ( seat == NULL ) {
++		fputs("compositor doesn't support wl_seat?\n", stderr);
++        loop = false;
++        return;
++    }
++    if ( zriver_ctl == NULL ) {
++		fputs("compositor doesn't support riverctl.\n", stderr);
++        loop = false;
++        return;
++    }
++    add_arguments();
++}
++
++static const struct wl_callback_listener sync_callback_listener = {
++	.done = sync_handle_done,
++};
++
++static void registry_handle_global_remove(void *a, struct wl_registry *b, uint32_t c) {
++    /* this does nothing but handles global remove to prevent issues */
++}
++
++static const struct wl_registry_listener registry_listener = {
++	.global        = registry_handle_global,
++	.global_remove = registry_handle_global_remove
++};
++
++static bool init_wayland (void) {
++	const char *display_name = getenv("WAYLAND_DISPLAY");
++	if ( display_name == NULL )
++	{
++		fputs("WAYLAND_DISPLAY is not set.\n", stderr);
++		return false;
++	}
++
++	wl_display = wl_display_connect(display_name);
++	if ( wl_display == NULL )
++	{
++		fputs("Can not connect to Wayland server.\n", stderr);
++		return false;
++	}
++
++	/* The registry is a global object which is used to advertise all
++	 * available global objects.
++	 */
++	wl_registry = wl_display_get_registry(wl_display);
++	wl_registry_add_listener(wl_registry, &registry_listener, NULL);
++	
++    sync_callback = wl_display_sync(wl_display);
++	wl_callback_add_listener(sync_callback, &sync_callback_listener, NULL);
++
++	return true;
++}
++
++int main(int argc_local, char *argv_local[]) {
++    argc = argc_local;
++    argv = argv_local;
++    if (init_wayland()) {
++        while (loop && wl_display_dispatch(wl_display) != -1) {};
++    }
++    // cleanup();
++    return 0;
++}
+diff --git a/protocols/river-control-unstable-v1.xml b/protocols/river-control-unstable-v1.xml
+new file mode 100644
+index 0000000..aa5fc4d
+--- /dev/null
++++ b/protocols/river-control-unstable-v1.xml
+@@ -0,0 +1,85 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<protocol name="river_control_unstable_v1">
++  <copyright>
++    Copyright 2020 The River Developers
++
++    Permission to use, copy, modify, and/or distribute this software for any
++    purpose with or without fee is hereby granted, provided that the above
++    copyright notice and this permission notice appear in all copies.
++
++    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
++    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
++    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
++    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
++    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
++    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
++    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
++  </copyright>
++
++  <interface name="zriver_control_v1" version="1">
++    <description summary="run compositor commands">
++      This interface allows clients to run compositor commands and receive a
++      success/failure response with output or a failure message respectively.
++
++      Each command is built up in a series of add_argument requests and
++      executed with a run_command request. The first argument is the command
++      to be run.
++
++      A complete list of commands should be made available in the man page of
++      the compositor.
++    </description>
++
++    <request name="destroy" type="destructor">
++      <description summary="destroy the river_control object">
++        This request indicates that the client will not use the
++        river_control object any more. Objects that have been created
++        through this instance are not affected.
++      </description>
++    </request>
++
++    <request name="add_argument">
++      <description summary="add an argument to the current command">
++        Arguments are stored by the server in the order they were sent until
++        the run_command request is made.
++      </description>
++      <arg name="argument" type="string" summary="the argument to add"/>
++    </request>
++
++    <request name="run_command">
++      <description summary="run the current command">
++        Execute the command built up using the add_argument request for the
++        given seat.
++      </description>
++      <arg name="seat" type="object" interface="wl_seat"/>
++      <arg name="callback" type="new_id" interface="zriver_command_callback_v1"
++        summary="callback object"/>
++    </request>
++  </interface>
++
++  <interface name="zriver_command_callback_v1" version="1">
++    <description summary="callback object">
++      This object is created by the run_command request. Exactly one of the
++      success or failure events will be sent. This object will be destroyed
++      by the compositor after one of the events is sent.
++    </description>
++
++    <event name="success" type="destructor">
++      <description summary="command successful">
++        Sent when the command has been successfully received and executed by
++        the compositor. Some commands may produce output, in which case the
++        output argument will be a non-empty string.
++      </description>
++      <arg name="output" type="string" summary="the output of the command"/>
++    </event>
++
++    <event name="failure" type="destructor">
++      <description summary="command failed">
++        Sent when the command could not be carried out. This could be due to
++        sending a non-existent command, no command, not enough arguments, too
++        many arguments, invalid arguments, etc.
++      </description>
++      <arg name="failure_message" type="string"
++        summary="a message explaining why failure occurred"/>
++    </event>
++  </interface>
++</protocol>
+diff --git a/river-control.h b/river-control.h
+new file mode 100644
+index 0000000..599cffe
+--- /dev/null
++++ b/river-control.h
+@@ -0,0 +1,789 @@
++#include "river-control-unstable-v1-private-protocol.c"
++#include "river-control-unstable-v1-protocol.h"
++#ifdef KEYS_USED
++void default_binds(struct wl_list*);
++#endif
++void enter_mode(const Arg*);
++void create_mode_user(const Arg*);
++void oneshot_mode(const Arg*);
++void clear_rules(const Arg*);
++void clear_binds(const Arg*);
++void setborderpx(const Arg*);
++void setfocuscolor(const Arg*);
++void setbordercolor(const Arg*);
++void seturgentcolor(const Arg*);
++struct wl_list arg_str_store;
++struct wl_list rule_str_store;
++struct wl_list rules_list;
++struct wl_list modes_list;
++typedef struct {
++    Key *key;
++    struct wl_list link;
++    bool no_free_key;
++    bool no_remove;
++} Key_linked;
++typedef struct {
++    Rule *rule;
++    struct wl_list link;
++    bool no_free_rule;
++    bool no_remove;
++    struct Str_link *str_link;
++} Rule_linked;
++typedef struct Mode Mode;
++struct Mode {
++    struct wl_list link;
++    struct wl_list linked_keys;
++    struct Mode *oneshot_mode;
++    char* name;
++};
++Mode *active_mode;
++Mode *normal_mode;
++struct Keysym_str_pair {
++    xkb_keysym_t keysym;
++    const char * keysym_str;
++};
++struct Mod_str_pair {
++	uint32_t mod;
++    const char * mod_str;
++};
++typedef enum {
++    FUNC_STR_ARG_TYPE_NONE,
++    FUNC_STR_ARG_TYPE_INT,
++    FUNC_STR_ARG_TYPE_UINT,
++    FUNC_STR_ARG_TYPE_FLOAT,
++    FUNC_STR_ARG_TYPE_COLOR,
++    FUNC_STR_ARG_TYPE_STRING_ARRAY,
++    FUNC_STR_ARG_TYPE_WLR_DIRECTION,
++    FUNC_STR_ARG_TYPE_LAYOUT,
++} Func_str_arg_type;
++
++struct Func_str_type_pair {
++	void (*func)(const Arg *);
++    Func_str_arg_type arg_type;
++    const char * func_str;
++};
++#define STR(a,b) \
++    { a, b, #a }
++struct Func_str_type_pair Func_str_type_pair_list[] = {
++    { clear_binds, FUNC_STR_ARG_TYPE_NONE, "clear-binds" },
++    { clear_rules, FUNC_STR_ARG_TYPE_NONE, "clear-rules" },
++    { enter_mode, FUNC_STR_ARG_TYPE_STRING_ARRAY, "enter-mode"},
++    { oneshot_mode, FUNC_STR_ARG_TYPE_STRING_ARRAY, "oneshot-mode"},
++    { create_mode_user, FUNC_STR_ARG_TYPE_STRING_ARRAY, "create-mode"},
++    STR(setfocuscolor,FUNC_STR_ARG_TYPE_COLOR),
++    STR(setbordercolor,FUNC_STR_ARG_TYPE_COLOR),
++    STR(seturgentcolor,FUNC_STR_ARG_TYPE_COLOR),
++    STR(setborderpx,FUNC_STR_ARG_TYPE_UINT),
++    STR(setlayout,FUNC_STR_ARG_TYPE_LAYOUT),
++    STR(spawn,FUNC_STR_ARG_TYPE_STRING_ARRAY),
++    STR(focusstack,FUNC_STR_ARG_TYPE_INT),
++    STR(setmfact,FUNC_STR_ARG_TYPE_FLOAT),
++    STR(zoom,FUNC_STR_ARG_TYPE_NONE),
++    STR(killclient,FUNC_STR_ARG_TYPE_NONE),
++    STR(incnmaster,FUNC_STR_ARG_TYPE_INT),
++    STR(togglefloating,FUNC_STR_ARG_TYPE_NONE),
++    STR(togglefullscreen,FUNC_STR_ARG_TYPE_NONE),
++    STR(view,FUNC_STR_ARG_TYPE_UINT),
++    STR(toggleview,FUNC_STR_ARG_TYPE_UINT),
++    STR(tagmon,FUNC_STR_ARG_TYPE_WLR_DIRECTION),
++    STR(focusmon,FUNC_STR_ARG_TYPE_WLR_DIRECTION),
++    STR(tag,FUNC_STR_ARG_TYPE_UINT),
++    STR(toggletag,FUNC_STR_ARG_TYPE_UINT),
++    STR(togglefullscreen,FUNC_STR_ARG_TYPE_NONE),
++    STR(quit,FUNC_STR_ARG_TYPE_NONE),
++};
++#undef STR
++struct Mod_str_pair Mod_str_pair_list[] = {
++    {0,"none"},
++    {WLR_MODIFIER_LOGO,"super"},
++    {WLR_MODIFIER_LOGO,"logo"},
++    {WLR_MODIFIER_CTRL,"ctrl"},
++    {WLR_MODIFIER_ALT,"alt"},
++    {WLR_MODIFIER_SHIFT,"shift"},
++    {WLR_MODIFIER_CAPS,"caps"},
++    {WLR_MODIFIER_MOD3,"mod3"},
++    {WLR_MODIFIER_MOD2,"mod2"},
++    {WLR_MODIFIER_MOD5,"mod5"},
++};
++
++typedef enum {
++    ZRIVER_ARG_TYPE_NONE=0,
++    ZRIVER_ARG_TYPE_KEY,
++    ZRIVER_ARG_TYPE_RULE,
++    ZRIVER_ARG_TYPE_FUNC,
++} ZRIVER_ARG_TYPE;
++const char *zriver_error_generic = "catchall error";
++const char *zriver_error_alloc = "alloc error";
++const char *zriver_error_too_few_args = "too few args";
++const char *zriver_error_out_of_range = "out of arg range";
++const char *zriver_error_no_matching_argument = "no matching argument";
++const char *zriver_error_double_appid = "set appid more then once!";
++const char *zriver_error_double_title = "set title more then once!";
++const char *zriver_error_under_zero = "argument can't be less then zero!";
++const char *zriver_error_invalid_keysym = "invalid keysym!";
++#define STR_LINK_ARRAY_SIZE 10
++struct Str_link {
++    struct wl_list link;
++    char* string[STR_LINK_ARRAY_SIZE];
++};
++struct zriver_func_arg_pair {
++	void (*func)(const Arg *);
++	Arg arg;
++};
++union zriver_arg_ptr {
++    Rule_linked *rl;
++    Key_linked *kl;
++    struct zriver_func_arg_pair *fa;
++};
++typedef enum {
++    ZRIVER_RULE_MATCH_TYPE_NONE=0,
++    ZRIVER_RULE_MATCH_TYPE_APPID,
++    ZRIVER_RULE_MATCH_TYPE_TITLE,
++    ZRIVER_RULE_MATCH_TYPE_APPLYING,
++} Rule_match_type_next;
++typedef enum {
++    ZRIVER_RULE_TYPE_NONE=0,
++    ZRIVER_RULE_TYPE_TAGS,
++    ZRIVER_RULE_TYPE_MONITOR,
++} Rule_type;
++struct zriver_arg_list_resource {
++    int argc;
++    ZRIVER_ARG_TYPE type;
++    union zriver_arg_ptr p;
++    struct Str_link *str_link;
++    Func_str_arg_type key_arg_type;
++    Rule_match_type_next rule_match_type;
++    Rule_type rule_type;
++    Mode *key_mode;
++    bool rule_valid;
++    bool error;
++    const char* error_msg;
++};
++
++void setborderpx(const Arg *arg) {
++	Client *c;
++    Monitor *m;
++    borderpx = arg->ui;
++	wl_list_for_each(c, &clients, link) {
++	    c->bw = borderpx;
++    }
++    wl_list_for_each(m, &mons,link) {
++        arrange(m);
++    }
++}
++
++void setfocuscolor(const Arg *arg) {
++    const float color[4] = COLOR(arg->i);
++    int i;
++	for (i = 0; i < 4; i++) {
++        focuscolor[i] = color[i];
++    }
++}
++void setbordercolor(const Arg *arg) {
++    const float color[4] = COLOR(arg->i);
++    int i;
++	for (i = 0; i < 4; i++) {
++        bordercolor[i] = color[i];
++    }
++}
++void seturgentcolor(const Arg *arg) {
++    const float color[4] = COLOR(arg->i);
++    int i;
++	for (i = 0; i < 4; i++) {
++        urgentcolor[i] = color[i];
++    }
++}
++
++void zriver_control_destroy(struct wl_client *client,
++			struct wl_resource *resource) {
++    printf("destroy!\n");
++}
++void clear_str_store(struct wl_list *str_store) {
++    struct Str_link *str_link,*str_link_tmp;
++    int i;
++    wl_list_for_each_safe(str_link,str_link_tmp,str_store,link) {
++        wl_list_remove(&str_link->link);
++        for (i = 0; i < STR_LINK_ARRAY_SIZE; i++) {
++            if (str_link->string[i] != NULL) {
++                free(str_link->string[i]);
++            }
++        }
++        free(str_link);
++    }
++}
++void free_str_store(struct Str_link *str_link) {
++    int i;
++    char** string = str_link->string;
++    for (i = 0; i < STR_LINK_ARRAY_SIZE; i++) {
++        if (string != NULL) {
++            free(*string);
++        }
++        string++;
++    }
++    wl_list_remove(&str_link->link);
++}
++char* append_str_store(char** str_store_array,const char * string,int index) {
++    char** append_str = str_store_array+index;
++    int string_len = strlen(string) + 1;
++    *append_str = malloc(sizeof(char) * string_len);
++    if (*append_str != NULL) {
++        memcpy(*append_str,string,string_len);
++    }
++    return *append_str;
++}
++struct Str_link* add_rule_str_store(void) {
++    struct Str_link *str_link = calloc(1,sizeof(struct Str_link));
++    int i;
++    if (str_link == NULL) {
++        return NULL;
++    }
++    for (i = 1; i < STR_LINK_ARRAY_SIZE ;i++) {
++        str_link->string[i] = NULL;
++    }
++    wl_list_insert(&rule_str_store,&str_link->link);
++    return str_link;
++}
++struct Str_link* add_arg_str_store(const char* string) { 
++    struct Str_link *str_link = calloc(1,sizeof(struct Str_link));
++    int i;
++    int string_len = strlen(string) + 1;
++    if (str_link == NULL) {
++        return NULL;
++    }
++    str_link->string[0] = malloc(sizeof(char) * string_len);
++    if (str_link->string[0] == NULL) {
++        free(str_link); 
++        return NULL;
++    }
++    memcpy(str_link->string[0],string,string_len);
++    for (i = 1; i < STR_LINK_ARRAY_SIZE ;i++) {
++        str_link->string[i] = NULL;
++    }
++    wl_list_insert(&arg_str_store,&str_link->link);
++    return str_link;
++}
++void setup_rules(void) {
++#ifdef USE_RULES
++    Rule *r;
++    Rule_linked *rl;
++#endif
++    if (rules_list.next == NULL) {
++        wl_list_init(&rules_list);
++    }
++#ifdef USE_RULES
++	for (r = rules; r < END(rules); r++) {
++        rl = calloc(1,sizeof(Rule_linked));
++        if (rl != NULL) {
++            rl->rule = r;
++            rl->no_free_rule = true;
++            rl->no_remove = true; /* remove this line to make rules[] removed by clear-rules */
++            wl_list_insert(&rules_list,&rl->link);
++        }
++    }
++#endif
++    if (rule_str_store.next == NULL) {
++        wl_list_init(&rule_str_store);
++    }
++}
++void clear_rules(const Arg* arg) {
++    Rule_linked *rl,*tmp_rl;
++
++    wl_list_for_each_safe(rl,tmp_rl,&rules_list,link) {
++        if (rl->no_remove == false) {
++            wl_list_remove(&rl->link);
++            if (rl->no_free_rule == false) {
++                free(rl->rule);
++            }
++            free(rl);
++        }
++    }
++    clear_str_store(&rule_str_store);
++}
++Mode* create_mode(const char *name) {
++    Mode *mode = calloc(1,sizeof(Mode));
++    if (mode == NULL) {return NULL;}
++    wl_list_init(&mode->linked_keys);
++    wl_list_insert(&modes_list, &mode->link);
++    if (name != NULL) {
++        int string_len = strlen(name) + 1;
++        mode->name = malloc(sizeof(char) * string_len);
++        if (mode->name == NULL) {
++            free(mode);
++            return NULL;
++        }
++        memcpy(mode->name,name,string_len);
++    }
++    return mode;
++}
++Mode* get_mode(char* mode_name) {
++    Mode *mode;
++    wl_list_for_each(mode,&modes_list,link) {
++        if (strcmp(mode_name,mode->name) == 0) {
++            return mode;
++        }
++    }
++    return NULL;
++}
++void oneshot_mode(const Arg *arg) {
++    char * oneshot_mode_name = *(char **)arg->v;
++    char * return_mode_name = *((char **)arg->v+1);
++    if (oneshot_mode_name != NULL && return_mode_name != NULL) {
++        Mode *oneshot_mode = get_mode(oneshot_mode_name);
++        if (oneshot_mode != NULL) {
++            oneshot_mode->oneshot_mode = get_mode(return_mode_name);
++        }
++    }
++}
++void create_mode_user(const Arg *arg) {
++    char * mode_name = *(char **)arg->v;
++    if (mode_name != NULL) {
++        Mode *mode_exists = get_mode(mode_name);
++        if (mode_exists == NULL) {
++            create_mode(mode_name);
++        }
++    }
++}
++void enter_mode(const Arg *arg) {
++    char * mode_name = *(char **)arg->v;
++    Mode *mode = get_mode(mode_name);
++    if (mode != NULL) {
++        active_mode = mode;
++    }
++}
++char * zriver_default_mode_name = "normal";
++void setup_binds(void) {
++    if (modes_list.next == NULL) {
++        Mode *normal;
++        wl_list_init(&modes_list);
++        normal = create_mode(NULL);
++        if (normal == NULL) { die("out of memory!"); }
++        normal->name = zriver_default_mode_name;
++        normal_mode = normal;
++        active_mode = normal;
++        default_binds(&normal->linked_keys);
++    }
++    if (arg_str_store.next == NULL) {
++        wl_list_init(&arg_str_store);
++    }
++}
++#ifdef KEYS_USED
++void default_binds(struct wl_list *keys_list) {
++    Key *k;
++    Key_linked *kl;
++	for (k = keys; k < END(keys); k++) {
++        kl = calloc(1,sizeof(Key_linked));
++        if (kl != NULL) {
++            kl->key = k;
++            kl->no_free_key = true;
++            wl_list_insert(keys_list,&kl->link);
++        }
++	}
++}
++#endif
++void clear_binds(const Arg* arg) {
++    Key_linked *kl,*tmp_kl;
++    Mode *mode,*tmp_mode;
++    active_mode = normal_mode;
++
++    wl_list_for_each_safe(mode,tmp_mode,&modes_list,link) {
++        wl_list_for_each_safe(kl,tmp_kl,&mode->linked_keys,link) {
++            if (kl->no_remove == false) {
++                wl_list_remove(&kl->link);
++                if (kl->no_free_key == false) {
++                    free(kl->key);
++                }
++                free(kl);
++            }
++        }
++        if (normal_mode != mode) {
++            wl_list_remove(&mode->link);
++            free(mode->name);
++            free(mode);
++        }
++    }
++    clear_str_store(&arg_str_store);
++}
++
++void zriver_control_add_argument(struct wl_client *client,
++			     struct wl_resource *resource,
++			     const char *argument) {
++    struct zriver_arg_list_resource *args = wl_resource_get_user_data(resource);
++    const struct Mod_str_pair *ms;
++    const struct Func_str_type_pair *fst;
++    bool arg_filter = false;
++    Arg *arg = NULL;
++
++    if (args->error == true) {return;}
++    if (args->argc == 0) {
++        if (strcmp("rule-add",argument) == 0) {
++            args->type = ZRIVER_ARG_TYPE_RULE;
++            args->p.rl = calloc(1,sizeof(Rule_linked));
++            if (args->p.rl != NULL) {
++                args->p.rl->rule = calloc(1,sizeof(Rule));
++                if (args->p.rl->rule != NULL) {
++                    args->str_link = add_rule_str_store();
++                    args->p.rl->rule->monitor = -1;
++                } else {
++                    args->error = true;
++                    args->error_msg = zriver_error_alloc;
++                }
++            } else {
++                args->error = true;
++                args->error_msg = zriver_error_alloc;
++            }
++        } else if (strcmp("map",argument) == 0 || strcmp("bind",argument) == 0) {
++            args->type = ZRIVER_ARG_TYPE_KEY;
++            args->p.kl = calloc(1,sizeof(Key_linked));
++            if (args->p.kl != NULL) {
++                args->p.kl->key = calloc(1,sizeof(Key));
++                if (args->p.kl->key == NULL) {
++                    args->error = true;
++                    args->error_msg = zriver_error_alloc;
++                } else {
++                    args->str_link = add_arg_str_store(argument);
++                }
++            } else {
++                args->error = true;
++                args->error_msg = zriver_error_alloc;
++            }
++        } else {
++            for (fst = Func_str_type_pair_list; fst < END(Func_str_type_pair_list); fst++) {
++                if (strcmp(argument,fst->func_str) == 0) {
++                    args->type = ZRIVER_ARG_TYPE_FUNC;
++                    args->p.fa = calloc(1,sizeof(struct zriver_func_arg_pair));
++                    if (args->p.fa == NULL) {
++                        args->error = true;
++                        args->error_msg = zriver_error_alloc;
++                    } else {
++                        args->p.fa->func = fst->func;
++                        args->key_arg_type = fst->arg_type;
++                    }
++                    break;
++                }
++            }
++            if (args->error != true && args->type != ZRIVER_ARG_TYPE_FUNC) {
++                args->error = true;
++                args->error_msg = zriver_error_no_matching_argument;
++            }
++        }
++    } else if (args->type == ZRIVER_ARG_TYPE_RULE && args->str_link != NULL) {
++        switch (args->rule_match_type) {
++            case(ZRIVER_RULE_MATCH_TYPE_NONE):
++                if (strcmp(argument,"-appid") == 0) {
++                    args->rule_match_type = ZRIVER_RULE_MATCH_TYPE_APPID;
++                } else if (strcmp(argument,"-title") == 0) {
++                    args->rule_match_type = ZRIVER_RULE_MATCH_TYPE_TITLE;
++                } else {
++                    args->rule_match_type = ZRIVER_RULE_MATCH_TYPE_APPLYING;
++                }
++                break;
++            case(ZRIVER_RULE_MATCH_TYPE_APPID):
++                if (args->p.rl->rule->id == NULL) {
++                    args->p.rl->rule->id = append_str_store(args->str_link->string,argument,args->argc-1);
++                    args->rule_match_type = ZRIVER_RULE_MATCH_TYPE_NONE;
++                } else {
++                    args->error = true;
++                    args->error_msg = zriver_error_double_appid;
++                }
++                break;
++            case(ZRIVER_RULE_MATCH_TYPE_TITLE):
++                if (args->p.rl->rule->title == NULL) {
++                    args->p.rl->rule->title = append_str_store(args->str_link->string,argument,args->argc-1);
++                    args->rule_match_type = ZRIVER_RULE_MATCH_TYPE_NONE;
++                } else {
++                    args->error = true;
++                    args->error_msg = zriver_error_double_title;
++                }
++                break;
++            case(ZRIVER_RULE_MATCH_TYPE_APPLYING):
++                break;
++        }
++        if (args->rule_match_type == ZRIVER_RULE_MATCH_TYPE_APPLYING) {
++            switch (args->rule_type) {
++                case(ZRIVER_RULE_TYPE_NONE):
++                    if (strcmp(argument,"float") == 0) {
++                        args->p.rl->rule->isfloating = true;
++                        args->rule_valid = true;
++                    } else if (strcmp(argument,"tags") == 0){
++                        args->rule_type = ZRIVER_RULE_TYPE_TAGS;
++                        args->rule_valid = true;
++                    } else if (strcmp(argument,"monitor") == 0){
++                        args->rule_type = ZRIVER_RULE_TYPE_MONITOR;
++                        args->rule_valid = true;
++                    } else {
++                        args->error = true;
++                    }
++                    break;
++                case(ZRIVER_RULE_TYPE_TAGS):
++                    args->p.rl->rule->tags = strtol(argument,NULL,10);
++                    args->rule_type = ZRIVER_RULE_TYPE_NONE;
++                    args->rule_valid = true;
++                    break;
++                case(ZRIVER_RULE_TYPE_MONITOR):
++                    args->p.rl->rule->monitor = strtol(argument,NULL,10);
++                    args->rule_type = ZRIVER_RULE_TYPE_NONE;
++                    args->rule_valid = true;
++                    break;
++            }
++
++        }
++
++    } else if (args->type == ZRIVER_ARG_TYPE_FUNC) {
++        if (args->argc == 1) {
++            arg_filter = true;
++            arg = &args->p.fa->arg;
++        } else if (args->argc > 1 && args->argc < STR_LINK_ARRAY_SIZE && args->key_arg_type == FUNC_STR_ARG_TYPE_STRING_ARRAY && args->p.kl->key->arg.v != NULL) {
++            append_str_store((char**)args->p.fa->arg.v,argument,args->argc-1);
++        }
++    } else if (args->type == ZRIVER_ARG_TYPE_KEY) {
++        if (args->argc == 2) {
++	        for (ms = Mod_str_pair_list; ms < END(Mod_str_pair_list); ms++) {
++                if (strstr(argument,ms->mod_str)) {
++                    if (args->p.kl->key->mod != 0) {
++                        args->p.kl->key->mod = args->p.kl->key->mod|ms->mod;
++                    } else {
++                        args->p.kl->key->mod = ms->mod;
++                    }
++                }
++            }
++        } else if (args->argc == 1) {
++            int arg_len = strlen(argument) + 1;
++            if (arg_len > 1) {
++                bool found_mode = false;
++                Mode *mode;
++                wl_list_for_each(mode,&modes_list,link) {
++                    printf("mode name: %s, argument %s \n",mode->name,argument);
++                    if (strcmp(argument,mode->name) == 0) {
++                        found_mode = true;
++                        args->key_mode = mode;
++                        break;
++                    }
++                }
++                if (found_mode == false) {
++                    args->key_mode = create_mode(argument);
++                    if (args->key_mode == NULL) {
++                        args->error = true;
++                        args->error_msg = zriver_error_alloc;
++                    }
++                }
++            } else {
++                args->error = true;
++                args->error_msg = zriver_error_too_few_args;
++            }
++        } else if (args->argc == 3) {
++            if (strcmp(argument,"none") == 0 ) {
++                args->p.kl->key->keysym = XKB_KEY_NoSymbol;
++            } else {
++                args->p.kl->key->keysym = xkb_keysym_from_name(argument,XKB_KEYSYM_NO_FLAGS);
++                if (args->p.kl->key->keysym == XKB_KEY_NoSymbol) {
++                    args->error = true;
++                    args->error_msg = zriver_error_invalid_keysym;
++                }
++            }
++        } else if (args->argc == 4) {
++            for (fst = Func_str_type_pair_list; fst < END(Func_str_type_pair_list); fst++) {
++                if (strcmp(argument,fst->func_str) == 0) {
++                    args->p.kl->key->func = fst->func;
++                    args->key_arg_type = fst->arg_type;
++                    break;
++                }
++            }
++        } else if (args->argc == 5) {
++            arg_filter = true;
++            arg = &args->p.kl->key->arg;
++        } else if (args->argc > 5 && args->argc < STR_LINK_ARRAY_SIZE && args->key_arg_type == FUNC_STR_ARG_TYPE_STRING_ARRAY && args->p.kl->key->arg.v != NULL) {
++            append_str_store((char**)args->p.kl->key->arg.v,argument,args->argc-5);
++        }
++    }
++    if (arg_filter == true && arg != NULL) {
++            switch (args->key_arg_type) {
++                case(FUNC_STR_ARG_TYPE_NONE):
++                    break;
++                case(FUNC_STR_ARG_TYPE_UINT):
++                    arg->i = strtol(argument,NULL,10);
++                    if (arg->i >= 0) {
++                        arg->ui = arg->i;
++                    } else {
++                        args->error = true;
++                        args->error_msg = zriver_error_under_zero;
++                    }
++                    break;
++                case(FUNC_STR_ARG_TYPE_INT):
++                    arg->i = strtol(argument,NULL,10);
++                    break;
++                case(FUNC_STR_ARG_TYPE_FLOAT):
++                    arg->f = strtof(argument,NULL);
++                    break;
++                case(FUNC_STR_ARG_TYPE_STRING_ARRAY):
++                    args->str_link = add_arg_str_store(argument);
++                    if (args->str_link == NULL) {
++                        printf("string arg NULL \n");
++                    } else {
++                        arg->v = args->str_link->string;
++                    }
++
++                    break;
++                case(FUNC_STR_ARG_TYPE_WLR_DIRECTION):
++                    if (strcmp("up",argument)) {
++                        arg->i = WLR_DIRECTION_UP;
++                    } else if (strcmp("left",argument)) {
++                        arg->i = WLR_DIRECTION_LEFT;
++                    } else if (strcmp("right",argument)) {
++                        arg->i = WLR_DIRECTION_RIGHT;
++                    } else if (strcmp("down",argument)) {
++                        arg->i = WLR_DIRECTION_DOWN;
++                    } else {
++                        args->error = true;
++                        args->error_msg = zriver_error_out_of_range;
++                    }
++                    break;
++                case(FUNC_STR_ARG_TYPE_LAYOUT):
++                    arg->ui = strtol(argument,NULL,10);
++                    if (arg->ui < (int)LENGTH(layouts)) {
++                        arg->v = &layouts[arg->ui];
++                    } else {
++                        args->error = true;
++                        args->error_msg = zriver_error_out_of_range;
++                    }
++                    break;
++                case(FUNC_STR_ARG_TYPE_COLOR):
++                    arg->i = strtol(argument,NULL,16);
++                    break;
++            }
++    }
++    args->argc++;
++    printf("add arg '%s' !\n",argument);
++}
++void zriver_control_run_command(struct wl_client *client,
++			    struct wl_resource *resource,
++			    struct wl_resource *run_command_seat,
++			    uint32_t callback) {
++    struct zriver_arg_list_resource *args = wl_resource_get_user_data(resource);
++    struct wl_resource *callback_interface = wl_resource_create(
++        client, &zriver_command_callback_v1_interface, zriver_command_callback_v1_interface.version, callback);
++    if (args->argc == 0) {
++        zriver_command_callback_v1_send_failure(callback_interface,zriver_error_too_few_args);
++    } else if (args->error == true) {
++        switch (args->type) {
++            case(ZRIVER_ARG_TYPE_KEY):
++                if (args->p.kl != NULL) {
++                    if (args->p.kl->key != NULL) {
++                        free(args->p.kl->key);
++                    }
++                    free(args->p.kl);
++                }
++                break;
++            case(ZRIVER_ARG_TYPE_FUNC):
++                if (args->p.fa != NULL) {
++                    free(args->p.fa);
++                }
++                break;
++            case(ZRIVER_ARG_TYPE_RULE):
++                if (args->p.rl != NULL) {
++                    if (args->p.rl->rule != NULL) {
++                        free(args->p.rl->rule);
++                    }
++                    free(args->p.rl);
++                }
++                break;
++            case(ZRIVER_ARG_TYPE_NONE):
++                break;
++        }
++        if (args->str_link != NULL) {
++            free_str_store(args->str_link);
++            free(args->str_link);
++        }
++        zriver_command_callback_v1_send_failure(callback_interface,args->error_msg);
++    } else if (args->error == false) {
++        if (args->type == ZRIVER_ARG_TYPE_KEY) {
++            if (args->p.kl->key != NULL && args->p.kl->key->func != NULL) {
++                wl_list_insert(&args->key_mode->linked_keys,&args->p.kl->link);
++                zriver_command_callback_v1_send_success(callback_interface,"bind success!");
++            } else {
++                if (args->str_link != NULL) {
++                    free_str_store(args->str_link);
++                    free(args->str_link);
++                }
++                if (args->p.kl->key != NULL) {
++                    free(args->p.kl->key);
++                }
++                zriver_command_callback_v1_send_failure(callback_interface,zriver_error_too_few_args);
++            }
++        } else if (args->type == ZRIVER_ARG_TYPE_FUNC) {
++            if (args->p.fa->func != NULL) {
++                args->p.fa->func(&args->p.fa->arg);
++                zriver_command_callback_v1_send_success(callback_interface,"command success!");
++            } else {
++                zriver_command_callback_v1_send_failure(callback_interface,zriver_error_too_few_args);
++            }
++            if (args->str_link != NULL) {
++                free_str_store(args->str_link);
++                free(args->str_link);
++            }
++            free(args->p.fa);
++        } else if (args->type == ZRIVER_ARG_TYPE_RULE) {
++            if (args->rule_valid == true) {
++                /* check for rule with same title and id */
++                bool replaced_rule = false;
++#ifdef NEW_RULES_OVERRIDE
++                if (args->p.rl->rule->title != NULL || args->p.rl->rule->id != NULL) {
++                    Rule_linked *rl;
++                    Rule *r;
++                    wl_list_for_each(rl,&rules_list,link) {
++                        r = rl->rule;
++#define CHECKNULL(a,b) ((a != NULL && b != NULL && strcmp(a,b) == 0) || (a == NULL && b == NULL))
++                        if (CHECKNULL(args->p.rl->rule->title,r->title) && CHECKNULL(args->p.rl->rule->id,r->id)) {
++                            wl_list_remove(&rl->link);
++                            if (rl->no_free_rule == false) {
++                                free(rl->rule);
++                            }
++                            if (rl->str_link != NULL) {
++                                free_str_store(rl->str_link);
++                                free(rl->str_link);
++                            }
++                            free(rl);
++                            replaced_rule = true;
++                            break;
++                        }
++                    }
++                }
++#endif
++                wl_list_insert(rules_list.prev,&args->p.rl->link);
++                if (replaced_rule == true) {
++                    zriver_command_callback_v1_send_success(callback_interface,"rule replaced!");
++                } else {
++                    zriver_command_callback_v1_send_success(callback_interface,"rule success!");
++                }
++            } else {
++                zriver_command_callback_v1_send_failure(callback_interface,zriver_error_too_few_args);
++                free_str_store(args->str_link);
++                free(args->str_link);
++                free(args->p.rl->rule);
++                free(args->p.rl);
++            }
++        } else {
++            zriver_command_callback_v1_send_success(callback_interface,"");
++        }
++    }
++}
++struct zriver_control_v1_interface zriver_control_interface = {
++    .run_command = zriver_control_run_command,
++    .add_argument = zriver_control_add_argument,
++    .destroy = zriver_control_destroy,
++};
++static void zriver_control_handle_destroy(struct wl_resource *resource) {
++    struct zriver_arg_list_resource *zriver_arg_list_resource = wl_resource_get_user_data(resource);
++    free(zriver_arg_list_resource);
++    printf("handle destroy\n");
++}
++static void zriver_control_handle_bind(struct wl_client *client, void *data,
++        uint32_t version, uint32_t id) {
++    struct zriver_arg_list_resource *zriver_arg_list_resource = calloc(1,sizeof(struct zriver_arg_list_resource) );
++    struct wl_resource *resource = wl_resource_create(
++        client, &zriver_control_v1_interface, zriver_control_v1_interface.version, id);
++    zriver_arg_list_resource->error_msg = zriver_error_generic;
++
++
++    wl_resource_set_implementation(resource, &zriver_control_interface,
++        zriver_arg_list_resource, zriver_control_handle_destroy);
++}
+-- 
+2.51.0
+
