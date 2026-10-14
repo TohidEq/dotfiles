@@ -5,7 +5,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_d,                     spawn,            {.v = run_rofi} },
 	{ MODKEY,                    XKB_KEY_Return,                spawn,            {.v = termcmd} },
 	{ MODKEY,                    XKB_KEY_0,                     spawn,            {.v = run_powermenu} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_0,                     spawn,            {.v = run_wlogout} },
+	{ MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_0,                     spawn,            {.v = run_wlogout} },
   { MODKEY,                    XKB_KEY_s,                     spawn,            {.v = run_selectable_screenshot} },
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_S,                     spawn,            {.v = run_fullscreen_screenshot} },
   { MODKEY,                    XKB_KEY_w,                     spawn,            {.v = run_wikiarch} },
@@ -53,7 +53,7 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F,                     togglefloating,   {0} },
 	{ MODKEY,                    XKB_KEY_f,                     togglefullscreen, {0} },
 	//{ MODKEY,                    XKB_KEY_0,                     view,             {.ui = ~0} }, // view all windows
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright,            tag,              {.ui = ~0} },
+	//{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_parenright,            tag,              {.ui = ~0} },
 	{ MODKEY,                    XKB_KEY_comma,                 focusmon,         {.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY,                    XKB_KEY_period,                focusmon,         {.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_less,                  tagmon,           {.i = WLR_DIRECTION_LEFT} },
@@ -110,8 +110,8 @@ static const Key keys[] = {
 
 
 	// ===== Menu
-	{ MODKEY,                    XKB_KEY_e,           	menu,             {.v = &menus[0]} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_E,           	menu,             {.v = &menus[1]} },
+	{ MODKEY,                    XKB_KEY_e,           	menu,             {.v = &menus[0]} }, // list windows
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_E,           	menu,             {.v = &menus[1]} }, // list layouts
 
 
 	// ===== CenteredMaster

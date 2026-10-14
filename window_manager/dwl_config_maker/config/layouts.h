@@ -7,7 +7,7 @@ static const Layout layouts[] = {
   { " 󰕰 ",      tile },
 	{ "  ",      NULL },    /* no layout function means floating behavior */
 	{ "  ",      monocle },
-	{ " 󰋑 ",     dwindle },
+	{ " 󰋑 ",      dwindle },
 	//{ "  ",     dwindle },
 	{ "  ",      centeredmaster },
 
