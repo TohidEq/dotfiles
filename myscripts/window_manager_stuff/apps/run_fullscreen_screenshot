@@ -1,8 +1,9 @@
 ﻿#!/bin/sh
 
+# ss location
+OUT=$(mktemp ~/Pictures/Screenshots/SS-Full-$(date +%Y-%m-%d-%H%M%S)-XXXXX.png)
+grim - | tee "$OUT" | wl-copy
 
-
-grim - | wl-copy
 sleep 0.2
 notif_send 1 "Say Cheese :D" ""
 sleep 0.2

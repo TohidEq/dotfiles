@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+
+if pgrep -f '/home/arc/.config/myscripts/touchserver/TouchServer' >/dev/null; then
+    notif_send 2 "TouchServer is Alive" "" "check"
+else
+    notif_send 2 "TouchServer is Dead" "" "skull"
+fi

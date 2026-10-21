@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+SERVICE="nginx"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    notif_send 2 "$SERVICE is Alive" "" "check"
+else
+    notif_send 2 "$SERVICE is Dead" "" "skull"
+fi

@@ -1,3 +1,4 @@
 #!/bin/sh
 
 busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateGamma d +0.02
+pkill -RTMIN+5 someblocks

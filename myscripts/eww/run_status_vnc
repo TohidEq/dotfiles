@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+if pgrep -x wayvnc >/dev/null; then
+    notif_send 2 "VNC Server is Alive" "" "check"
+else
+    notif_send 2 "VNC Server is Dead" "" "skull"
+fi

@@ -1,0 +1,5 @@
+﻿#!/bin/sh
+
+gamma=$(busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Gamma | awk '{print $2}')
+temp=$(busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Temperature | awk '{print $2}')
+printf '󱎖  %s  󰔆 %s\n' "$gamma" "$temp"

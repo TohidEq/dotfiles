@@ -77,7 +77,7 @@
 	defwidget time_stack_h []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-00.png');"
+				(box :class "time_stack_h" :style "background-image: url('/home/arc/.config/clockimgs/hms/h/h-55.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -87,7 +87,7 @@
 	defwidget time_stack_m []
 		(
 			box :class "clock-stack" :orientation "stack"
-				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-09.png');"
+				(box :class "time_stack_m" :style "background-image: url('/home/arc/.config/clockimgs/hms/m/m-00.png');"
 					 :class "face" :halign "center"
 					 (label :text "" :halign "center" :width CLOCK_SIZE))
 
@@ -231,6 +231,7 @@
 			;; ftp
     (button
       :onclick "run_toggle_ftp &"
+      :onrightclick "run_status_ftp &"
       "")
 			;; ftp
     (button
@@ -242,6 +243,7 @@
 			;; browser service
     (button
       :onclick "run_toggle_tor &"
+      :onrightclick "run_status_tor &"
       "")
         ;;
     (button
@@ -249,6 +251,7 @@
 			;; vnc server
     (button
       :onclick "run_toggle_vnc &"
+      :onrightclick "run_status_vnc &"
       "󰦉")
         ;;
     (button
@@ -256,6 +259,7 @@
 			;; ssh
     (button
       :onclick "run_toggle_ssh &"
+      :onrightclick "run_status_ssh &"
       "󰆍")
         ;;
     (button
@@ -263,13 +267,15 @@
 			;; touch server
     (button
       :onclick "run_toggle_touchserver &"
+      :onrightclick "run_status_touchserver &"
       "󰈷")
         ;;
     (button
       " ")
 			;; nginx
     (button
-      :onclick "run_toggle_nginx&"
+      :onclick "run_toggle_nginx &"
+      :onrightclick "run_status_nginx &"
       "")
 
   )
@@ -307,6 +313,7 @@
 		;; waypaper wallpaper manager
     (button
       :onclick "waypaper &"
+      :onrightclick "waypaper --random &"
       "󰸉")
 		;; bluetooth manager
     (button

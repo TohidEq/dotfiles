@@ -2,3 +2,4 @@
 
 
 busctl --user set-property rs.wl-gammarelay / rs.wl.gammarelay Gamma d 1.0
+pkill -RTMIN+5 someblocks

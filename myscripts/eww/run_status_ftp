@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+SERVICE="pure-ftpd"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    notif_send 2 "FTP is Alive" "" "check"
+else
+    notif_send 2 "FTP is Dead" "" "skull"
+fi

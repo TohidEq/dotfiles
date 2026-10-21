@@ -17,6 +17,8 @@ static const Block blocks[] = {
 
 	{"^rm()^us()^ds()^lm()", "brightness_100", 1, 5},
 
+	{"^rm()^us()^ds()^lm()", "gamma_temp_100", 1, 5},
+
 	{"^rm()^us()^ds()^lm()", "volume_100", 1, 6},
 
 	{"^lm()^rm()^us()^ds()", "dwlb_moon_date_clock", 10, 7},

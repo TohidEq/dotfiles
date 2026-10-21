@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+SERVICE="sshd"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    notif_send 2 "SSH is Alive" "" "check"
+else
+    notif_send 2 "SSH is Dead" "" "skull"
+fi
