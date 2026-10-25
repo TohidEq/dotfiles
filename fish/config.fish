@@ -49,3 +49,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 ##     starship init fish | source
 ##     enable_transience
 ## end
+
+# pnpm
+set -gx PNPM_HOME '/home/arc/.local/share/pnpm'
+if test "$PATH[1]" != "$PNPM_HOME/bin"
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
