@@ -26,9 +26,8 @@ static const Key keys[] = {
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F3,                    spawn,            {.v = run_ranger} },
 
   { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_zed} },
-  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_code} },
-
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_emacs} },
+  { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F4,                    spawn,            {.v = run_code} },
 
   { MODKEY,                    XKB_KEY_v,                     spawn,            {.v = run_clipboard} },
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_v,                     spawn,            {.v = run_reset_clipboard_history} },
