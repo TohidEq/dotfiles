@@ -305,8 +305,8 @@ static const char *termcmd[]                    = { "kitty", NULL },
                   *run_thunar[]                 = { "thunar", NULL },
                   *run_spf[]                    = { "run_spf", NULL },
                   *run_ranger[]                 = { "run_ranger", NULL },
+                  *run_zed[]                    = { "zeditor", NULL },
                   *run_code[]                   = { "code", NULL },
-                  *run_code_toggle_theme[]      = { "code_toggle_theme", NULL },
                   *run_emacs[]                  = { "emacs", NULL },
                   *run_toggle_dwlb[]            = { "run_toggle_dwlb", NULL },
                   *run_restart_dwlb_eww[]       = { "run_restart_dwlb_eww", NULL },
@@ -347,8 +347,8 @@ static const Key keys[] = {
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F3,                    spawn,            {.v = run_spf} },
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F3,                    spawn,            {.v = run_ranger} },
 
-  { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_code} },
-  { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F4,                    spawn,            {.v = run_code_toggle_theme} },
+  { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_zed} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_code} },
 
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_emacs} },
 

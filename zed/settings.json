@@ -1,0 +1,101 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "inlay_hints": {
+    "show_background": true
+  },
+  "indent_guides": {
+    "background_coloring": "indent_aware"
+  },
+  "proxy": "http://localhost:9910",
+  "theme_overrides": {
+    "Flexoki Dark": {
+      "syntax": {
+      }
+    }
+  },
+  "calls": {
+    "mute_on_join": true
+  },
+  "node": {
+    "ignore_system_version": false,
+    "path": "/usr/bin/node",
+    "npm_path": "/usr/bin/npm"
+  },
+  "ui_font_weight": 350.0,
+  "ui_font_family": "Zed Sans",
+  "session": {
+    "trust_all_worktrees": true
+  },
+  "vim_mode": true,
+  "terminal": {
+    "font_family": "JetBrainsMonoNL Nerd Font"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "sticky_scroll": {
+    "enabled": false
+  },
+  "mouse_wheel_zoom": true,
+  "gutter": {
+    "line_numbers": true
+  },
+  "minimap": {
+    "show": "auto",
+    "max_width_columns": 25
+  },
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
+  "linked_edits": true,
+  "use_on_type_format": true,
+  "soft_wrap": "editor_width",
+  "tab_size": 2,
+  "base_keymap": "VSCode",
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Symbols Icon Theme",
+    "dark": "Symbols Icon Theme"
+  },
+  "cli_default_open_behavior": "existing_window",
+  "project_panel": {
+    "folder_indicator": "both",
+    "bold_folder_labels": true,
+    "hide_gitignore": false,
+    "auto_reveal_entries": false,
+    "dock": "right"
+  },
+  "outline_panel": {
+    "folder_indicator": "both",
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "button": false,
+    "enabled": false,
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "folder_indicator": "both",
+    "dock": "left"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 13.0,
+  "theme": { "mode": "dark",
+    "light": "Zacess Light",
+    "dark": "gruvbox-darker-custom-teq-blur",
+  },
+}

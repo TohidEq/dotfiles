@@ -25,8 +25,8 @@ static const Key keys[] = {
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F3,                    spawn,            {.v = run_spf} },
   { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F3,                    spawn,            {.v = run_ranger} },
 
-  { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_code} },
-  { MODKEY|WLR_MODIFIER_ALT,   XKB_KEY_F4,                    spawn,            {.v = run_code_toggle_theme} },
+  { MODKEY,                    XKB_KEY_F4,                    spawn,            {.v = run_zed} },
+  { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_code} },
 
   { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_F4,                    spawn,            {.v = run_emacs} },
 

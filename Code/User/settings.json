@@ -150,5 +150,7 @@
   "glassit-custom.opacity": 220,
   "editor.lineNumbers": "on",
   "window.menuBarVisibility": "compact",
-  "workbench.experimental.modernUI": true
+  "workbench.experimental.modernUI": true,
+  "breadcrumbs.enabled": false,
+  "editor.stickyScroll.enabled": false
 }
