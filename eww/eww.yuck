@@ -365,15 +365,20 @@
       :onclick "run_wikiarch"
       "󰖬")
 
-			;; code editor
+			;; zed editor
     (button
-      :onclick "code &"
-      "")
+      :onclick "zeditor &"
+      "󰬡")
 
 			;; emacs
     (button
       :onclick "emacs &"
       "")
+
+			;; code editor
+    (button
+      :onclick "code &"
+      "")
 
 			;; download manager uget
     (button
