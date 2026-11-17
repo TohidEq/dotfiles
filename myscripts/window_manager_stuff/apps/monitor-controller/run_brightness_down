@@ -1,0 +1,3 @@
+#!/bin/sh
+
+brightnessctl set 5%-; pkill -RTMIN+5 someblocks

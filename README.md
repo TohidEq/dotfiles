@@ -68,9 +68,9 @@
 | <kbd> ❖</kbd> + <kbd>F3</kbd> |  thunar (file manager) |
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>F3</kbd> |  spf (alt file manager) |
 | <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd>  + <kbd>F3</kbd> |  ranger (alt file manager)|
-| <kbd> ❖</kbd> + <kbd>F4</kbd> |  vscode |
-| <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd>  + <kbd>F4</kbd> |  vscode change theme |
+| <kbd> ❖</kbd> + <kbd>F4</kbd> |  zed |
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>F4</kbd> |  emacs |
+| <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd>  + <kbd>F4</kbd> |  vscode |
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>Escape</kbd> |  btop |
 | <kbd> ❖</kbd> + <kbd>⌃ Ctrl</kbd>  + <kbd>Escape</kbd> |  nvtop |
 | 📍 **Extra Apps**    | ----------------- |
@@ -128,4 +128,3 @@
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>B</kbd> |  toggle bar (just hide)|
 | <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd>  + <kbd>b</kbd> |  restart dwlb/eww |
 | <kbd> ❖</kbd> + <kbd>g</kbd> |  toggle gaps |
-

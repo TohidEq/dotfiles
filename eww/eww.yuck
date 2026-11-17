@@ -160,14 +160,15 @@
        :spacing 0
 
     (button
-      :onclick "pamixer -i 5; pkill -RTMIN+6 someblocks"
+      :onclick "run_sound_up"
       "")
 
     (button
+      :onclick "run_sound_mute"
       "")
 
     (button
-      :onclick "pamixer -d 5; pkill -RTMIN+6 someblocks"
+      :onclick "run_sound_down"
       "")
 
     (button
@@ -175,14 +176,14 @@
 
 
     (button
-      :onclick "brightnessctl set 5%+; pkill -RTMIN+5 someblocks"
+      :onclick "run_brightness_up"
       "")
 
     (button
       "󰃟")
 
     (button
-      :onclick "brightnessctl set 5%-; pkill -RTMIN+5 someblocks"
+      :onclick "run_brightness_down"
       "")
 
 

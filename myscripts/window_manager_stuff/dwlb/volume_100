@@ -1,16 +1,25 @@
 #!/bin/sh
 
 percent=$(pamixer --get-volume)
+ismute=$(pamixer --get-mute)
 
+extra_space=""
 
-if [ "$percent" -eq 0 ]; then
-    icon=""
-elif [ "$percent" -ge 1 ] && [ "$percent" -le 33 ]; then
+if [ "$percent" -ge 0 ] && [ "$percent" -le 9 ]; then
+  extra_space=" "
+fi
+
+if [ "$percent" -ge 0 ] && [ "$percent" -le 20 ]; then
     icon=""
-elif [ "$percent" -ge 34 ] && [ "$percent" -le 66 ]; then
+elif [ "$percent" -ge 21 ] && [ "$percent" -le 40 ]; then
     icon=""
+elif [ "$percent" -ge 41 ] && [ "$percent" -le 80 ]; then
+    icon=""
 else
     icon=""
 fi
+if [ "$ismute" = "true" ]; then
+    icon=""
+fi
 
-echo "^lm(kitty alsamixer)^rm(kitty pavucontrol)^ds(pamixer -d 2;pkill -RTMIN+6 someblocks)^us(pamixer -i 2;pkill -RTMIN+6 someblocks)${icon}  ${percent}%"
+echo "^lm(kitty alsamixer)^rm(kitty pavucontrol)^ds(pamixer -d 2;pkill -RTMIN+6 someblocks)^us(pamixer -i 2;pkill -RTMIN+6 someblocks)${icon}  ${percent}%${extra_space}"

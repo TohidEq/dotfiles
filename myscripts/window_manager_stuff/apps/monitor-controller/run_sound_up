@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pamixer -i 5;
+pkill -RTMIN+6 someblocks
+

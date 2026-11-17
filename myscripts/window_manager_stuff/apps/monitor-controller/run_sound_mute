@@ -1,0 +1,4 @@
+#!/bin/sh
+
+pamixer --toggle-mute
+pkill -RTMIN+6 someblocks

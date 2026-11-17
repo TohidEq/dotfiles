@@ -4,12 +4,12 @@
 static const char *termcmd[]                    = { "kitty", NULL },
              ///  *run_cool_retro_termm[]       = { "cool-retro-term", NULL },
              ///  Audio commands :
-                  *vol_up[]                     = { "pamixer", "-i", "5", NULL },   // Increase by 5%
-                  *vol_down[]                   = { "pamixer", "-d", "5", NULL },   // Decrease by 5%
-                  *vol_mute[]                   = { "pamixer", "-t", NULL },        // Toggle mute
+                  *vol_up[]                     = { "run_sound_up", NULL },   // Increase by 5%
+                  *vol_down[]                   = { "run_sound_down", NULL },   // Decrease by 5%
+                  *vol_mute[]                   = { "run_sound_mute", NULL },        // Toggle mute
              ///  Screen Brightness commands :
-                  *bright_up[]                  = { "brightnessctl", "set", "5%+", NULL },
-                  *bright_down[]                = { "brightnessctl", "set", "5%-", NULL },
+                  *bright_up[]                  = { "run_brightness_up", NULL },
+                  *bright_down[]                = { "run_brightness_down", NULL },
              /////////////////////////////////////////////////////////////////////////////
                   *menucmd[]                    = { "run_wmenu", NULL },
                   *run_powermenu[]              = { "run_powermenu", NULL },
@@ -32,6 +32,7 @@ static const char *termcmd[]                    = { "kitty", NULL },
                   *run_ranger[]                 = { "run_ranger", NULL },
                   *run_zed[]                    = { "zeditor", NULL },
                   *run_code[]                   = { "code", NULL },
+                  *run_editors_toggle_theme[]   = { "editors_toggle_theme", NULL },
                   *run_emacs[]                  = { "emacs", NULL },
                   *run_toggle_dwlb[]            = { "run_toggle_dwlb", NULL },
                   *run_restart_dwlb_eww[]       = { "run_restart_dwlb_eww", NULL },
