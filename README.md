@@ -122,6 +122,10 @@
 | <kbd> ❖</kbd> + <kbd>p</kbd> |  increase master size |
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>I</kbd> |  increase master numbers |
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>P</kbd> |  decrease master numbers |
+| <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd> + <kbd>l</kbd> |  decrease master size |
+| <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd> + <kbd>h</kbd> |  increase master size |
+| <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd>  + <kbd>k</kbd> |  increase master numbers |
+| <kbd> ❖</kbd> + <kbd>⎇ Alt</kbd>  + <kbd>j</kbd> |  decrease master numbers |
 | 📍 **Bars & Widgets**    | ----------------- |
 | <kbd> ❖</kbd> + <kbd>⇧ Shift</kbd>  + <kbd>W</kbd> |  toggle eww (Widgets) |
 | <kbd> ❖</kbd> + <kbd>b</kbd> |  toggle dwlb (KILL)|

@@ -41,6 +41,13 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_P,                     incnmaster,       {.i = -1} },
 	{ MODKEY,                    XKB_KEY_i,                     setmfact,         {.f = -0.05f} },
 	{ MODKEY,                    XKB_KEY_p,                     setmfact,         {.f = +0.05f} },
+
+
+	{ MODKEY|WLR_MODIFIER_ALT,  XKB_KEY_k,                     incnmaster,       {.i = +1} },
+	{ MODKEY|WLR_MODIFIER_ALT,  XKB_KEY_j,                     incnmaster,       {.i = -1} },
+	{ MODKEY|WLR_MODIFIER_ALT,  XKB_KEY_l,                     setmfact,         {.f = -0.05f} },
+	{ MODKEY|WLR_MODIFIER_ALT,  XKB_KEY_h,                     setmfact,         {.f = +0.05f} },
+
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,                zoom,             {0} },
 	{ MODKEY,                    XKB_KEY_Tab,                   view,             {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,                     killclient,       {0} },
