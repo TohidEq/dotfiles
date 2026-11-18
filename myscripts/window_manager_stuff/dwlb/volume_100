@@ -22,4 +22,5 @@ if [ "$ismute" = "true" ]; then
     icon=""
 fi
 
-echo "^lm(kitty alsamixer)^rm(kitty pavucontrol)^ds(pamixer -d 2;pkill -RTMIN+6 someblocks)^us(pamixer -i 2;pkill -RTMIN+6 someblocks)${icon}  ${percent}%${extra_space}"
+#echo "^lm(kitty alsamixer)^rm(kitty pavucontrol)^ds(pamixer -d 2;pkill -RTMIN+6 someblocks)^us(pamixer -i 2;pkill -RTMIN+6 someblocks)${icon}  ${percent} ${extra_space}"
+echo "^lm(kitty alsamixer)^rm(kitty pavucontrol)^ds(pamixer -d 2;pkill -RTMIN+6 someblocks)^us(pamixer -i 2;pkill -RTMIN+6 someblocks)${icon}  ${percent}${extra_space}"

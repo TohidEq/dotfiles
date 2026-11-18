@@ -26,4 +26,5 @@ else
     icon=""
 fi
 
-echo "${icon}  ${percent}%"
+#echo "${icon}  ${percent}"
+echo "${icon}  ${percent}"

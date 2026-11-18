@@ -11,7 +11,8 @@ static const Block blocks[] = {
 	
   {"^lm()^lm(kitty btop)󰘚 ", "free -h | awk '/^Mem/ { print $3 }' | sed s/i//g", 2, 0},
 	
-  {"^lm()^lm(kitty btop)󰍛 ", "echo \"$[100-$(vmstat 1 1 | tail -1 | awk '{print $15}')]\"%", 2, 0},
+  //{"^lm()^lm(kitty btop)󰍛 ", "echo \"$[100-$(vmstat 1 1 | tail -1 | awk '{print $15}')]\"", 2, 0},
+  {"^lm()^lm(kitty btop)󰍛 ", "echo \"$[100-$(vmstat 1 1 | tail -1 | awk '{print $15}')]\"", 2, 0},
 	
   {"^rm()^us()^ds()^lm()", "battery_100", 10, 0},
 
@@ -26,5 +27,5 @@ static const Block blocks[] = {
 };
 
 // sets delimeter between status commands. NULL character ('\0') means no delimeter.
-static char delim[] = "   ";
-static unsigned int delimLen = 3;
+static char delim[] = "  .  ";
+static unsigned int delimLen = 5;

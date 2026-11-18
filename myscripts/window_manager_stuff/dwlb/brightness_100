@@ -4,7 +4,8 @@ current=$(brightnessctl g)
 max=$(brightnessctl m)
 
 if [ "$max" -eq 0 ]; then
-    echo "󰽢   0%"
+    #echo "󰽢   0"
+    echo "󰽢   0"
 else
     percent=$(( current * 100 / max ))
 
@@ -23,5 +24,6 @@ else
     else
         icon="󰃠"
     fi
-    echo "^us(pkill -RTMIN+5 someblocks;brightnessctl set 5%+)^ds(pkill -RTMIN+5 someblocks;brightnessctl set 5%-)${icon}  ${percent}%"
+    #echo "^us(pkill -RTMIN+5 someblocks;brightnessctl set 5%+)^ds(pkill -RTMIN+5 someblocks;brightnessctl set 5%-)${icon}  ${percent} "
+    echo "^us(pkill -RTMIN+5 someblocks;brightnessctl set 5%+)^ds(pkill -RTMIN+5 someblocks;brightnessctl set 5%-)${icon}  ${percent}"
 fi
